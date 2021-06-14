@@ -1,5 +1,5 @@
 import React from 'react';
-import transparentLogo from '../../assets/logos/transparent_logo.png';
+import transparentLogo from '../../../public/assets/logos/transparent_logo.png';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 
 
