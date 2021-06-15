@@ -9,5 +9,14 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.3.16",
+    "if-env": "^1.0.4"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  }
 }
