@@ -1,9 +1,13 @@
 const router = require("express").Router();
-const userRoutes = require("./users");
-const gameRoutes = require("./game");
-const authRoutes = require("./auth");
 
-router.use("/users", userRoutes);
-router.use("/game", gameRoutes);
-router.use("/auth", authRoutes);
+const blogRoutes = require("./blog");
+const homeRoutes = require("./home");
+const servicesRoutes = require("./services");
+const siteRoutes = require("./site");
+
+router.use("/blog", blogRoutes);
+router.use("/home", homeRoutes);
+router.use("/services", servicesRoutes);
+router.use("/site", siteRoutes);
+
 module.exports = router;

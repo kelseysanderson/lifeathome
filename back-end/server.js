@@ -17,7 +17,6 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
-console.log(process.env.LOCAL_DB_KEY)
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || process.env.LOCAL_DB_KEY, {useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false})
 .then(()=> console.log('DB CONNECTED'));
