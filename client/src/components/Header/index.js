@@ -1,67 +1,61 @@
-import React from 'react';
-import transparentLogo from '../../../public/assets/logos/transparent_logo.png';
-import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
-
-
-/**
-* @author
-* @function Header
-**/
+import React from "react";
+import transparentLogo from '../../assets/logos/transparent_logo.png';
+import { Container, Grid } from '@material-ui/core';
+import { NavLink } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import './style.css'
 
 const Header = (props) => {
-    return (
-        <>
-            <Container maxWidth="lg">
-                <Grid 
-                    container justify="space-between" 
-                    alignItems="center" 
-                    spacing="3"
-                    >
+    const location = useLocation();
+    const pathName = location.pathname
+    let navBar;
+    console.log("HERRRE", location)
 
-                    <Grid item xs={12} sm={6} style={logoContainer}>
-                        <img style={headerImage} src={transparentLogo} alt="Life at Home Logo: orange and light green outline of an A-frame house"></img>
-                        <h1 style={logoText}>Life at Home</h1>
+    if (pathName === '/') {
+        navBar =
+            <ul className="navList">
+                <li><p><NavLink exact to="/blog">Blog</NavLink></p></li>
+                <li><p><NavLink exact to="/services">Services</NavLink></p></li>
+            </ul>
+
+    } else if (pathName === '/services') {
+        navBar =
+            <ul className="navList">
+                <li><p><NavLink exact to="/">Home</NavLink></p></li>
+                <li>
+                    <div className="dropdown">
+                        <button className="dropbtn">Services</button>
+                        <div className="dropdown-content">
+                            <a href="#smarthome">Smart Home </a>
+                            <a href="#">Accessibility </a>
+                            <a href="#">Sustainability </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+    } else if (pathName === '/blog') {
+        <ul className="navList">
+            <li><p><NavLink exact to="/blog">Home</NavLink></p></li>
+            <li><p><NavLink exact to="/services">Services</NavLink></p></li>
+        </ul>
+    }
+
+    return (
+        <header>
+            <Container maxWidth="xl" style={{ marginTop: "30px" }}>
+                <Grid container justify="space-between" alignItems="center" spacing={4}>
+                    <Grid item xs={12} sm={7} lg={9} className="logoContainer">
+                        <img className="headerImage" src={transparentLogo} alt="Life at Home Logo: orange and light green outline of an A-frame house"></img>
+                        <h1 className="logo-text">Life at Home</h1>
+
                     </Grid>
-                    <Grid item xs={12} sm={6} >
-                        <ul style={list}>
-                            <li>
-                                Services
-                        </li>
-                            <li>
-                                Blog
-                        </li>
-                        </ul>
+                    <Grid className="navBar" item xs={12} sm={4} lg={3}>
+                        {navBar}
                     </Grid>
                 </Grid>
-
             </Container>
-        </>
-
+        </header>
     )
-
 }
 
 export default Header;
-
-const headerContainer = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center"
-}
-const headerImage = {
-    height: "50px",
-}
-const logoContainer = {
-    display: "inherit",
-    alignItems: "center"
-}
-const logoText = {
-    fontFamily: 'Arial, Helvetica, sans-serif',
-    fontSize: '30px',
-    fontWeight: '200',
-    marginLeft: '20px'
-}
-const list = {
-    display:"flex",
-    listStyleType: "none"
-}
