@@ -1,6 +1,6 @@
 module.exports = {
   Site: require("./site"),
-  Home: require("./home"),
-  Blog: require("./blog"),
-  Services: require("./services")
+  User: require("./user"),
+  Post: require("./post"),
+  Comment: require("./comment")
 };

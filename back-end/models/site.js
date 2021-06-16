@@ -2,13 +2,45 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const siteSchema = new Schema({
-  favicon_ref: String,
-  logo_ref: String,
-  logo_greyscale_ref: String,
+  image_ref: {
+    favicon: String,
+    logo: String,
+    logo_greyscale: String,
+  },
   company_name: String,
-  page_links: [String], 
+  nav_link: [String], 
   copyright: String, 
-  date: {type: Date, default: Date.now},
+
+  home_page: {  
+    hero_image_ref: String,
+    banner: [
+      {
+        title: String,
+        body: String,
+        link_name: String,
+        link_ref: String
+      }
+    ],
+    about_statement: String,
+    catchy_stat: [
+      {
+        body: String,
+        stat_display: String,
+      }
+    ],
+    additional_boxes: [
+      {
+        title: String,
+        body: String,
+        link_name: String,
+        link_ref: String
+      }
+    ],
+  },
+
+  services_page: {},
+
+  blog_page: {},
 
   contact: {
     name: String,
