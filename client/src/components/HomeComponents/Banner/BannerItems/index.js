@@ -11,8 +11,7 @@ const BannerItems = (props) => {
                 <h2 className="title-text banner-title">{props.title}</h2>
                 <img className="banner-image" src={smarthome} alt="smarthome with mobile device"></img>
                 <p className="banner-description">{props.description}</p>
-                <NavLink exact to="/services"><button className="orange-btn">{props.button}</button>
-                    </NavLink>
+                <NavLink exact to="/services"><button className="orange-btn">{props.button}</button></NavLink>
             </Grid >
             <Grid style={{ border: "none" }} item xs={12} sm={6}>
                 <h2 className="title-text banner-title">Blog</h2>
