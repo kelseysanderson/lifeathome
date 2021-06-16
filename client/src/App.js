@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Services from './pages/Services';
@@ -9,14 +9,15 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
-        <Header />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/services" component={Services} />
-          <Route exact path="/blog" component={Blog} />
-        <Footer />
-    </Router>
+      <Router>
+          <Header />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/services" component={Services} />
+            <Route exact path="/blog" component={Blog} />
+          <Footer />
+      </Router>
   );
 }
 
 export default App;
+
