@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React from "react";
+import { SiteProvider } from './Context/SiteContext';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Services from './pages/Services';
@@ -9,6 +10,7 @@ import './App.css';
 
 function App() {
   return (
+    <SiteProvider>
       <Router>
           <Header />
             <Route exact path="/" component={Home} />
@@ -16,6 +18,8 @@ function App() {
             <Route exact path="/blog" component={Blog} />
           <Footer />
       </Router>
+      </SiteProvider>
+
   );
 }
 

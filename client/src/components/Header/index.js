@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useContext} from "react";
+import {SiteContext} from '../../Context/SiteContext'
 import transparentLogo from '../../assets/logos/transparent_logo.png';
 import { Container, Grid } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
@@ -9,6 +10,8 @@ const Header = (props) => {
     const location = useLocation();
     const pathName = location.pathname
     let navBar;
+    // const siteData = useContext(SiteContext);
+    // console.log(siteData)
 
     if (pathName === '/') {
         navBar =
@@ -45,7 +48,7 @@ const Header = (props) => {
                 <Grid container justify="space-between" alignItems="center" spacing={4}>
                     <Grid item xs={12} sm={7} lg={9} className="logoContainer">
                         <img className="headerImage" src={transparentLogo} alt="Life at Home Logo: orange and light green outline of an A-frame house"></img>
-                        <h1 className="logo-text">lifeathome</h1>
+                        {/* <h1 className="logo-text">{siteData[0].company_name}</h1> */}
 
                     </Grid>
                     <Grid className="navBar" item xs={12} sm={4} lg={3}>
