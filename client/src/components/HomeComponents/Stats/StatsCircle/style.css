@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.stats-number {
+    font-size: 1500%;
+    font-weight: 600 !important;
+}
+
+.stats-description {
+    margin-left: 40%;
+    margin-top: -10%;
+}

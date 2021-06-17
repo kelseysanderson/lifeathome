@@ -1,0 +1,42 @@
+html,
+body {
+   width: 100vw;
+   height: 100vh;
+   margin: 0;
+   margin:0;
+   padding:0;
+   color:black;
+   font-family: 'Roboto', 'Verdana', 'sans-serif';
+}
+
+.orange-btn {
+   padding:7px;
+   background-color: #EB712F;
+   border-radius: 5px;
+   color:white;
+   border: 2px solid #EB712F;
+}
+.orange-btn:hover {
+   background-color: #f88142;
+   border-radius: 6px;
+   border: 2px solid #EB712F;
+   cursor:pointer;
+}
+
+.green-btn {
+   padding:7px;
+   background-color: #AED3BE;
+   border-radius: 5px;
+   color:#2E343C;
+   border: 2px solid #AED3BE;
+}
+.green-btn:hover {
+   background-color: #c8e7d5;
+   border-radius: 6px;
+   cursor:pointer;
+}
+
+.title-text{
+   font-family: 'Baloo 2' !important; 
+   font-weight: 200;
+}

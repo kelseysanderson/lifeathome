@@ -1,0 +1,118 @@
+header{
+    margin-bottom: 35px;
+}
+.headerImage {
+    height: 50px;
+}
+.logoContainer {
+    display: flex;
+    align-items: center;
+    margin:0;
+    padding:0;
+}
+.logo-text {
+    margin: 0;
+    padding:0;
+    margin-left:15px;
+    font-weight: 300;
+}
+.navList{
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0 ;
+    font-size: 18px !important;
+    margin-right: 30px;
+}
+.dropbtn {
+    background-color: #2E343C;
+    border-radius: 10px;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Roboto', 'sans-serif';
+    font-size: 18px !important;
+
+  }
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    border-radius:10px;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+      background-color: #AED3BE;
+      font-weight: bold
+    }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #434a53;
+    color:white;
+    border-radius: 12px;
+  }
+
+#upsidedown-caret {
+    transform: rotate(180deg); 
+    margin-left: 5px;
+    font-size: 20px;
+}
+
+.navList li{
+    margin:0 40px;
+    padding:0;
+    font-family: 'Roboto', 'sans-serif';
+}
+.navListItem {
+    text-decoration:none;
+}
+.navListItem:hover{
+    cursor:pointer;
+    color:#49525e
+}
+
+@media only screen and (max-width: 600px) {
+    .logoContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin:30px 0 0 0 !important;
+        padding: 0 !important;
+    }
+    .navList li{
+        margin: 0 20px;
+    }
+    .navList li{
+        margin-bottom: 10px;
+    }
+    .navBar {
+        display:flex;
+        justify-content:center;
+        margin:0 !important;
+        padding: 0 !important
+    }
+
+}

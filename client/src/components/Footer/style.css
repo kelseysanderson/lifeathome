@@ -1,0 +1,37 @@
+footer {
+    height:250px;
+    background-color: #2E343C;
+    color:white
+}
+
+.footer-text {
+    color:white;
+}
+
+section.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+
+.footer-contact {
+    text-align: center;
+    margin-left:55px;
+
+}
+
+.footer-copyright {
+    font-style:italic;
+    font-size: 15px;
+}
+
+.social-media {
+    margin-right:55px;
+}
+
+.social-media-icons {
+    height:45px;
+    margin-right: 25px;
+}

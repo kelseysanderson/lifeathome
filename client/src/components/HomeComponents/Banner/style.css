@@ -1,0 +1,25 @@
+.banner-visual {
+    margin-top: -100px;
+}
+.curved-div {
+    position: relative;
+    background: #2E343C;
+    color: #FFF;
+    text-align: center;
+    overflow: hidden;   
+}
+.curved-div svg {
+    display: block;
+}
+.curved-div.upper {
+    background: #fff;
+    
+}
+.curved-div h1 {
+    font-size: 6rem;
+    margin-top:0rem;
+}
+.curved-div p {
+    font-size: 1rem;
+    margin:0 5rem 0rem 5rem;
+}
