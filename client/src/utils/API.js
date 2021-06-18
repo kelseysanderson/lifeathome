@@ -3,8 +3,11 @@ import axios from "axios";
 
 export default {
   // Gets all Users
-  getHome: function () {
+  getSiteData: function () {
     return axios.get("/api/site");
+  },
+  updateSiteData: function (id, newData) {
+    return axios.put("/api/site/"+ id, newData);
   },
 //   // Gets the User with the given id
 //   getUser: function (id) {

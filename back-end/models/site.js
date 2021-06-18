@@ -2,55 +2,61 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const siteSchema = new Schema({
-  image_ref: {
-    favicon: String,
-    logo: String,
-    logo_greyscale: String,
+  siteData: {
+    company_name: {type: String, default: ""},
+    contact_name: {type: String, default: ""},
+    contact_email: {type: String, default: ""},
+    contact_phone: {type: String, default: ""},
+    contact_location: {type: String, default: ""},
+    contact_facebook_link: {type: String, default: ""},
+    contact_instagram_link: {type: String, default: ""},
+    contact_twitter_link: {type: String, default: ""},
   },
-  company_name: String,
-  nav_link: [String], 
-  copyright: String, 
+  homePage : {
+    banner_1_title: {type: String, default: ""},
+    banner_1_body: {type: String, default: ""},
+    banner_1_link_button_text: {type: String, default: ""},
+    banner_1_link: {type: String, default: ""},
+    
+    banner_2_title: {type: String, default: ""},
+    banner_2_body: {type: String, default: ""},
+    banner_2_link_button_text: {type: String, default: ""},
+    banner_2_link: {type: String, default: ""},
+    
+    about_statement_title: {type: String, default: ""},
+    about_statement_body: {type: String, default: ""},
+    
+    stat_1_title: {type: String, default: ""},
+    stat_1_body: {type: String, default: ""},
+    stat_1_link_button_text: {type: String, default: ""},
+    stat_1_link: {type: String, default: ""},
+        
+    stat_2_title: {type: String, default: ""},
+    stat_2_body: {type: String, default: ""},
+    stat_2_link_button_text: {type: String, default: ""},
+    stat_2_link: {type: String, default: ""},
+    
+    stat_3_title: {type: String, default: ""},
+    stat_3_body: {type: String, default: ""},
+    stat_3_link_button_text: {type: String, default: ""},
+    stat_3_link: {type: String, default: ""},
 
-  home_page: {  
-    hero_image_ref: String,
-    banner: [
-      {
-        title: String,
-        body: String,
-        link_name: String,
-        link_ref: String
-      }
-    ],
-    about_statement: String,
-    catchy_stat: [
-      {
-        body: String,
-        stat_display: String,
-      }
-    ],
-    additional_boxes: [
-      {
-        title: String,
-        body: String,
-        link_name: String,
-        link_ref: String
-      }
-    ],
+    additional_box_1_title: {type: String, default: ""},
+    additional_box_1_body: {type: String, default: ""},
+    additional_box_1_link_button_text: {type: String, default: ""},
+    additional_box_1_link: {type: String, default: ""},
+
+    additional_box_2_title: {type: String, default: ""},
+    additional_box_2_body: {type: String, default: ""},
+    additional_box_2_link_button_text: {type: String, default: ""},
+    additional_box_2_link: {type: String, default: ""},
   },
-
-  services_page: {},
-
-  blog_page: {},
-
-  contact: {
-    name: String,
-    email: String,
-    phone: String,
-    location: String,
-    facebook_link: String,
-    instagram_link: String,
-    twitter_link: String,
-  },
+  servicesPage: {
+    title: {type: String, default: ""},
+    body: {type: String, default: ""},
+    link_button_text: {type: String, default: ""},
+    link: {type: String, default: ""},
+  }
 });
 
 const Site = mongoose.model("Site", siteSchema);

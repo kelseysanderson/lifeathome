@@ -10,14 +10,14 @@ import './App.css';
 
 function App() {
   return (
-    <Manager />
-    // <Router>
-    //     <Header />
-    //       <Route exact path="/" component={Home} />
-    //       <Route exact path="/services" component={Services} />
-    //       <Route exact path="/blog" component={Blog} />
-    //     <Footer />
-    // </Router>
+    <Router>
+        <Header />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/services" component={Services} />
+          <Route exact path="/blog" component={Blog} />
+          <Route exact path="/manager" component={Manager} />
+        <Footer />
+    </Router>
   );
 }
 
