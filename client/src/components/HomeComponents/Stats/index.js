@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { SiteContext } from '../../../Context/SiteContext'; 
+import { SiteContext } from '../../../Context/SiteContext';
 import StatsCircle from './StatsCircle'
 import './style.css';
 
