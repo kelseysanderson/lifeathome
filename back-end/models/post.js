@@ -9,7 +9,7 @@ const postSchema = new Schema({
   body: String,
   external_link: String,
   embedded_video_link: String,
-  comments:{
+  comments: {
     type: [Schema.Types.ObjectId],
     ref: 'Comment',
   }  

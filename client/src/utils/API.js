@@ -4,7 +4,7 @@ import axios from "axios";
 export default {
   // Gets all Users
   getHome: function () {
-    return axios.get("/api/");
+    return axios.get("/api/site");
   },
 //   // Gets the User with the given id
 //   getUser: function (id) {
