@@ -2,23 +2,27 @@
 import axios from "axios";
 
 export default {
-  // Gets all Users
+  // Gets all Site Data
   getSite: function () {
     return axios.get("/api/site");
   },
-//   // Gets the User with the given id
-//   getUser: function (id) {
-//     return axios.get("/api/users/" + id);
-//   },
+  // Gets all Posts
+  getPosts: function () {
+    return axios.get("/api/post/");
+  },
+  // Gets the Post with the given id
+  getPost: function (id) {
+    return axios.get("/api/post/" + id);
+  },
 
-//   updateUser: function (id, userData) {
-//     return axios.put("/api/users/" + id, userData);
-//   },
+  updatePost: function (id, postData) {
+    return axios.put("/api/post/" + id, postData);
+  },
   
-//   // Deletes the User with the given id, unregister?
-//   deleteUser: function (id) {
-//     return axios.delete("/api/users/" + id);
-//   },
+  // Deletes the Post with the given id
+  deleteUser: function (id) {
+    return axios.delete("/api/post/" + id);
+  },
 //   // save user after sign up
 //   saveUser: function(userData) {
 //     return axios.post("/api/auth/signup", userData)
