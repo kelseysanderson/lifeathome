@@ -1,0 +1,27 @@
+.post-container {
+    display:flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    width: 100%;
+    border-bottom: 1px solid #585f68;
+    padding-bottom:10px;
+}
+.service-text {
+    text-align:left
+}
+.post-image {
+    width: 90%;
+    border-radius: 5px;
+    -moz-box-shadow: 0 0 3px rgb(170, 170, 170);
+    -webkit-box-shadow: 0 0 3px rgb(170, 170, 170);
+    box-shadow: 0 0 3px rgb(151, 151, 151);
+}
+#post-subtext  {
+    font-size: 16px;
+    font-weight:normal;
+    margin-left: 5%;
+    text-align:end;
+    margin:0;
+    padding:0;
+    align-self:flex;
+}

@@ -1,27 +1,38 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import smarthome from '../../../../assets/smarthome.png';
+
 import './style.css'
 
-const Blog = (props) => {
+const Post = ({ posts, loading, handlePostClick}) => {
+
+
+    if (loading) {
+        return <h2>Loading...</h2>;
+    }
+
     return (
-        <>
-            <div className="container blog-container">
-                <Grid style={{ border: "none" }} item xs={9} md={6}>
-                    <img className="blog-image" src={smarthome} alt="smarthome with phone app"></img>
+        <div>
+            {posts.map(post => (
+                <Grid key={post._id} container direction="row" spacing={3} alignItems="center" style={{ borderBottom: "1px solid grey", marginBottom: "20px", width: "80%", marginLeft: "10%" }}>
+                    <Grid item container direction="column" xs={6} spacing={2}>
+                        <Grid item xs>
+                            <img className="post-image" src={post.img_src} alt="smarthome with phone app"></img>
+                        </Grid>
+                    </Grid>
+                    <Grid style={{ border: "none" }} item xs={6}>
+                        <div className="post-text">
+                            <h1>{post.title}</h1>
+                            <p>{post.discription}</p>
+                            <button className="green-btn post-btn" onClick={() => handlePostClick(post._id)}>See Full Post</button>
+                        </div>
+                        <p id="post-subtext">{post.date_posted}</p>
+                    </Grid>
                 </Grid>
+            ))}
+        </div>
 
-                <Grid style={{ border: "none" }} item xs={9} md={6}>
-                    <div className="blog-text">
-                        <h1>Smart Home</h1>
-                        <p> Nullam pulvinar vestibulum quam, eu posuere quam tempus non. Aliquam ultricies orci nec gravida ultrices. Sed fermentum arcu dolor, convallis lobortis lectus faucibus placerat. Proin congue, dolor aliquet tristique tempor, odio felis convallis lacus, quis tincidunt nibh est nec diam. Aliquam posuere, ex ac ornare vehicula, ante justo posuere turpis, at fringilla enim nulla quis urna. Maecenas eleifend pharetra semper.</p>
-                        <button className="green-btn">Schedule Initial Consultation Now</button>
-                    </div>
-                </Grid>
-            </div>
-        </>
-    )
+    );
+};
 
-}
+export default Post
 
-export default Blog

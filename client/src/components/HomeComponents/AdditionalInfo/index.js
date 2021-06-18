@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Grid, Box } from '@material-ui/core';
 import './style.css';
 
@@ -10,10 +10,8 @@ const AdditionalInfo = (props) => {
                     <p>Modern Living Spaces means so much more than technology and smart homes. Modern Living Spaces considers accessibility to all people and environmental sustainability.</p>
                     <div className="learn-more-btn">
                         <button className="green-btn">Learn More</button>
-
                     </div>
                 </Grid>
-
                 <Grid item xs={4}>
                     <p className="top-bottom-border mission-text">Responsible communities require responsible approaches and actions.</p>
                 </Grid>

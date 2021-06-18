@@ -1,5 +1,4 @@
-import React, {useContext} from "react";
-import {SiteContext} from '../../Context/SiteContext'
+import React from "react";
 import transparentLogo from '../../assets/logos/transparent_logo.png';
 import { Container, Grid } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
@@ -10,8 +9,6 @@ const Header = (props) => {
     const location = useLocation();
     const pathName = location.pathname
     let navBar;
-    // const siteData = useContext(SiteContext);
-    // console.log(siteData)
 
     if (pathName === '/') {
         navBar =
@@ -34,12 +31,6 @@ const Header = (props) => {
                     </div>
                 </li>
             </ul>
-    } else if (pathName === '/blog') {
-        navBar =
-        <ul className="navList">
-            <li><p><NavLink exact to="/">Home</NavLink></p></li>
-            <li><p><NavLink exact to="/services">Services</NavLink></p></li>
-        </ul>
     }
 
     return (

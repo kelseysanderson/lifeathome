@@ -26,6 +26,7 @@ const siteSchema = new Schema({
       {
         body: String,
         stat_display: String,
+        link: String
       }
     ],
     additional_boxes: [

@@ -14,7 +14,6 @@ const BannerItems = (props) => {
                 <NavLink exact to="/services"><button className="orange-btn">{props.button}</button></NavLink>
             </Grid >
         </>
-
     )
 }
 
