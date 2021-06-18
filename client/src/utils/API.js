@@ -9,6 +9,9 @@ export default {
   updateSiteData: function (id, newData) {
     return axios.put("/api/site/"+ id, newData);
   },
+  getPostData: function () {
+    return axios.get("/api/post");
+  },
 //   // Gets the User with the given id
 //   getUser: function (id) {
 //     return axios.get("/api/users/" + id);

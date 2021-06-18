@@ -1,18 +1,29 @@
 import React, { useState, createContext, useEffect } from "react";
 import API from "../../utils/API.js";
 import Input from "./input"
+import BlogHandler from "./blogHandler"
+import BlogInput from "./blogInput"
 
 
 export const ManagerContext = createContext()
+export const BlogContext = createContext()
 
 const Manager = (props) => {
   const [dataObj, setDataObj] = useState("loading");
+  const [blogArr, setBlogArr] = useState("loading")
+  const [blogForm, setBlogForm] = useState({
+    title: "",
+    descirption: "",
+    img_src: "",
+    body: ""
+  })
 
   useEffect(() => {
-    loadHomePage();
+    loadSiteData();
+    loadBlogData()
   }, []);
 
-  function loadHomePage() {
+  function loadSiteData() {
     API.getSiteData()
     .then(res => {
         console.log(res.data[1])
@@ -20,6 +31,37 @@ const Manager = (props) => {
     })
     .catch(err => console.log(err));
   };
+
+  function loadBlogData() {
+    API.getPostData()
+    .then(res => {
+        console.log(res.data)
+        setBlogArr(res.data)
+    })
+    .catch(err => console.log(err));
+  }
+
+  function blogDelete(event) {
+    console.log(event.target.dataset.id)
+    //set API call to delete above Id
+  }
+
+  function handleBlogInputChange (event) {
+    console.log(event.target)
+    // Getting the value and name of the input which triggered the change
+    let value = event.target.value;
+    const key1 = event.target.dataset.key1;
+
+    console.log(blogForm[key1])
+
+    // Updating the input's state
+    setBlogForm({...blogForm,
+      [key1]: {value}
+    });
+  };
+
+  function submitPost () {
+  }
 
   function handleInputChange (event) {
     console.log(event.target)
@@ -50,9 +92,22 @@ const Manager = (props) => {
 
   return (
     <>
-      {dataObj === "loading" ? (<><h1>LOADING</h1></>) : (
+      {dataObj === "loading" || blogArr === "loading" ? (<><h1>LOADING</h1></>) : (
         <ManagerContext.Provider value={{dataObj, handleInputChange}}>
-        <h1>DataBase Management</h1>
+        <BlogContext.Provider value={{blogForm, handleBlogInputChange}}>
+          <div className="management-card">
+            <h2>New Post</h2>
+            <BlogInput key1="title"/>
+            <BlogInput key1="description"/>
+            <BlogInput key1="img_src"/>
+            <BlogInput key1="body"/>
+            <button onClick={submitPost}>Submit Post</button>
+          </div>
+          <br></br>
+          {blogArr.map(post =>(
+            <BlogHandler post={post} deleteFunction={blogDelete}/>
+          ))}
+          <h1>DataBase Management</h1>
           <div className="management-card">
             <h2>Site Data</h2>
             <Input key1="siteData" key2="company_name"/>
@@ -133,6 +188,7 @@ const Manager = (props) => {
           </div>
           <br></br>
           <button onClick={updateData}>Update Data</button>
+        </BlogContext.Provider>
         </ManagerContext.Provider>
       )}
     </>
