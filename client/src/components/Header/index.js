@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext} from "react";
+import {SiteContext} from '../../Context/SiteContext'
 import transparentLogo from '../../assets/logos/transparent_logo.png';
 import { Container, Grid } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
@@ -9,7 +10,8 @@ const Header = (props) => {
     const location = useLocation();
     const pathName = location.pathname
     let navBar;
-    console.log("HERRRE", location)
+    // const siteData = useContext(SiteContext);
+    // console.log(siteData)
 
     if (pathName === '/') {
         navBar =
@@ -17,7 +19,6 @@ const Header = (props) => {
                 <li><p><NavLink exact to="/blog">Blog</NavLink></p></li>
                 <li><p><NavLink exact to="/services">Services</NavLink></p></li>
             </ul>
-
     } else if (pathName === '/services') {
         navBar =
             <ul className="navList">
@@ -34,8 +35,9 @@ const Header = (props) => {
                 </li>
             </ul>
     } else if (pathName === '/blog') {
+        navBar =
         <ul className="navList">
-            <li><p><NavLink exact to="/blog">Home</NavLink></p></li>
+            <li><p><NavLink exact to="/">Home</NavLink></p></li>
             <li><p><NavLink exact to="/services">Services</NavLink></p></li>
         </ul>
     }
@@ -46,7 +48,7 @@ const Header = (props) => {
                 <Grid container justify="space-between" alignItems="center" spacing={4}>
                     <Grid item xs={12} sm={7} lg={9} className="logoContainer">
                         <img className="headerImage" src={transparentLogo} alt="Life at Home Logo: orange and light green outline of an A-frame house"></img>
-                        <h1 className="logo-text">Life at Home</h1>
+                        {/* <h1 className="logo-text">{siteData[0].company_name}</h1> */}
 
                     </Grid>
                     <Grid className="navBar" item xs={12} sm={4} lg={3}>

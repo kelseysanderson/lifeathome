@@ -3,6 +3,7 @@ import axios from "axios";
 
 export default {
   // Gets all Users
+
   getSiteData: function () {
     return axios.get("/api/site");
   },
@@ -11,6 +12,10 @@ export default {
   },
   getPostData: function () {
     return axios.get("/api/post");
+  },
+  getSite: function () {
+    return axios.get("/api/site");
+
   },
 //   // Gets the User with the given id
 //   getUser: function (id) {
