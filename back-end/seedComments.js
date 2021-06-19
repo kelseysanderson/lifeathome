@@ -5,24 +5,24 @@ dotenv.config();
 
 
 mongoose.connect(
-    "mongodb://localhost/lifeathome"
-    );
+  process.env.LOCAL_DB_KEY
+  );
 
 const commentSeed = [
   {
-    postId: "60cd0878c6126d13802f0571",
+    postId: ObjectId("60cd17551d1a5d182af875ab"),
     body:
     "This is test 1 comment",
     date_posted: new Date(Date.now()),
   },
   {
-    postId: "60cd0878c6126d13802f0571",
+    postId:  ObjectId("60cd17551d1a5d182af875ab"),
     body:
     "This is test 2 comment",
     date_posted: new Date(Date.now()),
   },
   {
-    postId: "60cd0878c6126d13802f0572",
+    postId: ObjectId("60cd17551d1a5d182af875ac"),
     body:
     "This is test 3 comment",
     date_posted: new Date(Date.now()),
