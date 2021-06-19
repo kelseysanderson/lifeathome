@@ -20,7 +20,7 @@ function App() {
             <Route exact path="/manager" component={Manager} />
           <Footer />
       </Router>
-      </SiteProvider>
+    </SiteProvider>
   );
 }
 

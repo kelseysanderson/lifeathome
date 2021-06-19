@@ -13,7 +13,7 @@ const Manager = (props) => {
   const [blogArr, setBlogArr] = useState("loading")
   const [blogForm, setBlogForm] = useState({
     title: "",
-    descirption: "",
+    description: "",
     img_src: "",
     body: ""
   })
@@ -24,7 +24,7 @@ const Manager = (props) => {
   }, []);
 
   function loadSiteData() {
-    API.getSiteData()
+    API.getSite()
     .then(res => {
         console.log(res.data[1])
         setDataObj(res.data[1])
@@ -33,7 +33,7 @@ const Manager = (props) => {
   };
 
   function loadBlogData() {
-    API.getPostData()
+    API.getPosts()
     .then(res => {
         console.log(res.data)
         setBlogArr(res.data)
@@ -43,7 +43,11 @@ const Manager = (props) => {
 
   function blogDelete(event) {
     console.log(event.target.dataset.id)
-    //set API call to delete above Id
+    API.deletePost(event.target.dataset.id)
+    .then(res => {
+      loadBlogData()
+    })
+    .catch(err => console.log(err));
   }
 
   function handleBlogInputChange (event) {
@@ -56,11 +60,22 @@ const Manager = (props) => {
 
     // Updating the input's state
     setBlogForm({...blogForm,
-      [key1]: {value}
+      [key1]: value
     });
   };
 
   function submitPost () {
+    API.postPost(blogForm)
+    .then(res => {
+      setBlogForm({
+        title: "",
+        description: "",
+        img_src: "",
+        body: ""
+      })
+      loadBlogData()
+    })
+    .catch(err => console.log(err));
   }
 
   function handleInputChange (event) {
@@ -81,9 +96,9 @@ const Manager = (props) => {
     });
   };
 
-  function updateData () {
+  function replaceSiteData () {
     console.log(dataObj)
-    API.updateSiteData(dataObj._id, dataObj)
+    API.replaceSite(dataObj._id, dataObj)
     .then(res => {
       console.log(res)
     })
@@ -187,7 +202,7 @@ const Manager = (props) => {
             <Input key1="servicesPage" key2="link"/>
           </div>
           <br></br>
-          <button onClick={updateData}>Update Data</button>
+          <button onClick={replaceSiteData}>Update Data</button>
         </BlogContext.Provider>
         </ManagerContext.Provider>
       )}

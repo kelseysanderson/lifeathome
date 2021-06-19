@@ -8,6 +8,7 @@ router.route("/")
 router.route("/:id")
   .get(siteController.findById)
   .put(siteController.update)
+  .put(siteController.replace)
   .delete(siteController.remove);
 
 module.exports = router;
