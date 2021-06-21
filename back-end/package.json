@@ -10,14 +10,12 @@
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd ../client && npm run start",
     "seed": "node seedBlog.js"
-    "client": "cd ../client && npm run start"
-
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16"

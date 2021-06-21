@@ -41,7 +41,6 @@ const siteSchema = new Schema({
     stat_3_link_button_text: {type: String, default: ""},
     stat_3_link: {type: String, default: ""},
 
-
     additional_box_1_title: {type: String, default: ""},
     additional_box_1_body: {type: String, default: ""},
     additional_box_1_link_button_text: {type: String, default: ""},
