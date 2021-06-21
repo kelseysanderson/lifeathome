@@ -11,14 +11,16 @@ const BlogPost = (props) => {
     const { id } = useParams()
 
     useEffect(() => {
-        const fetchPost = async () => {
-            setLoading(true);
-            const res = await API.getPost(id);
-            setPost(res.data);
-            setLoading(false);
-        }
         fetchPost()
     }, [id]);
+
+    const fetchPost = async () => {
+        setLoading(true);
+        const res = await API.getPost(id);
+        console.log(res.data)
+        setPost(res.data);
+        setLoading(false);
+    }
 
     return (
         <div>
@@ -35,7 +37,7 @@ const BlogPost = (props) => {
                         <p>{post.date_posted}</p>
                     </div>
                     <p className="blog-paragraphs" >{post.body} </p>
-                    <CommentSection key={post._id} postId={post._id}/>
+                    <CommentSection key={post._id} postId={post._id} postComments={post.comments} fetchPost={fetchPost}/>
                 </Box>
             </Grid>
             

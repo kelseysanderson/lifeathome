@@ -20,7 +20,7 @@ export default {
   postPost: function (newPost) {
     return axios.post("/api/post", newPost);
   },
-  updatePost: function (newPost, id) {
+  updatePost: function (id, newPost) {
     return axios.put("/api/post/" + id, newPost);
   },
   deletePost: function (id) {
@@ -37,7 +37,7 @@ export default {
   postComment: function (newComment) {
     return axios.post("/api/comment", newComment);
   },
-  updateComment: function (newComment, id) {
+  updateComment: function (id, newComment) {
     return axios.put("/api/comment/" + id, newComment);
   },
   deleteComment: function (id) {
@@ -54,7 +54,7 @@ export default {
   postEmail: function (newEmail) {
     return axios.post("/api/email", newEmail);
   },
-  updateEmail: function (newEmail, id) {
+  updateEmail: function (id, newEmail) {
     return axios.put("/api/email/" + id, newEmail);
   },
   deleteEmail: function (id) {
