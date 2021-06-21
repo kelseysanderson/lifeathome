@@ -1,44 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../../utils/API'
 import replyIcon from '../../../assets/reply-icon.png';
-import { CommentEmbed } from 'disqus-react';
 
 import './style.css'
 
 
 
-const Comments = (postId) => {
-  const [comments, setComments] = useState()
-  let addReply = false;
+const Comments = (props) => {
+  console.log(props)
 
-  console.log(postId)
+  function displayReplyForm() {
 
-  useEffect(() => {
-    const fetchComments = async () => {
-      const res = await API.getComments(`postId=${postId.postId}`);
-      setComments(res.data);
-    }
-    fetchComments()
-  }, []);
-
-  function handleAddReply() {
-    addReply = true
   }
 
-  if (!comments) {
-    return <h2>Loading...</h2>;
-  }
+
   return (
     <>
-      {comments.map(comment => (
-        <CommentEmbed
-        commentId={comment._id}
-        // showMedia={true}
-        strong="test"
-        showParentComment={true}
-        width={420}
-        height={320}
-        />
+      {props.comments.map(comment => (
+       <div>
+         <h2>{comment.body}</h2>
+         <p>{comment.date_posted}</p>
+         <button onClick={displayReplyForm} className="green-btn">Reply</button>
+       </div>
       ))}
 
     </>

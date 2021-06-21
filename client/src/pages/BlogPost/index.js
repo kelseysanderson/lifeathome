@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { Grid, Box } from '@material-ui/core';
-import CommentSection from '../../components/CommentSection'
+import CommentSection from '../../components/CommentSection';
 import API from '../../utils/API'
 import './style.css';
 
