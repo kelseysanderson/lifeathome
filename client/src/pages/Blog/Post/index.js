@@ -22,7 +22,7 @@ const Post = ({ posts, loading, handlePostClick}) => {
                     <Grid style={{ border: "none" }} item xs={6}>
                         <div className="post-text">
                             <h1>{post.title}</h1>
-                            <p>{post.discription}</p>
+                            <p>{post.description}</p>
                             <button className="green-btn post-btn" onClick={() => handlePostClick(post._id)}>See Full Post</button>
                         </div>
                         <p id="post-subtext">{post.date_posted}</p>
