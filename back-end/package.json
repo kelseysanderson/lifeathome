@@ -10,6 +10,7 @@
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd ../client && npm run start",
     "seed": "node seedBlog.js"
+    "client": "cd ../client && npm run start"
 
   },
   "keywords": [],
