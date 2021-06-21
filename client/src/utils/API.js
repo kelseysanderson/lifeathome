@@ -27,13 +27,16 @@ export default {
     return axios.delete("/api/post/" + id);
   },
 
-  //Commet
-  getComments: function () {
-    return axios.get("/api/comment");
+  //Comment
+  getComments: function (query) {
+    return axios.get("/api/comment", query);
   },
   getComment: function (id) {
     return axios.get("/api/comment/" + id);
   },
+  // getCommentWhere: function (postId) {
+  //   return axios.get("/api/comment", postId);
+  // },
   postComment: function (newComment) {
     return axios.post("/api/comment", newComment);
   },
