@@ -29,7 +29,7 @@ export default {
 
   //Comment
   getComments: function (query) {
-    return axios.get("/api/comment", query);
+    return axios.get("/api/comment?" + query);
   },
   getComment: function (id) {
     return axios.get("/api/comment/" + id);

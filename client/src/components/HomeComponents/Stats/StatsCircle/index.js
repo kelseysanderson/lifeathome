@@ -3,7 +3,6 @@ import { Box, Grid } from '@material-ui/core';
 import './style.css';
 
 const StatsCircle = (stats, statsLink) => {
-    console.log(stats.stats[0])
     const statistics = stats.stats
     return (
         <Box display="flex" flexDirection="row">

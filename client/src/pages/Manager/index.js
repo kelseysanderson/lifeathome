@@ -26,7 +26,6 @@ const Manager = (props) => {
   function loadSiteData() {
     API.getSite()
     .then(res => {
-        console.log(res.data[1])
         setDataObj(res.data[1])
     })
     .catch(err => console.log(err));
@@ -35,7 +34,6 @@ const Manager = (props) => {
   function loadBlogData() {
     API.getPosts()
     .then(res => {
-        console.log(res.data)
         setBlogArr(res.data)
     })
     .catch(err => console.log(err));

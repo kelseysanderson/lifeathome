@@ -24,8 +24,6 @@ const Blog = (props) => {
   }, []);
 
   function goToPost(id) {
-      console.log("CLICK.")
-      console.log("IDDD", id)
       window.location.replace('/blog/' + id);
   }
 

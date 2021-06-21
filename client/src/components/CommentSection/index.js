@@ -3,7 +3,6 @@ import Comments from './Comments';
 import './style.css'
 
 const CommentSection = (props) => {
-  console.log(props.comments)
   return (
     <>
       <h1 className="single-blog-header" id="comment-title">Comments</h1>
@@ -11,7 +10,7 @@ const CommentSection = (props) => {
         <button className="single-blog-header" id="add-comment">+</button>
         <p>Add New Comment</p>
       </div>
-      <Comments comments={props.comments} />
+      <Comments postId={props.postId}  />
     </>
 
   )

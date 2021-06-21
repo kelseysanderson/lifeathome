@@ -6,7 +6,6 @@ import './style.css'
 
 const Banner = (props) => {
   const siteData = useContext(SiteContext);
-  console.log("UHOH", siteData)
   const bannerData = siteData[0].home_page.banner;
 
   return (
