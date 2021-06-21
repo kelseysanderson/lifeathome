@@ -1,0 +1,38 @@
+#comment-title {
+    width: 70%;
+    margin:10px;
+    padding:0;
+}
+
+.add-comment-container {
+    display:flex;
+    width: 70%;
+    border-bottom: 1px solid grey;
+    padding-bottom: 10px;
+}
+
+#add-comment {
+    display:inherit;
+    justify-content: center;
+    align-items: center;
+    padding:18px;
+    margin:0;
+    margin-right:10px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background-color: white;
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight:lighter;
+    -moz-box-shadow: 0 0 3px rgb(170, 170, 170);
+    -webkit-box-shadow: 0 0 3px rgb(170, 170, 170);
+    box-shadow: 0 0 3px rgb(192, 192, 192);
+}
+
+#add-comment:hover {
+    cursor:pointer;
+    background-color: whitesmoke;
+
+}

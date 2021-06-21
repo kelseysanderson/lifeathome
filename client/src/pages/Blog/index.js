@@ -38,11 +38,10 @@ const Blog = (props) => {
     setCurrentPage(0);
   };
 
-
   // Get current posts
-  const indexOfLastPost = (currentPage + 1) * postsPerPage;
+  const indexOfLastPost = (currentPage * postsPerPage) + (postsPerPage);
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost );
   
 
   if (loading ) {
@@ -61,7 +60,7 @@ const Blog = (props) => {
       </Box>
       <Box display="flex" justifyContent="center" alignItems="center">
         <Grid item xs={11}>
-          <Post currentPosts={currentPosts} posts={posts} loading={loading} handlePostClick={goToPost}/>
+          <Post posts={currentPosts} loading={loading} handlePostClick={goToPost}/>
           <TablePagination
             component="div"
             count={posts.length}

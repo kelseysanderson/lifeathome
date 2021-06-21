@@ -23,10 +23,10 @@ export default {
   deleteUser: function (id) {
     return axios.delete("/api/post/" + id);
   },
-//   // save user after sign up
-//   saveUser: function(userData) {
-//     return axios.post("/api/auth/signup", userData)
-//   },
+  // save user after sign up
+  getComments: function (id) {
+    return axios.get("/api/comment/" + id);
+  },
 //   // check for login match in database 
 //   authLogin: function(userData) {
 //     return axios.post("/api/auth/login", userData)

@@ -9,6 +9,7 @@ const Header = (props) => {
     const location = useLocation();
     const pathName = location.pathname
     let navBar;
+    console.log(pathName)
 
     if (pathName === '/') {
         navBar =
@@ -30,6 +31,26 @@ const Header = (props) => {
                         </div>
                     </div>
                 </li>
+            </ul>
+    } else if (pathName === '/blog') {
+        navBar =
+            <ul className="navList">
+                <li><p><NavLink exact to="/">Home</NavLink></p></li>
+                <li>
+                    <li><p><NavLink exact to="/services">Services</NavLink></p></li>
+
+                </li>
+            </ul>
+    } else {
+        navBar =
+            <ul className="navList">
+                <li><p><NavLink exact to="/">Home</NavLink></p></li>
+                <li>
+                    <li><p><NavLink exact to="/services">Services</NavLink></p></li>
+
+                </li>
+                <li><p><NavLink exact to="/blog">Blog</NavLink></p></li>
+
             </ul>
     }
 

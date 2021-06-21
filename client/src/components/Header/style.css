@@ -23,7 +23,13 @@ header{
     margin: 0;
     padding: 0 ;
     font-size: 18px !important;
-    margin-right: 30px;
+    margin-right: 20px;
+}
+.navBar {
+    display:flex;
+    justify-content:flex-end;
+    margin:0 !important;
+    padding: 0 !important
 }
 .dropbtn {
     background-color: #2E343C;
@@ -33,17 +39,15 @@ header{
     font-size: 16px;
     border: none;
     cursor: pointer;
-    font-family: 'Roboto', 'sans-serif';
+    font-family: 'Mulish', 'sans-serif';
     font-size: 18px !important;
 
-  }
-  
-  .dropdown {
+}
+.dropdown {
     position: relative;
     display: inline-block;
-  }
-  
-  .dropdown-content {
+}
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -51,40 +55,28 @@ header{
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-  }
-  
-  .dropdown-content a {
+}
+.dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-  }
-  
-  .dropdown-content a:hover {
-      background-color: #AED3BE;
-      font-weight: bold
-    }
-  
-  .dropdown:hover .dropdown-content {
+}
+.dropdown-content a:hover {
+    background-color: #AED3BE;
+    font-weight: bold
+}
+.dropdown:hover .dropdown-content {
     display: block;
-  }
-  
-  .dropdown:hover .dropbtn {
+}
+.dropdown:hover .dropbtn {
     background-color: #434a53;
     color:white;
     border-radius: 12px;
-  }
-
-#upsidedown-caret {
-    transform: rotate(180deg); 
-    margin-left: 5px;
-    font-size: 20px;
 }
-
 .navList li{
-    margin:0 40px;
+    margin:0 20px;
     padding:0;
-    font-family: 'Roboto', 'sans-serif';
 }
 .navListItem {
     text-decoration:none;

@@ -4,9 +4,11 @@
     align-items: center;
     flex-wrap: wrap;
 }
-
+.stats-visual{
+    /* width: 300px; */
+}
 .stats-number {
-    font-size: 1500%;
+    font-size: 700%;
     font-weight: 600 !important;
 }
 
