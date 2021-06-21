@@ -7,18 +7,13 @@ import './style.css'
 
 const Comments = (postId) => {
   const [comments, setComments] = useState()
-  const [loading, setLoading] = useState(false);
 
   console.log(postId)
 
   useEffect(() => {
     const fetchComments = async () => {
-      setLoading(true);
-
       const res = await API.getComments(`postId=${postId.postId}`);
       setComments(res.data);
-      setLoading(false);
-
     }
     fetchComments()
   }, []);
