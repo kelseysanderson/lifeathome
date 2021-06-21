@@ -6,7 +6,6 @@ import './style.css';
 const Stats = (props) => {
     const siteData = useContext(SiteContext);
     const stats = siteData[0].home_page.catchy_stat;
-    console.log("STATS", siteData[0]._id)
 
     return (
         <div className="stats-page">

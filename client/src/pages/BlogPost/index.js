@@ -20,7 +20,6 @@ const BlogPost = (props) => {
         fetchPost()
     }, [id]);
 
-    console.log(post)
     return (
         <div>
             <Grid container direction="column" spacing={3}>
@@ -36,7 +35,7 @@ const BlogPost = (props) => {
                         <p>{post.date_posted}</p>
                     </div>
                     <p className="blog-paragraphs" >{post.body} </p>
-                    <CommentSection key={post._id} post={post}/>
+                    <CommentSection key={post._id} postId={post._id}/>
                 </Box>
             </Grid>
             

@@ -11,7 +11,6 @@ export const SiteProvider = ({ children }) => {
     },[]);
 
     function loadSiteData() {
-        console.log('loadSiteData function')
         API.getSite()
             .then(res =>
                 setSitePage(res.data)
