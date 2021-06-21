@@ -10,6 +10,9 @@ const commentSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "Post"
   },
+  replies: {
+    type: [String],
+  },
   body: String,
   comments: {
     type: Schema.Types.ObjectId,

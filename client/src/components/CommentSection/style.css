@@ -1,3 +1,7 @@
+.comment-container {
+    margin-top:30px;
+}
+
 #comment-title {
     width: 70%;
     margin:10px;
@@ -6,11 +10,26 @@
 
 .add-comment-container {
     display:flex;
-    width: 70%;
+    width: 100%;
+    border-top: 1px solid grey;
     border-bottom: 1px solid grey;
     padding-bottom: 10px;
+    padding-top: 20px;
 }
 
+.username-text-area {
+    width:100%;
+    margin-bottom: 10px
+}
+.comment-text-area{
+    height:80px;
+    width:100%;
+    margin-bottom: 10px
+}
+
+.save-comment-btn {
+    padding: 8px 15px !important;
+}
 #add-comment {
     display:inherit;
     justify-content: center;
@@ -21,18 +40,6 @@
     width: 20px;
     height: 20px;
     text-align: center;
-    background-color: white;
-    border: 1px solid rgb(170, 170, 170);
-    border-radius: 5px;
     font-size: 30px;
     font-weight:lighter;
-    -moz-box-shadow: 0 0 3px rgb(170, 170, 170);
-    -webkit-box-shadow: 0 0 3px rgb(170, 170, 170);
-    box-shadow: 0 0 3px rgb(192, 192, 192);
-}
-
-#add-comment:hover {
-    cursor:pointer;
-    background-color: whitesmoke;
-
 }

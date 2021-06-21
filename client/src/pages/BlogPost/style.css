@@ -27,5 +27,9 @@
     line-height: 23px;
     word-spacing: 3px;
     font-weight: lighter;
-    width: 70%
+    width: 70%;
+}
+
+.blog-post-container {
+    margin-bottom: 25px;
 }
