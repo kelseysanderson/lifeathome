@@ -6,6 +6,7 @@ import Services from './pages/Services';
 import Blog from './pages/Blog';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Manager from './pages/Manager'
 import './App.css';
 
 function App() {
@@ -16,10 +17,10 @@ function App() {
             <Route exact path="/" component={Home} />
             <Route exact path="/services" component={Services} />
             <Route exact path="/blog" component={Blog} />
+            <Route exact path="/manager" component={Manager} />
           <Footer />
       </Router>
-      </SiteProvider>
-
+    </SiteProvider>
   );
 }
 
