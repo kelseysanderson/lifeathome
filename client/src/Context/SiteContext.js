@@ -4,7 +4,7 @@ import API from "../utils/API";
 export const SiteContext = createContext();
 
 export const SiteProvider = ({ children }) => {
-    const [sitePage, setSitePage] = useState([]);
+    const [sitePage, setSitePage] = useState("loading");
 
     useEffect(() => {
         loadSiteData();
@@ -12,14 +12,15 @@ export const SiteProvider = ({ children }) => {
 
     function loadSiteData() {
         API.getSite()
-            .then(res =>
-                setSitePage(res.data)
+            .then(res => {
+                setSitePage(res.data[0])
+                }
             )
             .catch(err => console.log(err));
     };
 
-    if (!sitePage.length)
-        return null;
+    if (sitePage === "loading")
+        return (<h1>LOADING</h1>);
 
     return (
         <SiteContext.Provider value={sitePage}>

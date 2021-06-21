@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
+import { SiteContext } from '../../../Context/SiteContext';
 import { Grid, Box } from '@material-ui/core';
 import './style.css';
 
 const AdditionalInfo = (props) => {
+    const siteData = useContext(SiteContext);
+    const homePageData = siteData.homePage;
     return (
         <section className="additional-info">
             <Box display="flex" justifyContent="space-evenly" alignItems="center">
                 <Grid item xs={4}>
-                    <p>Modern Living Spaces means so much more than technology and smart homes. Modern Living Spaces considers accessibility to all people and environmental sustainability.</p>
+                    <p>{homePageData.additional_box_1_body}.</p>
                     <div className="learn-more-btn">
-                        <button className="green-btn">Learn More</button>
+                        <button className="green-btn">{homePageData.additional_box_1_link_button_text}</button>
                     </div>
                 </Grid>
                 <Grid item xs={4}>
-                    <p className="top-bottom-border mission-text">Responsible communities require responsible approaches and actions.</p>
+                    <p className="top-bottom-border mission-text">{homePageData.additional_box_2_body}</p>
                 </Grid>
             </Box>
         </section>

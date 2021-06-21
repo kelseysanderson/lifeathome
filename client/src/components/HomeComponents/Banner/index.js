@@ -6,7 +6,7 @@ import './style.css'
 
 const Banner = (props) => {
   const siteData = useContext(SiteContext);
-  const bannerData = siteData[0].home_page.banner;
+  const homePageData = siteData.homePage;
 
   return (
     <div className="banner">
@@ -18,9 +18,8 @@ const Banner = (props) => {
 
       <div className="curved-div">
         <Grid style={{ border: "none" }} container justify="space-between" alignItems="center" spacing={1}>
-          {bannerData.map(bannerData => (
-            <BannerItems key={bannerData.title} title={bannerData.title} description={bannerData.body} button={bannerData.link_name} />
-          ))}
+            <BannerItems key={homePageData.banner_1_title} title={homePageData.banner_1_title} description={homePageData.banner_1_body} button={homePageData.banner_1_link_button_text} />
+            <BannerItems key={homePageData.banner_2_title} title={homePageData.banner_2_title} description={homePageData.banner_2_body} button={homePageData.banner_2_link_button_text} />
         </Grid>
 
         <h1>{siteData.testing}</h1>
