@@ -26,7 +26,7 @@ const Manager = (props) => {
   function loadSiteData() {
     API.getSite()
     .then(res => {
-        setDataObj(res.data[1])
+        setDataObj(res.data[0])
     })
     .catch(err => console.log(err));
   };
@@ -152,7 +152,7 @@ const Manager = (props) => {
 
             <h4>About Statement</h4>
             <Input key1="homePage" key2="about_statement_title"/>
-            <Input key1="homePage" key2="bout_statement_body"/>
+            <Input key1="homePage" key2="about_statement_body"/>
             <br></br>
 
             <h4>Stat 1</h4>
