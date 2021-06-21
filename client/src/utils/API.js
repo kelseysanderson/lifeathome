@@ -34,9 +34,6 @@ export default {
   getComment: function (id) {
     return axios.get("/api/comment/" + id);
   },
-  // getCommentWhere: function (postId) {
-  //   return axios.get("/api/comment", postId);
-  // },
   postComment: function (newComment) {
     return axios.post("/api/comment", newComment);
   },
@@ -47,21 +44,21 @@ export default {
     return axios.delete("/api/comment/" + id);
   },
 
-  //User
-  getUsers: function () {
-    return axios.get("/api/user");
+  //Email
+  getEmails: function () {
+    return axios.get("/api/email");
   },
-  getUser: function (id) {
-    return axios.get("/api/user/" + id);
+  getEmail: function (id) {
+    return axios.get("/api/email/" + id);
   },
-  postUser: function (newUser) {
-    return axios.post("/api/user", newUser);
+  postEmail: function (newEmail) {
+    return axios.post("/api/email", newEmail);
   },
-  updateUser: function (newUser, id) {
-    return axios.put("/api/user/" + id, newUser);
+  updateEmail: function (newEmail, id) {
+    return axios.put("/api/email/" + id, newEmail);
   },
-  deleteUser: function (id) {
-    return axios.delete("/api/user/" + id);
+  deleteEmail: function (id) {
+    return axios.delete("/api/email/" + id);
   },
 
 }
