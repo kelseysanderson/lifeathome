@@ -1,9 +1,11 @@
 footer {
-    height:250px;
+    height:150px;
     background-color: #2E343C;
     color:white
 }
-
+#footer-visual {
+    display:none;
+}
 .footer-text {
     color:white;
 }
