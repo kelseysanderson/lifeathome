@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../../utils/API'
-import replyIcon from '../../../assets/reply-icon.png'
+import replyIcon from '../../../assets/reply-icon.png';
+import { CommentEmbed } from 'disqus-react';
+
 import './style.css'
 
 
 
 const Comments = (postId) => {
   const [comments, setComments] = useState()
+  let addReply = false;
 
   console.log(postId)
 
@@ -18,23 +21,27 @@ const Comments = (postId) => {
     fetchComments()
   }, []);
 
-  console.log(comments)
+  function handleAddReply() {
+    addReply = true
+  }
 
   if (!comments) {
     return <h2>Loading...</h2>;
   }
   return (
     <>
-    {comments.map(comment => (
+      {comments.map(comment => (
+        <CommentEmbed
+        commentId={comment._id}
+        // showMedia={true}
+        strong="test"
+        showParentComment={true}
+        width={420}
+        height={320}
+        />
+      ))}
 
-    <div className="comment-container">
-      <p className="no-margin">{comment.body}</p>
-      <p className="no-margin">{comment.date_posted}</p>
-      <p><img src={replyIcon} alt="grey reply icon arrow"></img>reply</p>
-    </div>
-    ))}
     </>
-
   )
 }
 

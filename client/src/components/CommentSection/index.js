@@ -7,7 +7,7 @@ const CommentSection = (props) => {
     <>
       <h1 className="single-blog-header" id="comment-title">Comments</h1>
       <div className="add-comment-container">
-        <button className="single-blog-header" id="add-comment">+</button>
+        <button className="single-blog-header green-btn" id="add-comment">+</button>
         <p>Add New Comment</p>
       </div>
       <Comments postId={props.postId}  />

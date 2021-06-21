@@ -21,18 +21,6 @@
     width: 20px;
     height: 20px;
     text-align: center;
-    background-color: white;
-    border: 1px solid rgb(170, 170, 170);
-    border-radius: 5px;
     font-size: 30px;
     font-weight:lighter;
-    -moz-box-shadow: 0 0 3px rgb(170, 170, 170);
-    -webkit-box-shadow: 0 0 3px rgb(170, 170, 170);
-    box-shadow: 0 0 3px rgb(192, 192, 192);
-}
-
-#add-comment:hover {
-    cursor:pointer;
-    background-color: whitesmoke;
-
 }
