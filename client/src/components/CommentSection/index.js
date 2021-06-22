@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../utils/API'
-import Comments from './Comments';
+import Comment from './Comments';
 import './style.css'
 
 const CommentSection = (props) => {
@@ -26,7 +26,6 @@ const CommentSection = (props) => {
         body: formObject.body
       }).then(res => {
         console.log(props.postId)
-        // textInput.current.value = "";
         API.updatePost(props.postId, {
           $push: {comments: res.data._id}
         })
@@ -44,7 +43,6 @@ const CommentSection = (props) => {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value })
   };
-  // console.log(formObject)
 
   if (!props.postComments) {
     return <h2>Loading...</h2>;
@@ -62,7 +60,9 @@ const CommentSection = (props) => {
           </div>
         </form>
       </div>
-      <Comments postId={props.postId} comments={props.postComments} />
+      {props.postComments.map((comment, index) => (
+        <Comment key={index} comment={comment} fetchPost={props.fetchPost} />
+      ))}
     </div>
   )
 

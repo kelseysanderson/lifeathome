@@ -12,7 +12,7 @@ const BlogPost = (props) => {
 
     useEffect(() => {
         fetchPost()
-    }, [id]);
+    }, []);
 
     const fetchPost = async () => {
         setLoading(true);

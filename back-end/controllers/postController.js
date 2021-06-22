@@ -11,7 +11,13 @@ module.exports = {
   findById: function(req, res) {
     db.Post
       .findById(req.params.id)
-      .populate('comments')
+      .populate({
+        path: 'comments',
+          populate: {
+            path: "replies",
+            model: "Comment"
+          }
+        })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
