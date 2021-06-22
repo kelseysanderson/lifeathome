@@ -1,9 +1,9 @@
 .banner-visual {
-    margin-top: -100px;
+    margin-top: -125px;
 }
 .curved-div {
     position: relative;
-    background: #2E343C;
+    background: #232021;
     color: #FFF;
     text-align: center;
     overflow: hidden;   
@@ -23,3 +23,10 @@
     font-size: 1rem;
     margin:0 5rem 0rem 5rem;
 }
+
+svg{
+    stroke: rgb(255,255,255);
+    stroke-width: 0;}
+ .banner-items{
+    position: relative;
+ }

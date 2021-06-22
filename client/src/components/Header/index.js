@@ -10,42 +10,23 @@ const Header = (props) => {
     const pathName = location.pathname
     let navBar;
 
-    if (pathName === '/') {
-        navBar =
-            <ul className="navList">
-                <li><p><NavLink exact to="/blog">Blog</NavLink></p></li>
-                <li><p><NavLink exact to="/services">Services</NavLink></p></li>
-            </ul>
-    } else if (pathName === '/services') {
-        navBar =
-            <ul className="navList">
-                <li><p><NavLink exact to="/">Home</NavLink></p></li>
-                <li>
-                    <div className="dropdown">
-                        <button className="dropbtn">Services</button>
-                        <div className="dropdown-content">
-                            <a href="#smarthome">Smart Home </a>
-                            <a href="#">Accessibility </a>
-                            <a href="#">Sustainability </a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-    } else if (pathName === '/blog') {
-        navBar =
-            <ul className="navList">
-                <li><p><NavLink exact to="/">Home</NavLink></p></li>
-                <li><p><NavLink exact to="/services">Services</NavLink></p></li>
-            </ul>
-    } else {
-        navBar =
-            <ul className="navList">
-                <li><p><NavLink exact to="/">Home</NavLink></p></li>
-                <li><p><NavLink exact to="/services">Services</NavLink></p></li>
-                <li><p><NavLink exact to="/blog">Blog</NavLink></p></li>
-            </ul>
-    }
 
+    // else if (pathName === '/services') {
+    //     navBar =
+    //         <ul className="navList">
+    //             <li><p><NavLink exact to="/">Home</NavLink></p></li>
+    //             <li>
+    //                 <div className="dropdown">
+    //                     <button className="dropbtn">Services</button>
+    //                     <div className="dropdown-content">
+    //                         <a href="#smarthome">Smart Home </a>
+    //                         <a href="#">Accessibility </a>
+    //                         <a href="#">Sustainability </a>
+    //                     </div>
+    //                 </div>
+    //             </li>
+    //         </ul>
+    // } 
     return (
         <header>
             <Container maxWidth="xl" style={{ marginTop: "30px" }}>
@@ -56,7 +37,12 @@ const Header = (props) => {
 
                     </Grid>
                     <Grid className="navBar" item xs={12} sm={4} lg={3}>
-                        {navBar}
+                        <ul className="navList">
+                            <li><p><NavLink exact to="/">Home</NavLink></p></li>
+                            <li><p><NavLink exact to="/services">Services</NavLink></p></li>
+                            <li><p><NavLink exact to="/blog">Blog</NavLink></p></li>
+                            <li><p><NavLink exact to="/contact">Contact</NavLink></p></li>
+                        </ul>
                     </Grid>
                 </Grid>
             </Container>

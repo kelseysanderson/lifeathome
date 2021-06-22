@@ -1,8 +1,8 @@
 import React from "react";
-import Banner from '../../components/HomeComponents/Banner';
-import AboutStatement from '../../components/HomeComponents/AboutStatement';
-import Stats from '../../components/HomeComponents/Stats';
-import AdditionalInfo from '../../components/HomeComponents/AdditionalInfo';
+import Banner from './HomeComponents/Banner';
+import AboutStatement from './HomeComponents/AboutStatement';
+import Stats from './HomeComponents/Stats';
+import AdditionalInfo from './HomeComponents/AdditionalInfo';
 import './style.css';
 
 const Home = (props) => {

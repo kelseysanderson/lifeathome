@@ -28,6 +28,7 @@
     word-spacing: 3px;
     font-weight: lighter;
     width: 70%;
+    white-space: pre-line;
 }
 
 .blog-post-container {

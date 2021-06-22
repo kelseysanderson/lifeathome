@@ -3,11 +3,11 @@ import React from "react";
 
 const BlogInput = (props) => {
   return (
-    <>
-      <h4>{props.post.title}</h4>
-      <button data-id={props.post._id} onClick={props.deleteFunction}>Delete</button>
+    <li>
+      <h4 className="database-management-title">{props.post.title}</h4>
+      <button className="green-btn" data-id={props.post._id} onClick={props.deleteFunction}>Delete</button>
       <br></br>
-    </>
+    </li>
   )
 }
 

@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Services from './pages/Services';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import Contact from './pages/Contact';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Manager from './pages/Manager'
@@ -19,6 +20,7 @@ function App() {
             <Route exact path="/services" component={Services} />
             <Route exact path="/blog" component={Blog} />
             <Route exact path="/blog/:id" component={BlogPost} />
+            <Route exact path="/contact" component={Contact} />
             <Route exact path="/manager" component={Manager} />
           <Footer />
       </Router>

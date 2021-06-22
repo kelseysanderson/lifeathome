@@ -1,0 +1,31 @@
+
+.contact-page {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width:100%;
+}
+.contact-header {
+    margin:0;
+    text-align: center;
+
+}
+
+.contact-container{
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+    background-color:#232021 ;
+    border-radius: 8px;
+    color:white;
+    width:40%;
+    height:700px;
+    margin:50px 0 ;
+
+}
+
+.calendly{
+    /* height:100px; */
+}

@@ -8,13 +8,13 @@ export const SiteProvider = ({ children }) => {
 
     useEffect(() => {
         loadSiteData();
-    },[]);
+    }, []);
 
     function loadSiteData() {
         API.getSite()
             .then(res => {
                 setSitePage(res.data[0])
-                }
+            }
             )
             .catch(err => console.log(err));
     };

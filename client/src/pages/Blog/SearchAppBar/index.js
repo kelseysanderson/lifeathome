@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchBar from "material-ui-search-bar";
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -30,12 +29,6 @@ export default function SearchAppBar() {
       <MenuItem onClick={handleClose}>Profile</MenuItem>
 
       </Menu>    
-      
-      <SearchBar
-        value="search"
-      // onChange={(newValue) => this.setState({ value: newValue })}
-      // onRequestSearch={() => doSomethingWith(this.state.value)}
-      />
     </div>
 
   );

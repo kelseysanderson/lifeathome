@@ -9,9 +9,10 @@ const Input = (props) => {
   const value = `dataObj.${props.key1}.${props.key2}`
 
   return (
-    <>
+    <div className="data-form">
         <label>{label}:</label>
         <input 
+          className="management-input"
           data-key1={props.key1}
           data-key2={props.key2} 
           // eslint-disable-next-line no-eval
@@ -19,7 +20,7 @@ const Input = (props) => {
           onChange={handleInputChange} 
         />
         <br></br>
-    </>
+    </div>
   )
 }
 
