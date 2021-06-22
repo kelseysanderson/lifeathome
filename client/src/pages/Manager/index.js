@@ -121,9 +121,19 @@ const Manager = (props) => {
                     <BlogInput key1="title" />
                     <BlogInput key1="description" />
                     <BlogInput key1="img_src" />
-                    <label>Body:</label>
-                    <textarea className="blog-body" value={eval(`blogForm.body`) }onChange={handleBlogInputChange} data-key1="body" />
+                    <BlogInput key1="body" inputType={"textarea"}/>
                     <button className="green-btn" onClick={submitPost}>Submit Post</button>
+                  </div>
+                </Grid>
+
+                <Grid item xs={12} className="logoContainer" >
+                  <div>
+                    <h2>Blog Management</h2>
+                    <ul className="database-management">
+                      {blogArr.map(post => (
+                        <BlogHandler post={post} deleteFunction={blogDelete} />
+                      ))}
+                    </ul>
                   </div>
                 </Grid>
 
@@ -133,7 +143,7 @@ const Manager = (props) => {
                     <Input key1="siteData" key2="company_name" />
                     <Input key1="siteData" key2="contact_name" />
                     <Input key1="siteData" key2="contact_email" />
-                    <Input key1="siteData" key2="contact_phone" />
+                    {/* <Input key1="siteData" key2="contact_phone" /> */}
                     <Input key1="siteData" key2="contact_location" />
                     <Input key1="siteData" key2="contact_facebook_link" />
                     <Input key1="siteData" key2="contact_instagram_link" />
@@ -141,17 +151,7 @@ const Manager = (props) => {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} className="logoContainer" >
-                  <div>
-                    <h2>DataBase Management</h2>
-                    <ul className="database-management">
-                      {blogArr.map(post => (
-                        <BlogHandler post={post} deleteFunction={blogDelete} />
-                      ))}
-                    </ul>
-                  </div>
 
-                </Grid>
                 <Grid item xs={12} className="logoContainer">
                   <div className="management-card home-page-data">
                     <h2>Home Page Data</h2>
@@ -159,63 +159,63 @@ const Manager = (props) => {
                       <li>
                         <h4>Banner 1</h4>
                         <Input key1="homePage" key2="banner_1_title" />
-                        <Input key1="homePage" key2="banner_1_body" />
+                        <Input key1="homePage" key2="banner_1_body" inputType={"textarea"}/>
                         <Input key1="homePage" key2="banner_1_link_button_text" />
-                        <Input key1="homePage" key2="banner_1_link" />
+                        {/* <Input key1="homePage" key2="banner_1_link" /> */}
                       </li>
 
                       <li>
                         <h4>Banner 2</h4>
                         <Input key1="homePage" key2="banner_2_title" />
-                        <Input key1="homePage" key2="banner_2_body" />
+                        <Input key1="homePage" key2="banner_2_body" inputType={"textarea"} />
                         <Input key1="homePage" key2="banner_2_link_button_text" />
-                        <Input key1="homePage" key2="banner_2_link" />
+                        {/* <Input key1="homePage" key2="banner_2_link" /> */}
                       </li>
 
                       <li>
                         <h4>About Statement</h4>
-                        <Input key1="homePage" key2="about_statement_title" />
-                        <Input key1="homePage" key2="about_statement_body" />
+                        {/* <Input key1="homePage" key2="about_statement_title" /> */}
+                        <Input key1="homePage" key2="about_statement_body" inputType={"textarea"} />
                       </li>
 
                       <li>
                         <h4>Stat 1</h4>
                         <Input key1="homePage" key2="stat_1_title" />
-                        <Input key1="homePage" key2="stat_1_body" />
-                        <Input key1="homePage" key2="stat_1_link_button_text" />
+                        <Input key1="homePage" key2="stat_1_body" inputType={"textarea"} />
+                        {/* <Input key1="homePage" key2="stat_1_link_button_text" /> */}
                         <Input key1="homePage" key2="stat_1_link" />
                       </li>
 
                       <li>
                         <h4>Stat 2</h4>
                         <Input key1="homePage" key2="stat_2_title" />
-                        <Input key1="homePage" key2="stat_2_body" />
-                        <Input key1="homePage" key2="stat_2_link_button_text" />
+                        <Input key1="homePage" key2="stat_2_body" inputType={"textarea"} />
+                        {/* <Input key1="homePage" key2="stat_2_link_button_text" /> */}
                         <Input key1="homePage" key2="stat_2_link" />
                       </li>
 
                       <li>
                         <h4>Stat 3</h4>
                         <Input key1="homePage" key2="stat_3_title" />
-                        <Input key1="homePage" key2="stat_3_body" />
-                        <Input key1="homePage" key2="stat_3_link_button_text" />
+                        <Input key1="homePage" key2="stat_3_body" inputType={"textarea"} />
+                        {/* <Input key1="homePage" key2="stat_3_link_button_text" /> */}
                         <Input key1="homePage" key2="stat_3_link" />
                       </li>
 
                       <li>
                         <h4>Additional Box 1</h4>
-                        <Input key1="homePage" key2="additional_box_1_title" />
-                        <Input key1="homePage" key2="additional_box_1_body" />
+                        {/* <Input key1="homePage" key2="additional_box_1_title" /> */}
+                        <Input key1="homePage" key2="additional_box_1_body" inputType={"textarea"} />
                         <Input key1="homePage" key2="additional_box_1_link_button_text" />
                         <Input key1="homePage" key2="additional_box_1_link" />
                       </li>
 
                       <li>
                         <h4>Additional Box 2</h4>
-                        <Input key1="homePage" key2="additional_box_2_title" />
-                        <Input key1="homePage" key2="additional_box_2_body" />
-                        <Input key1="homePage" key2="additional_box_2_link_button_text" />
-                        <Input key1="homePage" key2="additional_box_2_link" />
+                        {/* <Input key1="homePage" key2="additional_box_2_title" /> */}
+                        <Input key1="homePage" key2="additional_box_2_body" inputType={"textarea"} />
+                        {/* <Input key1="homePage" key2="additional_box_2_link_button_text" />
+                        <Input key1="homePage" key2="additional_box_2_link" /> */}
                         <br></br>
                       </li>
                     </ul>
@@ -226,9 +226,9 @@ const Manager = (props) => {
                   <div className="management-card">
                     <h2>Services Page Data</h2>
                     <Input key1="servicesPage" key2="title" />
-                    <Input key1="servicesPage" key2="body" />
+                    <Input key1="servicesPage" key2="body" inputType={"textarea"} />
                     <Input key1="servicesPage" key2="link_button_text" />
-                    <Input key1="servicesPage" key2="link" />
+                    {/* <Input key1="servicesPage" key2="link" /> */}
                   </div>
                 </Grid> 
 
