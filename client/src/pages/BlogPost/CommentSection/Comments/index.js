@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import API from '../../../utils/API'
-import replyIcon from '../../../assets/reply-icon.png';
+import API from '../../../../utils/API'
+import replyIcon from '../../../../assets/reply-icon.png'
 // import Comment from "./Comments"
 
 import './style.css'

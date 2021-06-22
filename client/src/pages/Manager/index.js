@@ -125,7 +125,6 @@ const Manager = (props) => {
                     <textarea className="blog-body" value={eval(`blogForm.body`) }onChange={handleBlogInputChange} data-key1="body" />
                     <button className="green-btn" onClick={submitPost}>Submit Post</button>
                   </div>
-                  {/* <button className="green-btn" onClick={submitPost}>Submit Post</button> */}
                 </Grid>
 
                 <Grid item xs={6}className="logoContainer">
