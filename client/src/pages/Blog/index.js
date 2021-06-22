@@ -50,11 +50,11 @@ const Blog = (props) => {
     <Grid container direction="column" spacing={3}>
       <Box display="flex" justifyContent="flex-end" alignItems="center">
 
-        <Grid item container direction="column" xs={4} >
+        {/* <Grid item container direction="column" xs={4} >
           <Grid item xs>
             <SearchAppBar posts={posts} />
           </Grid>
-        </Grid>
+        </Grid> */}
       </Box>
       <Box display="flex" justifyContent="center" alignItems="center">
         <Grid item xs={11}>
@@ -66,10 +66,10 @@ const Blog = (props) => {
             onChangePage={handleChangePage}
             rowsPerPage={postsPerPage}
             onChangeRowsPerPage={handleChangeRowsPerPage}
+            style={{margin:"50px 0"}}
           /> 
         </Grid>
       </Box>
-
     </Grid>
   );
 }
