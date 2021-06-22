@@ -20,7 +20,7 @@ export default {
   postPost: function (newPost) {
     return axios.post("/api/post", newPost);
   },
-  updatePost: function (newPost, id) {
+  updatePost: function (id, newPost) {
     return axios.put("/api/post/" + id, newPost);
   },
   deletePost: function (id) {
@@ -34,34 +34,31 @@ export default {
   getComment: function (id) {
     return axios.get("/api/comment/" + id);
   },
-  // getCommentWhere: function (postId) {
-  //   return axios.get("/api/comment", postId);
-  // },
   postComment: function (newComment) {
     return axios.post("/api/comment", newComment);
   },
-  updateComment: function (newComment, id) {
+  updateComment: function (id, newComment) {
     return axios.put("/api/comment/" + id, newComment);
   },
   deleteComment: function (id) {
     return axios.delete("/api/comment/" + id);
   },
 
-  //User
-  getUsers: function () {
-    return axios.get("/api/user");
+  //Email
+  getEmails: function () {
+    return axios.get("/api/email");
   },
-  getUser: function (id) {
-    return axios.get("/api/user/" + id);
+  getEmail: function (id) {
+    return axios.get("/api/email/" + id);
   },
-  postUser: function (newUser) {
-    return axios.post("/api/user", newUser);
+  postEmail: function (newEmail) {
+    return axios.post("/api/email", newEmail);
   },
-  updateUser: function (newUser, id) {
-    return axios.put("/api/user/" + id, newUser);
+  updateEmail: function (id, newEmail) {
+    return axios.put("/api/email/" + id, newEmail);
   },
-  deleteUser: function (id) {
-    return axios.delete("/api/user/" + id);
+  deleteEmail: function (id) {
+    return axios.delete("/api/email/" + id);
   },
 
 }
