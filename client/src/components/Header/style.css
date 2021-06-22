@@ -15,6 +15,7 @@ header{
     padding:0;
     margin-left:15px;
     font-weight: 300;
+    font-family:'Mulish', 'Roboto', 'sans serif';
 }
 .navList{
     display: flex;

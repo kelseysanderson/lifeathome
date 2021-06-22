@@ -1,5 +1,5 @@
 import React from "react";
-import originalLogo from '../../assets/logos/original_logo.png';
+import originalLogo from '../../assets/logos/transparent_logo.png';
 import { Container, Grid } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
@@ -33,7 +33,7 @@ const Header = (props) => {
                 <Grid container justify="space-between" alignItems="center" spacing={4}>
                     <Grid item xs={12} sm={7} lg={9} className="logoContainer">
                         <img className="headerImage" src={originalLogo} alt="Life at Home Logo: orange and light green outline of an A-frame house"></img>
-                        {/* <h1 className="logo-text">{siteData[0].company_name}</h1> */}
+                        <h1 className="logo-text">Life at Home</h1>
 
                     </Grid>
                     <Grid className="navBar" item xs={12} sm={4} lg={3}>
