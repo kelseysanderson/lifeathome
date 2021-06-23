@@ -20,7 +20,7 @@
     width: 100vw;
     background-color: rgb(231, 231, 231);
     max-height: 500px;
-
+    margin-bottom:20px;
 }
 .blog-paragraphs {
     font-size: 17px;

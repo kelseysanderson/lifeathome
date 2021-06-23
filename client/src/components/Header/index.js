@@ -12,7 +12,7 @@ const Header = (props) => {
 
     return (
         <header>
-            <Container maxWidth="xl" style={{ marginTop: "30px" }}>
+            <Container maxWidth="xl" style={{ marginTop: "10px", marginBottom:"10px" }}>
                 <Grid container justify="space-between" alignItems="center" spacing={4}>
                     <Grid item xs={12} sm={7} lg={9} className="logoContainer">
                         <img className="headerImage" src={originalLogo} alt="Life at Home Logo: orange and light green outline of an A-frame house"></img>

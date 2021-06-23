@@ -1,6 +1,15 @@
 .about-text{
     text-align: center;
     font-style: italic;
-    margin: 20px 0 20px 0 ;
-    padding: 0 20px 20px 20px !important;
+    margin: 10px 0 30px 0 ;
+    padding: 20px 20px 20px 20px !important;
+    
+}
+
+.about-stmt {
+    /* border-top: 1px solid #232021;
+    border-bottom: 1px solid #232021; */
+    margin: 40px 0px;
+    /* background-color:#232021;
+    color:white; */
 }
