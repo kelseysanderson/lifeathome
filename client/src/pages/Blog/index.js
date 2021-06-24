@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../utils/API'
 import Post from './Post';
-import SearchAppBar from './SearchAppBar';
 import TablePagination from '@material-ui/core/TablePagination';
 import { Grid, Box } from '@material-ui/core';
 import './style.css';
@@ -48,16 +47,9 @@ const Blog = (props) => {
   return (
 
     <Grid container direction="column" spacing={3}>
-      <Box display="flex" justifyContent="flex-end" alignItems="center">
 
-        <Grid item container direction="column" xs={4} >
-          <Grid item xs>
-            <SearchAppBar posts={posts} />
-          </Grid>
-        </Grid>
-      </Box>
       <Box display="flex" justifyContent="center" alignItems="center">
-        <Grid item xs={11}>
+        <Grid item xs={8}>
           <Post posts={currentPosts} loading={loading} handlePostClick={goToPost}/>
           <TablePagination
             component="div"
@@ -66,10 +58,10 @@ const Blog = (props) => {
             onChangePage={handleChangePage}
             rowsPerPage={postsPerPage}
             onChangeRowsPerPage={handleChangeRowsPerPage}
+            style={{margin:"50px 0"}}
           /> 
         </Grid>
       </Box>
-
     </Grid>
   );
 }

@@ -20,7 +20,7 @@ export default function ContactUs() {
   }
 
   return (
-    <div className="contact-form-container">
+    <>
       <form className="contact-form" onSubmit={sendEmail}>
         <div className="name-email-row">
           <label >Email To:</label>
@@ -41,7 +41,7 @@ export default function ContactUs() {
         </div>
         <input className="contact-button" type="submit" value="Send" />
       </form>
-      </div>
+      </>
 
   );
 }

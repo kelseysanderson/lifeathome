@@ -3,9 +3,9 @@
 }
 .curved-div {
     position: relative;
-    background: #232021;
-    color: #FFF;
-    text-align: center;
+    background: #2E343C;
+    color: black;
+    /* text-align: center; */
     overflow: hidden;   
 }
 .curved-div svg {
@@ -27,6 +27,8 @@
 svg{
     stroke: rgb(255,255,255);
     stroke-width: 0;}
- .banner-items{
-    position: relative;
- }
+
+.banner-items{
+    color:white;
+    position:relative
+}

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { SiteContext } from '../../../../Context/SiteContext';
+import { NavLink } from 'react-router-dom';
 import { Grid, Box } from '@material-ui/core';
 import './style.css';
 
@@ -12,7 +13,7 @@ const AdditionalInfo = (props) => {
                 <Grid item xs={4}>
                     <p>{homePageData.additional_box_1_body}.</p>
                     <div className="learn-more-btn">
-                        <button className="green-btn">{homePageData.additional_box_1_link_button_text}</button>
+                    <NavLink exact to={homePageData.additional_box_1_link}><button className="green-btn">{homePageData.additional_box_1_link_button_text}</button></NavLink>
                     </div>
                 </Grid>
                 <Grid item xs={4}>

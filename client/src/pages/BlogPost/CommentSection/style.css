@@ -9,7 +9,6 @@
 }
 
 .add-comment-container {
-    display:flex;
     width: 100%;
     border-top: 1px solid grey;
     border-bottom: 1px solid grey;
@@ -18,13 +17,16 @@
 }
 
 .username-text-area {
-    width:100%;
-    margin-bottom: 10px
+    width:40%;
+    margin-bottom: 10px;
+    border:1px solid rgb(182, 182, 182)
 }
 .comment-text-area{
     height:80px;
-    width:100%;
-    margin-bottom: 10px
+    width:61%;
+    height: 50px;
+    border-radius:10px;
+    border:1px solid rgb(182, 182, 182)
 }
 
 .save-comment-btn {

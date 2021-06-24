@@ -1,11 +1,11 @@
 
 .contact-page {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    width:100%;
+    margin-left:5%;
+    margin-right:5%;
+    height:100%;
+    margin-bottom: 5%;
 }
+
 .contact-header {
     margin:0;
     text-align: center;
@@ -15,17 +15,12 @@
 .contact-container{
     display:flex;
     flex-direction: column;
-    justify-content:space-around;
     align-items: center;
-    background-color:#232021 ;
-    border-radius: 8px;
+    background-color:#2E343C ;
+    border-radius: 4px;
     color:white;
-    width:40%;
-    height:700px;
-    margin:50px 0 ;
-
+    height:100%;
+    margin:0 0 50px 0 ;
 }
 
-.calendly{
-    /* height:100px; */
-}
+
