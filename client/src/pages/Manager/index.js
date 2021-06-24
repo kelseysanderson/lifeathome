@@ -12,7 +12,6 @@ export const ManagerContext = createContext()
 export const BlogContext = createContext()
 
 const Manager = (props) => {
-  const [dataObj, setDataObj] = useState("loading");
   const [blogArr, setBlogArr] = useState("loading")
   const [blogForm, setBlogForm] = useState({
     title: "",
@@ -20,6 +19,7 @@ const Manager = (props) => {
     img_src: "",
     body: ""
   })
+  const [dataObj, setDataObj] = useState("loading");
   const [loginForm, setLoginForm] = useState({
     login: {
       username: "",
@@ -48,14 +48,22 @@ const Manager = (props) => {
       .catch(err => console.log(err));
   }
 
-  function blogDelete(event) {
-    console.log(event.target.dataset.id)
-    API.deletePost(event.target.dataset.id)
-      .then(res => {
-        loadBlogData()
-      })
-      .catch(err => console.log(err));
-  }
+  function handleLoginInputChange(event) {
+    console.log(event.target)
+    // Getting the value and name of the input which triggered the change
+    let value = event.target.value;
+    const key1 = event.target.dataset.key1;
+    const key2 = event.target.dataset.key2;
+
+    // Updating the input's state
+    setLoginForm({
+      ...loginForm,
+      [key1]: {
+        ...loginForm[key1],
+        [key2]: value
+      }
+    });;
+  };
 
   function handleBlogInputChange(event) {
     console.log(event.target)
@@ -71,6 +79,15 @@ const Manager = (props) => {
       [key1]: value
     });
   };
+
+  function blogDelete(event) {
+    console.log(event.target.dataset.id)
+    API.deletePost(event.target.dataset.id)
+      .then(res => {
+        loadBlogData()
+      })
+      .catch(err => console.log(err));
+  }
 
   function submitPost() {
     API.postPost(blogForm)
@@ -113,29 +130,16 @@ const Manager = (props) => {
       .catch(err => console.log(err));
   }
 
-  function handleBlogInputChange(event) {
-    console.log(event.target)
-    // Getting the value and name of the input which triggered the change
-    let value = event.target.value;
-    const key1 = event.target.dataset.key1;
-    const key2 = event.target.dataset.key2;
-
-    console.log(blogForm[key1])
-
-    // Updating the input's state
-    setLoginForm({
-      ...loginForm,
-      [key1]: {
-        ...loginForm[key1],
-        [key2]: value
-      }
-    });;
-  };
-
   function updateAdmin() {
     API.updateSite(dataObj._id, loginForm)
     .then(res => {
       console.log(res)
+      setLoginForm({
+        login: {
+          username: "",
+          password: ""
+        }
+      })
     })
     .catch(err => console.log(err));
   }
@@ -279,7 +283,7 @@ const Manager = (props) => {
                           data-key2="username"
                           // eslint-disable-next-line no-eval
                           value={loginForm.login.username}
-                          onChange={handleInputChange} 
+                          onChange={handleLoginInputChange} 
                         />
                       <br></br>
                     </div>
@@ -289,10 +293,10 @@ const Manager = (props) => {
                         <input style={{width: "100%"}}
                           className="management-input"
                           data-key1="login"
-                          data-key2="username" 
+                          data-key2="password" 
                           // eslint-disable-next-line no-eval
                           value={loginForm.login.password}
-                          onChange={handleInputChange} 
+                          onChange={handleLoginInputChange} 
                         />
                       <br></br>
                     </div>
