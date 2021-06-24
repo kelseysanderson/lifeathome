@@ -56,6 +56,10 @@ const siteSchema = new Schema({
     body: {type: String, default: ""},
     link_button_text: {type: String, default: ""},
     link: {type: String, default: ""},
+  },
+  login: {
+    username: {type: String, default: ""},
+    password: {type: String, default: ""}
   }
 });
 

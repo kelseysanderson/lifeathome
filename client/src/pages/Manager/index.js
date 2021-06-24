@@ -20,6 +20,12 @@ const Manager = (props) => {
     img_src: "",
     body: ""
   })
+  const [loginForm, setLoginForm] = useState({
+    login: {
+      username: "",
+      password: ""
+    }
+  })
 
   useEffect(() => {
     loadSiteData();
@@ -100,12 +106,38 @@ const Manager = (props) => {
   };
 
   function replaceSiteData() {
-    console.log(dataObj)
     API.replaceSite(dataObj._id, dataObj)
       .then(res => {
         console.log(res)
       })
       .catch(err => console.log(err));
+  }
+
+  function handleBlogInputChange(event) {
+    console.log(event.target)
+    // Getting the value and name of the input which triggered the change
+    let value = event.target.value;
+    const key1 = event.target.dataset.key1;
+    const key2 = event.target.dataset.key2;
+
+    console.log(blogForm[key1])
+
+    // Updating the input's state
+    setLoginForm({
+      ...loginForm,
+      [key1]: {
+        ...loginForm[key1],
+        [key2]: value
+      }
+    });;
+  };
+
+  function updateAdmin() {
+    API.updateSite(dataObj._id, loginForm)
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => console.log(err));
   }
 
   return (
@@ -233,8 +265,44 @@ const Manager = (props) => {
                 </Grid> 
 
                 <Grid item xs={12} className="logoContainer" >
-                  <button className="green-btn update-btn" onClick={replaceSiteData}>Update Data</button>
+                  <button className="green-btn update-btn" onClick={replaceSiteData}>Update Site Data</button>
                 </Grid>
+
+                <Grid item xs={12} className="logoContainer" >
+                  <div className="management-card">
+                    <h2>Admin Login</h2>
+                    <div className="data-form">
+                      <label>Username:</label>
+                        <input style={{width: "100%"}}
+                          className="management-input"
+                          data-key1="login"
+                          data-key2="username"
+                          // eslint-disable-next-line no-eval
+                          value={loginForm.login.username}
+                          onChange={handleInputChange} 
+                        />
+                      <br></br>
+                    </div>
+
+                    <div className="data-form">
+                      <label>Password:</label>
+                        <input style={{width: "100%"}}
+                          className="management-input"
+                          data-key1="login"
+                          data-key2="username" 
+                          // eslint-disable-next-line no-eval
+                          value={loginForm.login.password}
+                          onChange={handleInputChange} 
+                        />
+                      <br></br>
+                    </div>
+                  </div>
+                </Grid>
+
+                <Grid item xs={12} className="logoContainer" >
+                  <button className="green-btn update-btn" onClick={updateAdmin}>Update Admin Data</button>
+                </Grid>
+
               </BlogContext.Provider>
             </ManagerContext.Provider>
           </Grid>

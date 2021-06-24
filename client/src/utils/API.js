@@ -9,6 +9,9 @@ export default {
   replaceSite: function (id, newData) {
     return axios.put("/api/site/"+ id, newData);
   },
+  updateSite: function (id, newData) {
+    return axios.put("/api/site/"+ id, newData);
+  },
 
   //Post
   getPosts: function () {
