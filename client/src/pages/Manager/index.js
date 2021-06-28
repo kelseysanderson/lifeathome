@@ -174,13 +174,14 @@ const Manager = (props) => {
                   <div className="management-card">
                     <h2>Site Data</h2>
                     <Input path="siteData.company_name" />
-                    <Input path="siteData.contact_name" />
-                    <Input path="siteData.contact_email" />
-                    {/* <Input path="siteData.contact_phone" /> */}
-                    <Input path="siteData.contact_location" />
-                    <Input path="siteData.contact_facebook_link" />
-                    <Input path="siteData.contact_instagram_link" />
-                    <Input path="siteData.contact_twitter_link" />
+                    <h3>Contact</h3>
+                    <Input path="siteData.contact.name" />
+                    <Input path="siteData.contact.email" />
+                    {/* <Input path="siteData.contact.phone" /> */}
+                    <Input path="siteData.contact.location" />
+                    <Input path="siteData.contact.facebook_link" />
+                    <Input path="siteData.contact.instagram_link" />
+                    <Input path="siteData.contact.twitter_link" />
                   </div>
                 </Grid>
 

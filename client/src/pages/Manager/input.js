@@ -7,10 +7,11 @@ const Input = (props) => {
 
 
   // const label = props.path.replace(/_/g," ").split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')
-  const label = props.path.split('.').splice(1)
+  const labelArr = props.path.split('.').splice(1)
+  const label = labelArr.map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')
 
-
-  const value = eval(`dataObj.` + props.path)
+  const value = (`dataObj.` + props.path)
+  console.log(value)
 
   return (
     <>
