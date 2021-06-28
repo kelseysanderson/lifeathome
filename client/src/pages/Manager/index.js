@@ -35,7 +35,7 @@ const Manager = (props) => {
   function loadSiteData() {
     API.getSite()
       .then(res => {
-        setDataObj(res.data[0])
+        setDataObj(res.data[1])
       })
       .catch(err => console.log(err));
   };
@@ -50,6 +50,7 @@ const Manager = (props) => {
 
   function handleLoginInputChange(event) {
     console.log(event.target)
+    console.log(event.target.dataset)
     // Getting the value and name of the input which triggered the change
     let value = event.target.value;
     const key1 = event.target.dataset.key1;
@@ -71,8 +72,6 @@ const Manager = (props) => {
     let value = event.target.value;
     const key1 = event.target.dataset.key1;
 
-    console.log(blogForm[key1])
-
     // Updating the input's state
     setBlogForm({
       ...blogForm,
@@ -81,7 +80,6 @@ const Manager = (props) => {
   };
 
   function blogDelete(event) {
-    console.log(event.target.dataset.id)
     API.deletePost(event.target.dataset.id)
       .then(res => {
         loadBlogData()
@@ -103,24 +101,23 @@ const Manager = (props) => {
       .catch(err => console.log(err));
   }
 
+
   function handleInputChange(event) {
-    console.log(event.target)
-    // Getting the value and name of the input which triggered the change
     let value = event.target.value;
-    const key1 = event.target.dataset.key1;
-    const key2 = event.target.dataset.key2;
+    const path = event.target.dataset.path;
+    console.log(path)
 
-    console.log(dataObj[key1][key2])
+    let newState = {...dataObj}
+    var schema = newState;  // a moving reference to internal objects within obj
+    var pList = path.split('.');
+    for(var i = 0; i < pList.length-1; i++) {
+        var elem = pList[i];
+        schema = schema[elem];
+    }
+    schema[pList[pList.length-1]] = value;
 
-    // Updating the input's state
-    setDataObj({
-      ...dataObj,
-      [key1]: {
-        ...dataObj[key1],
-        [key2]: value
-      }
-    });
-  };
+    setDataObj(newState)
+  }
 
   function replaceSiteData() {
     API.replaceSite(dataObj._id, dataObj)
@@ -176,14 +173,14 @@ const Manager = (props) => {
                 <Grid item xs={6}className="logoContainer">
                   <div className="management-card">
                     <h2>Site Data</h2>
-                    <Input key1="siteData" key2="company_name" />
-                    <Input key1="siteData" key2="contact_name" />
-                    <Input key1="siteData" key2="contact_email" />
-                    {/* <Input key1="siteData" key2="contact_phone" /> */}
-                    <Input key1="siteData" key2="contact_location" />
-                    <Input key1="siteData" key2="contact_facebook_link" />
-                    <Input key1="siteData" key2="contact_instagram_link" />
-                    <Input key1="siteData" key2="contact_twitter_link" />
+                    <Input path="siteData.company_name" />
+                    <Input path="siteData.contact_name" />
+                    <Input path="siteData.contact_email" />
+                    {/* <Input path="siteData.contact_phone" /> */}
+                    <Input path="siteData.contact_location" />
+                    <Input path="siteData.contact_facebook_link" />
+                    <Input path="siteData.contact_instagram_link" />
+                    <Input path="siteData.contact_twitter_link" />
                   </div>
                 </Grid>
 
@@ -194,64 +191,64 @@ const Manager = (props) => {
                     <ul className="database-management">
                       <li>
                         <h4>Banner 1</h4>
-                        <Input key1="homePage" key2="banner_1_title" />
-                        <Input key1="homePage" key2="banner_1_body" inputType={"textarea"}/>
-                        <Input key1="homePage" key2="banner_1_link_button_text" />
-                        {/* <Input key1="homePage" key2="banner_1_link" /> */}
+                        <Input path="homePage.banner_1_title" />
+                        <Input path="homePage.banner_1_body" inputType={"textarea"}/>
+                        <Input path="homePage.banner_1_link_button_text" />
+                        {/* <Input path="homePage.banner_1_link" /> */}
                       </li>
 
                       <li>
                         <h4>Banner 2</h4>
-                        <Input key1="homePage" key2="banner_2_title" />
-                        <Input key1="homePage" key2="banner_2_body" inputType={"textarea"} />
-                        <Input key1="homePage" key2="banner_2_link_button_text" />
-                        {/* <Input key1="homePage" key2="banner_2_link" /> */}
+                        <Input path="homePage.banner_2_title" />
+                        <Input path="homePage.banner_2_body" inputType={"textarea"} />
+                        <Input path="homePage.banner_2_link_button_text" />
+                        {/* <Input path="homePage.banner_2_link" /> */}
                       </li>
 
                       <li>
                         <h4>About Statement</h4>
-                        {/* <Input key1="homePage" key2="about_statement_title" /> */}
-                        <Input key1="homePage" key2="about_statement_body" inputType={"textarea"} />
+                        {/* <Input path="homePage.about_statement_title" /> */}
+                        <Input path="homePage.about_statement_body" inputType={"textarea"} />
                       </li>
 
                       <li>
                         <h4>Stat 1</h4>
-                        <Input key1="homePage" key2="stat_1_title" />
-                        <Input key1="homePage" key2="stat_1_body" inputType={"textarea"} />
-                        {/* <Input key1="homePage" key2="stat_1_link_button_text" /> */}
-                        <Input key1="homePage" key2="stat_1_link" />
+                        <Input path="homePage.stat_1_title" />
+                        <Input path="homePage.stat_1_body" inputType={"textarea"} />
+                        {/* <Input path="homePage.stat_1_link_button_text" /> */}
+                        <Input path="homePage.stat_1_link" />
                       </li>
 
                       <li>
                         <h4>Stat 2</h4>
-                        <Input key1="homePage" key2="stat_2_title" />
-                        <Input key1="homePage" key2="stat_2_body" inputType={"textarea"} />
-                        {/* <Input key1="homePage" key2="stat_2_link_button_text" /> */}
-                        <Input key1="homePage" key2="stat_2_link" />
+                        <Input path="homePage.stat_2_title" />
+                        <Input path="homePage.stat_2_body" inputType={"textarea"} />
+                        {/* <Input path="homePage.stat_2_link_button_text" /> */}
+                        <Input path="homePage.stat_2_link" />
                       </li>
 
                       <li>
                         <h4>Stat 3</h4>
-                        <Input key1="homePage" key2="stat_3_title" />
-                        <Input key1="homePage" key2="stat_3_body" inputType={"textarea"} />
-                        {/* <Input key1="homePage" key2="stat_3_link_button_text" /> */}
-                        <Input key1="homePage" key2="stat_3_link" />
+                        <Input path="homePage.stat_3_title" />
+                        <Input path="homePage.stat_3_body" inputType={"textarea"} />
+                        {/* <Input path="homePage.stat_3_link_button_text" /> */}
+                        <Input path="homePage.stat_3_link" />
                       </li>
 
                       <li>
                         <h4>Additional Box 1</h4>
-                        {/* <Input key1="homePage" key2="additional_box_1_title" /> */}
-                        <Input key1="homePage" key2="additional_box_1_body" inputType={"textarea"} />
-                        <Input key1="homePage" key2="additional_box_1_link_button_text" />
-                        <Input key1="homePage" key2="additional_box_1_link" />
+                        {/* <Input path="homePage.additional_box_1_title" /> */}
+                        <Input path="homePage.additional_box_1_body" inputType={"textarea"} />
+                        <Input path="homePage.additional_box_1_link_button_text" />
+                        <Input path="homePage.additional_box_1_link" />
                       </li>
 
                       <li>
                         <h4>Additional Box 2</h4>
-                        {/* <Input key1="homePage" key2="additional_box_2_title" /> */}
-                        <Input key1="homePage" key2="additional_box_2_body" inputType={"textarea"} />
-                        {/* <Input key1="homePage" key2="additional_box_2_link_button_text" />
-                        <Input key1="homePage" key2="additional_box_2_link" /> */}
+                        {/* <Input path="homePage.additional_box_2_title" /> */}
+                        <Input path="homePage.additional_box_2_body" inputType={"textarea"} />
+                        {/* <Input path="homePage.additional_box_2_link_button_text" />
+                        <Input path="homePage.additional_box_2_link" /> */}
                         <br></br>
                       </li>
                     </ul>
@@ -261,10 +258,10 @@ const Manager = (props) => {
                 <Grid item xs={12} className="logoContainer" >
                   <div className="management-card">
                     <h2>Services Page Data</h2>
-                    <Input key1="servicesPage" key2="title" />
-                    <Input key1="servicesPage" key2="body" inputType={"textarea"} />
-                    <Input key1="servicesPage" key2="link_button_text" />
-                    {/* <Input key1="servicesPage" key2="link" /> */}
+                    <Input path="servicesPage.title" />
+                    <Input path="servicesPage.body" inputType={"textarea"} />
+                    <Input path="servicesPage.link_button_text" />
+                    {/* <Input path="servicesPage.link" /> */}
                   </div>
                 </Grid> 
 
@@ -279,8 +276,7 @@ const Manager = (props) => {
                       <label>Username:</label>
                         <input style={{width: "100%"}}
                           className="management-input"
-                          data-key1="login"
-                          data-key2="username"
+                          data-path="login.username"
                           // eslint-disable-next-line no-eval
                           value={loginForm.login.username}
                           onChange={handleLoginInputChange} 
@@ -292,8 +288,7 @@ const Manager = (props) => {
                       <label>Password:</label>
                         <input style={{width: "100%"}}
                           className="management-input"
-                          data-key1="login"
-                          data-key2="password" 
+                          data-path="login.password"
                           // eslint-disable-next-line no-eval
                           value={loginForm.login.password}
                           onChange={handleLoginInputChange} 

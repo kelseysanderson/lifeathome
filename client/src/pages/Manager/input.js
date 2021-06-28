@@ -5,8 +5,12 @@ const Input = (props) => {
   // eslint-disable-next-line no-unused-vars
   const {dataObj, handleInputChange} = useContext(ManagerContext)
 
-  const label = props.key2.replace(/_/g," ").split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')
-  const value = `dataObj.${props.key1}.${props.key2}`
+
+  // const label = props.path.replace(/_/g," ").split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')
+  const label = props.path.split('.').splice(1)
+
+
+  const value = eval(`dataObj.` + props.path)
 
   return (
     <>
@@ -16,10 +20,9 @@ const Input = (props) => {
               <label>{label}:</label>
               <textarea style={{width: "100%", height: "200px", resize: "none"}} 
                 className="management-input"
-                data-key1={props.key1}
-                data-key2={props.key2} 
+                data-path={props.path}
                 // eslint-disable-next-line no-eval
-                value={eval(value)}
+                value={value}
                 onChange={handleInputChange} 
               />
               <br></br>
@@ -31,10 +34,9 @@ const Input = (props) => {
               <label>{label}:</label>
               <input style={{width: "100%"}}
                 className="management-input"
-                data-key1={props.key1}
-                data-key2={props.key2} 
+                data-path={props.path}
                 // eslint-disable-next-line no-eval
-                value={eval(value)}
+                value={value}
                 onChange={handleInputChange} 
               />
               <br></br>

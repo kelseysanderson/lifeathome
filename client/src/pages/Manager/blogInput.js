@@ -7,7 +7,6 @@ const BlogInput = (props) => {
 
   const label = props.key1.replace(/_/g," ").split(' ').map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')
   const value = `blogForm.${props.key1}`
-  console.log(value)
 
 
   return (
