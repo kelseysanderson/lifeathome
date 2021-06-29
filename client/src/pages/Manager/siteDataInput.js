@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import {SiteContext} from '../../Context/SiteContext'
 
-const Input = (props) => {
+const SiteDataInput = (props) => {
   const {siteData, siteUpdateQueue, handleInputChange, updateSiteData} = useContext(SiteContext);
 
   //CREATES LABEL OUT OF PATH STRING
@@ -52,4 +52,4 @@ const Input = (props) => {
   )
 }
 
-export default Input
+export default SiteDataInput
