@@ -4,7 +4,8 @@ import API from "../utils/API";
 export const SiteContext = createContext();
 
 export const SiteProvider = ({ children }) => {
-    const [sitePage, setSitePage] = useState("loading");
+    const [siteData, setSiteData] = useState("loading");
+    const [siteUpdateQueue, setSiteUpdateQueue] = useState({})
 
     useEffect(() => {
         loadSiteData();
@@ -13,17 +14,53 @@ export const SiteProvider = ({ children }) => {
     function loadSiteData() {
         API.getSite()
             .then(res => {
-                setSitePage(res.data[0])
-            }
-            )
+                setSiteData(res.data[0])
+            })
             .catch(err => console.log(err));
     };
 
-    if (sitePage === "loading")
+    function handleInputChange (event) {
+        updateInputChange(event)
+        updateUpdateQueue(event)
+    }
+    
+    function updateInputChange(event) {
+        let value = event.target.value;
+        const path = event.target.dataset.path;
+        updatePathHandler(setSiteData, path, {...siteData}, value)
+    }
+    
+    function updateUpdateQueue (event) {
+        const path = event.target.dataset.path;
+        updatePathHandler(setSiteUpdateQueue, path, {...siteUpdateQueue}, true)
+    }
+    
+    function updateSiteData(path, value) {
+        API.updateSite(siteData._id,{[path]: value})
+           .then(res => {
+            updatePathHandler(setSiteUpdateQueue, path, {...siteUpdateQueue}, false)
+            })
+            .catch(err => console.log(err));
+    }
+    
+    function updatePathHandler (updateFunction, path, object, value) {
+        let newState = object
+        var schema = newState;  // a moving reference to internal objects within obj
+        var pList = path.split('.');
+        for(var i = 0; i < pList.length-1; i++) {
+          var elem = pList[i];
+          if( !schema[elem] ) schema[elem] = {}
+          schema = schema[elem];
+        }
+        schema[pList[pList.length-1]] = value;
+        updateFunction(newState)
+    }
+
+    if (siteData === "loading")
         return (<h1>LOADING</h1>);
 
     return (
-        <SiteContext.Provider value={sitePage}>
+        <SiteContext.Provider value={{siteData, siteUpdateQueue, handleInputChange, updateSiteData}}>
             {children}
         </SiteContext.Provider>
     );
