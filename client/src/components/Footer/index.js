@@ -3,16 +3,15 @@ import { SiteContext } from '../../Context/SiteContext';
 import SocialMediaIcons from '../SocialMediaIcons'
 import './style.css';
 
-const Footer = () => {
-  const siteData = useContext(SiteContext);
-
+const Footer = (props) => {
+  const {siteData} = useContext(SiteContext);
   return (
     <footer>
       <section className="container">
         <div className="footer-contact">
-          <p>{siteData.siteData.contact_name}</p>
-          <p>{siteData.siteData.contact_location}</p>
-          <p>{siteData.siteData.contact_email}</p>
+          <p>{siteData.siteData.contact.name}</p>
+          <p>{siteData.siteData.contact.location}</p>
+          <p>{siteData.siteData.contact.email}</p>
         </div>
         <SocialMediaIcons/>
         <div>
