@@ -3,7 +3,7 @@ import { SiteContext } from '../../../Context/SiteContext';
 import emailjs from 'emailjs-com';
 import './style.css';
 
-export default function ContactUs() {
+function ContactUs() {
   const {siteData} = useContext(SiteContext);
 
 

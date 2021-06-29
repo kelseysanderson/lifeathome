@@ -8,18 +8,19 @@ import './style.css';
 
 const BlogPost = () => {
     const [post, setPost] = useState([]);
-    const [loading, setLoading] = useState(false);
+    // const [loading, setLoading] = useState(false);
     const { id } = useParams();
 
     useEffect(() => {
-        fetchPost()
+        fetchPost();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const fetchPost = async () => {
-        setLoading(true);
+        // setLoading(true);
         const res = await API.getPost(id);
         setPost(res.data);
-        setLoading(false);
+        // setLoading(false);
     }
 
     return (

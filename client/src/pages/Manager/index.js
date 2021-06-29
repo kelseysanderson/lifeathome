@@ -3,7 +3,7 @@ import { SiteContext } from '../../Context/SiteContext';
 import API from "../../utils/API.js";
 import { Grid, Container } from '@material-ui/core';
 
-import SiteDataInput from "./siteDataInput"
+import SiteDataInput from "../../components/Inputs/siteDataInput"
 import BlogHandler from "./blogHandler"
 import BlogInput from "./blogInput"
 import './style.css'
@@ -175,8 +175,8 @@ const Manager = (props) => {
                     <div>
                       <h2>Blog Management</h2>
                       <ul className="database-management">
-                        {blogArr.map(post => (
-                          <BlogHandler post={post} deleteFunction={blogDelete} />
+                        {blogArr.map((post, index) => (
+                          <BlogHandler key={index} post={post} deleteFunction={blogDelete} />
                         ))}
                       </ul>
                     </div>

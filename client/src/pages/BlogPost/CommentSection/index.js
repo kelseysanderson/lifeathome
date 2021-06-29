@@ -42,7 +42,7 @@ const CommentSection = (props) => {
       <h1 className="single-blog-header" id="comment-title">Comments</h1>
       <div className="add-comment-container">
         <form method="post">
-          <input ref={textInput} value={formObject.username} onChange={handleInputChange} placeholder="username" className='form-control username-text-area' name="username" placeholder="Name"></input>
+          <input ref={textInput} value={formObject.username} onChange={handleInputChange} placeholder="Name" className='form-control username-text-area' name="username" ></input>
           <textarea ref={textInput} value={formObject.body} onChange={handleInputChange} className='form-control comment-text-area' name="body" placeholder="Comment"></textarea>
           <div className="text-right">
             <button onClick={handleFormSubmit} type="submit" className="save-comment-btn green-btn">Add Comment</button>

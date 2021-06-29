@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment';
-import {Grid} from '@material-ui/core'
+// import {Grid} from '@material-ui/core'
 import './style.scss';
 
 const Post = ({ posts, loading, handlePostClick }) => {
@@ -33,6 +33,7 @@ const Post = ({ posts, loading, handlePostClick }) => {
                   <p className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Mason Marshall</p>
                 
                 <p>{posts.description}</p>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a onClick={() => handlePostClick(posts._id)} className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>READ MORE</a>
               </div>
             </article>
