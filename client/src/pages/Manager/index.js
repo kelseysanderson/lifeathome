@@ -1,4 +1,5 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, {useState, createContext, useEffect, useContext} from "react";
+import { SiteContext } from '../../Context/SiteContext';
 import API from "../../utils/API.js";
 import { Grid, Container } from '@material-ui/core';
 
@@ -7,12 +8,10 @@ import BlogHandler from "./blogHandler"
 import BlogInput from "./blogInput"
 import './style.css'
 
-
-export const ManagerContext = createContext()
 export const BlogContext = createContext()
-export const UpdateQueueContext = createContext()
 
 const Manager = (props) => {
+  const {sitePage} = useContext(SiteContext);
   const [blogArr, setBlogArr] = useState("loading")
   const [blogForm, setBlogForm] = useState({
     title: "",
@@ -20,27 +19,27 @@ const Manager = (props) => {
     img_src: "",
     body: ""
   })
-  const [dataObj, setDataObj] = useState("loading");
-  const [loginForm, setLoginForm] = useState({
-    login: {
-      username: "",
-      password: ""
-    }
-  })
-  const [updateQueue, setUpdateQueue] = useState({})
+  // const [dataObj, setDataObj] = useState("loading");
+  // const [loginForm, setLoginForm] = useState({
+  //   login: {
+  //     username: "",
+  //     password: ""
+  //   }
+  // })
+  // const [updateQueue, setUpdateQueue] = useState({})
 
   useEffect(() => {
-    loadSiteData();
+    // loadSiteData();
     loadBlogData()
   }, []);
 
-  function loadSiteData() {
-    API.getSite()
-      .then(res => {
-        setDataObj(res.data[1])
-      })
-      .catch(err => console.log(err));
-  };
+  // function loadSiteData() {
+  //   API.getSite()
+  //     .then(res => {
+  //       setDataObj(res.data[1])
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
   function loadBlogData() {
     API.getPosts()
@@ -50,23 +49,23 @@ const Manager = (props) => {
       .catch(err => console.log(err));
   }
 
-  function handleLoginInputChange(event) {
-    console.log(event.target)
-    console.log(event.target.dataset)
-    // Getting the value and name of the input which triggered the change
-    let value = event.target.value;
-    const key1 = event.target.dataset.key1;
-    const key2 = event.target.dataset.key2;
+  // function handleLoginInputChange(event) {
+  //   console.log(event.target)
+  //   console.log(event.target.dataset)
+  //   // Getting the value and name of the input which triggered the change
+  //   let value = event.target.value;
+  //   const key1 = event.target.dataset.key1;
+  //   const key2 = event.target.dataset.key2;
 
-    // Updating the input's state
-    setLoginForm({
-      ...loginForm,
-      [key1]: {
-        ...loginForm[key1],
-        [key2]: value
-      }
-    });;
-  };
+  //   // Updating the input's state
+  //   setLoginForm({
+  //     ...loginForm,
+  //     [key1]: {
+  //       ...loginForm[key1],
+  //       [key2]: value
+  //     }
+  //   });;
+  // };
 
   function handleBlogInputChange(event) {
     console.log(event.target)
@@ -103,66 +102,64 @@ const Manager = (props) => {
       .catch(err => console.log(err));
   }
 
-  function updateAdmin() {
-    API.updateSite(dataObj._id, loginForm)
-    .then(res => {
-      console.log(res)
-      setLoginForm({
-        login: {
-          username: "",
-          password: ""
-        }
-      })
-    })
-    .catch(err => console.log(err));
-  }
+  // function updateAdmin() {
+  //   API.updateSite(dataObj._id, loginForm)
+  //   .then(res => {
+  //     console.log(res)
+  //     setLoginForm({
+  //       login: {
+  //         username: "",
+  //         password: ""
+  //       }
+  //     })
+  //   })
+  //   .catch(err => console.log(err));
+  // }
 
   //DYNAMIC REST FUNCTIONALITY
-  function handleInputChange (event) {
-    updateInputChange(event)
-    updateUpdateQueue(event)
-  }
+  // function handleInputChange (event) {
+  //   updateInputChange(event)
+  //   updateUpdateQueue(event)
+  // }
 
-  function updateInputChange(event) {
-    let value = event.target.value;
-    const path = event.target.dataset.path;
-    updatePathHandler(setDataObj, path, {...dataObj}, value)
-  }
+  // function updateInputChange(event) {
+  //   let value = event.target.value;
+  //   const path = event.target.dataset.path;
+  //   updatePathHandler(setDataObj, path, {...dataObj}, value)
+  // }
 
-  function updateUpdateQueue (event) {
-    const path = event.target.dataset.path;
-    updatePathHandler(setUpdateQueue, path, {...updateQueue}, true)
-  }
+  // function updateUpdateQueue (event) {
+  //   const path = event.target.dataset.path;
+  //   updatePathHandler(setUpdateQueue, path, {...updateQueue}, true)
+  // }
 
-  function updateSiteData(path, value) {
-    API.updateSite(dataObj._id,{[path]: value})
-      .then(res => {
-        updatePathHandler(setUpdateQueue, path, {...updateQueue}, false)
-      })
-      .catch(err => console.log(err));
-  }
+  // function updateSiteData(path, value) {
+  //   API.updateSite(dataObj._id,{[path]: value})
+  //     .then(res => {
+  //       updatePathHandler(setUpdateQueue, path, {...updateQueue}, false)
+  //     })
+  //     .catch(err => console.log(err));
+  // }
 
-  function updatePathHandler (updateFunction, path, object, value) {
-    let newState = object
-    var schema = newState;  // a moving reference to internal objects within obj
-    var pList = path.split('.');
-    for(var i = 0; i < pList.length-1; i++) {
-      var elem = pList[i];
-      if( !schema[elem] ) schema[elem] = {}
-      schema = schema[elem];
-    }
-    schema[pList[pList.length-1]] = value;
-    updateFunction(newState)
-  }
+  // function updatePathHandler (updateFunction, path, object, value) {
+  //   let newState = object
+  //   var schema = newState;  // a moving reference to internal objects within obj
+  //   var pList = path.split('.');
+  //   for(var i = 0; i < pList.length-1; i++) {
+  //     var elem = pList[i];
+  //     if( !schema[elem] ) schema[elem] = {}
+  //     schema = schema[elem];
+  //   }
+  //   schema[pList[pList.length-1]] = value;
+  //   updateFunction(newState)
+  // }
 
   return (
     <>
-      {dataObj === "loading" || blogArr === "loading" ? (<><h1>LOADING</h1></>) : (
+      {sitePage === "loading" || blogArr === "loading" ? (<><h1>LOADING</h1></>) : (
         <Container maxWidth="xl"  style={{ marginTop: "30px", width:"80%" }}>
           <Grid container spacing={4}>
-            <ManagerContext.Provider value={{ dataObj, handleInputChange, updateSiteData}}>
               <BlogContext.Provider value={{ blogForm, handleBlogInputChange }}>
-                <UpdateQueueContext.Provider value={{ updateQueue }}>  
                   <Grid item xs={12}className="logoContainer">
                     <div className="management-card">
                       <h2>New Post</h2>
@@ -288,38 +285,11 @@ const Manager = (props) => {
                   <Grid item xs={12} className="logoContainer" >
                     <div className="management-card">
                       <h2>Admin Login</h2>
-                      <div className="data-form">
-                        <label>Username:</label>
-                          <input style={{width: "100%"}}
-                            className="management-input"
-                            data-path="login.username"
-                            // eslint-disable-next-line no-eval
-                            value={loginForm.login.username}
-                            onChange={handleLoginInputChange} 
-                          />
-                        <br></br>
-                      </div>
-
-                      <div className="data-form">
-                        <label>Password:</label>
-                          <input style={{width: "100%"}}
-                            className="management-input"
-                            data-path="login.password"
-                            // eslint-disable-next-line no-eval
-                            value={loginForm.login.password}
-                            onChange={handleLoginInputChange} 
-                          />
-                        <br></br>
-                      </div>
+                      <Input path="login.username" />
+                      <Input path="login.password" />
                     </div>
                   </Grid>
-
-                  <Grid item xs={12} className="logoContainer" >
-                    <button className="green-btn update-btn" onClick={updateAdmin}>Update Admin Data</button>
-                  </Grid>
-                </UpdateQueueContext.Provider>
               </BlogContext.Provider>
-            </ManagerContext.Provider>
           </Grid>
         </Container>
       )}

@@ -5,7 +5,7 @@ import StatsCircle from './StatsCircle'
 import './style.css';
 
 const Stats = (props) => {
-    const siteData = useContext(SiteContext);
+    const {siteData} = useContext(SiteContext);
     const homePageData = siteData.homePage
 
     return (
@@ -15,15 +15,15 @@ const Stats = (props) => {
 
                 <Grid item xs={12} sm={6} md={4} >
 
-                <StatsCircle key={homePageData.stat_1_title} statTitle={homePageData.stat_1_title} statBody={homePageData.stat_1_body} statLinkButton={homePageData.stat_1_button_text} statLink={homePageData.stat_1_link} />
+                <StatsCircle key={homePageData.stat_1.title} statTitle={homePageData.stat_1.title} statBody={homePageData.stat_1.body} statLinkButton={homePageData.stat_1.button_text} statLink={homePageData.stat_1.link} />
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} >
 
-                <StatsCircle key={homePageData.stat_2_title} statTitle={homePageData.stat_2_title} statBody={homePageData.stat_2_body} statLinkButton={homePageData.stat_2_button_text} statLink={homePageData.stat_2_link} />
+                <StatsCircle key={homePageData.stat_2.title} statTitle={homePageData.stat_2.title} statBody={homePageData.stat_2.body} statLinkButton={homePageData.stat_2.button_text} statLink={homePageData.stat_2.link} />
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} >
 
-                <StatsCircle key={homePageData.stat_3_title} statTitle={homePageData.stat_3_title} statBody={homePageData.stat_3_body} statLinkButton={homePageData.stat_3_button_text} statLink={homePageData.stat_3_link} />
+                <StatsCircle key={homePageData.stat_3.title} statTitle={homePageData.stat_3.title} statBody={homePageData.stat_3.body} statLinkButton={homePageData.stat_3.button_text} statLink={homePageData.stat_3.link} />
                 </Grid>
                 </Grid>
             </Box>

@@ -1,9 +1,8 @@
-import React, { useContext} from "react";
-import {ManagerContext, UpdateQueueContext} from './index'
+import React, {useContext} from "react";
+import {SiteContext} from '../../Context/SiteContext'
 
 const Input = (props) => {
-  const {dataObj, handleInputChange, updateSiteData} = useContext(ManagerContext)
-  const {updateQueue} = useContext(UpdateQueueContext)
+  const {siteData, siteUpdateQueue, handleInputChange, updateSiteData} = useContext(SiteContext);
 
   //CREATES LABEL OUT OF PATH STRING
   const lastPath = props.path.split('.').pop()
@@ -11,12 +10,12 @@ const Input = (props) => {
 
   //FINDS VALUE OUT OF PATH STRING
   const valueArr = props.path.split(".")
-  const value = valueArr.reduce((object, property) => object[property], dataObj)
+  const value = valueArr.reduce((object, property) => object[property], siteData)
 
   //FINDS QUEUE STATUS
   const updateQueueStatus = () => { 
     try {
-      return valueArr.reduce((object, property) => object[property], updateQueue)
+      return valueArr.reduce((object, property) => object[property], siteUpdateQueue)
     } catch {
       return false
     }
@@ -24,44 +23,31 @@ const Input = (props) => {
 
   return (
     <>
-      {/* TEXTAREA VS. INPUT */}
-      {props.inputType === "textarea" ? (
+      <div className="data-form">
+        <label>{label}:</label>
+        {/* TEXTAREA VS. INPUT */}
+        {props.inputType === "textarea" ? (
+        <textarea 
+          className="management-input"
+          data-path={props.path}
+          value={value}
+          onChange={handleInputChange}
+          style={updateQueueStatus() ? ({border: "2px solid red", width: "100%", height: "200px", resize: "none"}) : ({border: "2px solid green", width: "100%", height: "200px", resize: "none"})} 
+        />) : (
+          <input 
+          className="management-input"
+          data-path={props.path}
+          value={value}
+          onChange={handleInputChange} 
+          style={updateQueueStatus() ? ({border: "2px solid red", width: "100%"}) : ({border: "2px solid green", width: "100%"})}
+        />)}
+        {/* RENDERS UPDATE BUTTON */}
+        {updateQueueStatus() ? (
         <>
-          <div className="data-form">
-              <label>{label}:</label>
-              <textarea 
-                className="management-input"
-                data-path={props.path}
-                value={value}
-                onChange={handleInputChange}
-                style={updateQueueStatus() ? ({border: "2px solid red", width: "100%", height: "200px", resize: "none"}) : ({border: "2px solid green", width: "100%", height: "200px", resize: "none"})} 
-              />
-              {updateQueueStatus() ? (
-              <>
-                <button className="red-btn" onClick={() => updateSiteData(props.path, value)}>Update</button>
-              </>) : (<></>)}
-              <br></br>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="data-form">
-              <label>{label}:</label>
-              <input 
-                className="management-input"
-                data-path={props.path}
-                value={value}
-                onChange={handleInputChange} 
-                style={updateQueueStatus() ? ({border: "2px solid red", width: "100%"}) : ({border: "2px solid green", width: "100%"})}
-              />
-              {updateQueueStatus() ? (
-              <>
-                <button className="red-btn" onClick={() => updateSiteData(props.path, value)}>Update</button>
-              </>) : (<></>)}
-              <br></br>
-          </div>
-        </>
-      )}
+          <button className="red-btn" onClick={() => updateSiteData(props.path, value)}>Update</button>
+        </>) : (<></>)}
+        <br></br>
+      </div>
     </>
   )
 }

@@ -5,7 +5,7 @@ import { Grid } from '@material-ui/core';
 import './style.css'
 
 const Banner = (props) => {
-  const siteData = useContext(SiteContext);
+  const {siteData} = useContext(SiteContext);
   const homePageData = siteData.homePage;
 
   return (
@@ -19,9 +19,9 @@ const Banner = (props) => {
 
       <div className="curved-div">
         <div className="banner-items">
-        <Grid container style={{ border: "none" }} container alignItems="center" spacing={2}>
-            <BannerItems key={homePageData.banner_1_title} title={homePageData.banner_1_title} description={homePageData.banner_1_body} button={homePageData.banner_1_link_button_text} nav="/contact"/>
-            <BannerItems key={homePageData.banner_2_title} title={homePageData.banner_2_title} description={homePageData.banner_2_body} button={homePageData.banner_2_link_button_text} nav="/blog"/>
+        <Grid container style={{ border: "none" }} alignItems="center" spacing={2}>
+            <BannerItems key={homePageData.banner_1.title} title={homePageData.banner_1.title} description={homePageData.banner_1.body} button={homePageData.banner_1.link_button_text} nav="/contact"/>
+            <BannerItems key={homePageData.banner_2.title} title={homePageData.banner_2_title} description={homePageData.banner_2.body} button={homePageData.banner_2.link_button_text} nav="/blog"/>
         </Grid>
         </div>
 
