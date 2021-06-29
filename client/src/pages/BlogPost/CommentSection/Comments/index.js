@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../../../utils/API';
 import moment from 'moment';
-import replyIcon from '../../../../assets/reply-icon.png';
 import showRepliesIcon from '../../../../assets/showreplies.png';
 import hideRepliesIcon from '../../../../assets/hidereplies.png';
-
-// import Comment from "./Comments"
-
-import './style.css'
+import './style.css';
 
 const Comments = (props) => {
   const [formObject, setFormObject] = useState({});
-  const [replyState, setReplystate] = useState(false)
-  const [replyForm, setReplyForm] = useState(false)
+  const [replyState, setReplystate] = useState({ shown: false })
+  const [replyForm, setReplyForm] = useState({ shown: false })
 
   function handleFormSubmit(event) {
     if (formObject.username && formObject.body) {
@@ -40,49 +36,40 @@ const Comments = (props) => {
     setFormObject({ ...formObject, [name]: value })
   };
 
-  // if (!props.postComments) {
-  //   return <h2>Loading...</h2>;
-  // }
-
-  function displayReplies() {
-    setReplystate(true)
+  function toggleReplyState() {
+    setReplystate({ shown: !replyState.shown })
   }
 
-  function hideReplies() {
-    setReplystate(false)
-  }
-
-  function displayReplyForm() {
-    setReplyForm(true)
-  }
-
-  function hideReplyForm() {
-    setReplyForm(false)
+  function toggleReplyFormState() {
+    setReplyForm({ shown: !replyForm.shown })
   }
 
   function handleReplySubmit(event) {
     event.preventDefault()
-    hideReplyForm();
+    toggleReplyFormState();
     handleFormSubmit();
+  }
+
+  function handleHideReplies(event) {
+    event.preventDefault()
+    toggleReplyFormState();
+    toggleReplyState();
   }
 
   return (
     <>
       <div>
-
-        {!replyState ? (
+        {!replyState.shown ? (
           <div className="comment-container">
             <h3 className="reply-text" >{props.comment.body}</h3>
-            <p className="reply-name">{props.comment.userName} on {moment(props.comment.date_posted).format("l")}<button onClick={displayReplies} className="show-replies">Replies<img src={showRepliesIcon} alt="down caret" /></button></p>
+            <p className="reply-name">{props.comment.userName} on {moment(props.comment.date_posted).format("l")}<button onClick={toggleReplyState} className="show-replies">Replies<img src={showRepliesIcon} alt="down caret" /></button></p>
           </div>
         ) : (
           <>
             <div>
               <h3 className="reply-text" >{props.comment.body}</h3>
-              <p className="reply-name">{props.comment.userName} on {moment(props.comment.date_posted).format("l")}<button onClick={hideReplies} className="show-replies">Show Less<img src={hideRepliesIcon} alt="up caret" /></button></p>
+              <p className="reply-name">{props.comment.userName} on {moment(props.comment.date_posted).format("l")}<button onClick={!replyForm.shown ? toggleReplyState : handleHideReplies} className="show-replies">Show Less<img src={hideRepliesIcon} alt="up caret" /></button></p>
             </div>
-
-
             {props.comment.replies === undefined ? (<></>) : (
               <>
                 {props.comment.replies.map(reply => (
@@ -93,19 +80,18 @@ const Comments = (props) => {
                 ))}
               </>
             )}
-            <button onClick={displayReplyForm} type="submit" className="save-reply-btn show-replies" id="add-reply-btn">+ Add Reply</button>
-            {replyForm ? (
-                         <div className="add-reply-container">
-              <form method="post">
-                <input value={formObject.username} onChange={handleInputChange} className='form-control comment-name' name="username" placeholder="Name"></input>
-                <textarea value={formObject.body} onChange={handleInputChange} className='form-control reply-text-area' name="body" placeholder="Reply"></textarea>
-                <div className="text-right">
-                  <button onClick={handleReplySubmit} type="submit" className="save-reply-btn green-btn">Reply</button>
-                </div>
-              </form>
-            </div> 
+            <button onClick={toggleReplyFormState} type="submit" className="save-reply-btn show-replies" id="add-reply-btn">+ Add Reply</button>
+            {replyForm.shown ? (
+              <div className="add-reply-container">
+                <form method="post">
+                  <input value={formObject.username} onChange={handleInputChange} className='form-control comment-name' name="username" placeholder="Name"></input>
+                  <textarea value={formObject.body} onChange={handleInputChange} className='form-control reply-text-area' name="body" placeholder="Reply"></textarea>
+                  <div className="text-right">
+                    <button onClick={handleReplySubmit} type="submit" className="save-reply-btn green-btn">Reply</button>
+                  </div>
+                </form>
+              </div>
             ) : (<></>)}
-
           </>
         )}
       </div>

@@ -17,12 +17,13 @@
 }
 
 .username-text-area {
+    height:20px;
     width:40%;
     margin-bottom: 10px;
-    border:1px solid rgb(182, 182, 182)
+    border:1px solid rgb(182, 182, 182);
+    border-radius: 5px;
 }
 .comment-text-area{
-    height:80px;
     width:61%;
     height: 50px;
     border-radius:10px;

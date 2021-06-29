@@ -3,9 +3,9 @@ import { SiteContext } from '../../../Context/SiteContext';
 import emailjs from 'emailjs-com';
 import './style.css';
 
-export default function ContactUs() {
+const ContactUs = () => {
   const siteData = useContext(SiteContext);
-  const homePageData = siteData.homePage;
+  console.log("SITE DATA", siteData.siteData)
 
   function sendEmail(e) {
     e.preventDefault();
@@ -24,7 +24,7 @@ export default function ContactUs() {
       <form className="contact-form" onSubmit={sendEmail}>
         <div className="name-email-row">
           <label >Email To:</label>
-          <p>sandersonkelsey1@gmail.com</p>
+          <p>{siteData.siteData.contact_email}</p>
         </div>
         <div className="name-email-row">
           <label >Name:</label>
@@ -41,7 +41,8 @@ export default function ContactUs() {
         </div>
         <input className="contact-button" type="submit" value="Send" />
       </form>
-      </>
-
+    </>
   );
 }
+
+export default ContactUs;

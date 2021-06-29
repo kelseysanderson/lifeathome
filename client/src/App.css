@@ -45,3 +45,6 @@ h1, h2 {
    font-family: 'Baloo 2' !important; 
    font-weight: 200;
 }
+textarea {
+   resize: none;
+}

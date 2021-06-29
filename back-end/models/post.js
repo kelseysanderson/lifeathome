@@ -3,11 +3,13 @@ const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
   title: String,
+  author: String,
   description: String, 
   img_src: String,
   body: String,
   external_link: String,
   embedded_video_link: String,
+  tags: [String],
   comments: {
     type: [Schema.Types.ObjectId],
     ref: 'Comment',

@@ -6,7 +6,7 @@ import moment from 'moment'
 import API from '../../utils/API'
 import './style.css';
 
-const BlogPost = (props) => {
+const BlogPost = () => {
     const [post, setPost] = useState([]);
     const [loading, setLoading] = useState(false);
     const { id } = useParams();
@@ -39,7 +39,6 @@ const BlogPost = (props) => {
                 </Box>
             </Grid>
         </div>
-
     )
 
 }

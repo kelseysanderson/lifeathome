@@ -3,8 +3,9 @@ import { SiteContext } from '../../Context/SiteContext';
 import SocialMediaIcons from '../SocialMediaIcons'
 import './style.css';
 
-const Footer = (props) => {
+const Footer = () => {
   const siteData = useContext(SiteContext);
+
   return (
     <footer>
       <section className="container">
@@ -20,7 +21,6 @@ const Footer = (props) => {
       </section>
     </footer>
   )
-
 }
 
 export default Footer

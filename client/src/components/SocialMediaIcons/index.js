@@ -4,7 +4,7 @@ import facebook from '../../assets/social-media/facebook.png';
 import instagram from '../../assets/social-media/instagram.png';
 import './style.css';
 
-const SocialMediaIcons = (props) => {
+const SocialMediaIcons = () => {
   return (
     <div className="social-media">
       <a href='#' target="_blank" rel="noreferrer"><img className="social-media-icons" src={twitter} alt="Twitter Icon" /></a>

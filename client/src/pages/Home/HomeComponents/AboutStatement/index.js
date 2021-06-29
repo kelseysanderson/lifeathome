@@ -6,6 +6,7 @@ import { Grid } from '@material-ui/core';
 const AboutStatement = (props) => {
     const siteData = useContext(SiteContext);
     const homePageData = siteData.homePage;
+    
     return (
         <div className="about-stmt">
              <Grid container justify="center" alignItems="center" >
@@ -15,9 +16,8 @@ const AboutStatement = (props) => {
                 </p>
             </Grid>
         </Grid>
-        </div>
-       
+        </div> 
     )
 }
 
-export default AboutStatement
+export default AboutStatement;
