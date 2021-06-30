@@ -5,9 +5,16 @@ export const BlogContext = createContext();
 
 export const BlogProvider = ({ children }) => {
     const [blogData, setBlogData] = useState("loading");
+    const [blogDataForm, setBlogDataForm] = useState({
+        post: {
+            title: "",
+            author: "",
+            description: "",
+            img_src: "",
+            body: ""
+        }
+    })
     const [blogUpdateQueue, setBlogUpdateQueue] = useState({array: []})
-    console.log(blogUpdateQueue)
-    console.log(blogData)
 
     useEffect(() => {
         loadBlogData();
@@ -21,7 +28,45 @@ export const BlogProvider = ({ children }) => {
             .catch(err => console.log(err));
     };
 
-    function handleInputChange (event) {
+    //FORM FUNCTIONS
+    function formInputChange(event) {
+        let value = event.target.value;
+        const path = event.target.dataset.path;
+        updatePathHandlerForm(setBlogDataForm, path, blogDataForm.post, value)
+    }
+
+    function postBlogData() {
+        API.postPost(blogDataForm.post)
+            .then(() => {
+                setBlogDataForm({
+                    post: {
+                        title: "",
+                        author: "",
+                        description: "",
+                        img_src: "",
+                        body: ""
+                    }
+                })
+                loadBlogData()
+            })
+            .catch(err => console.log(err));
+    }
+
+    function updatePathHandlerForm (updateFunction, path, object, value) {
+        // let newState = object
+        var schema = object;  // a moving reference to internal object within obj
+        var pList = path.split('.');
+        for(var i = 0; i < pList.length-1; i++) {
+          var elem = pList[i];
+          if( !schema[elem] ) schema[elem] = {}
+          schema = schema[elem];
+        }
+        schema[pList[pList.length-1]] = value;
+        updateFunction({post: object})
+    }
+
+    //UPDATE FUNCTIONS
+    function handleInputChange(event) {
         updateInputChange(event)
         updateUpdateQueue(event)
     }
@@ -62,11 +107,29 @@ export const BlogProvider = ({ children }) => {
         updateFunction({array: array})
     }
 
+    //DELETE FUNCTNIOS
+    function deletePost(id) {
+        API.deletePost(id)
+        .then(() => {
+            loadBlogData()
+        })
+        .catch(err => console.log(err));
+    }
+
     if (blogData === "loading")
         return (<h1>LOADING</h1>);
 
     return (
-        <BlogContext.Provider value={{blogData, blogUpdateQueue, handleInputChange, updateBlogData}}>
+        <BlogContext.Provider value={{
+            blogData, 
+            blogUpdateQueue, 
+            blogDataForm, 
+            handleInputChange, 
+            updateBlogData, 
+            formInputChange, 
+            postBlogData, 
+            deletePost}
+        }>
             {children}
         </BlogContext.Provider>
     );
