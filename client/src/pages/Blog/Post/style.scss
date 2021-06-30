@@ -17,7 +17,8 @@ $text-color: #363738;
 }
 .blog-card {
   padding: 30px;
-  width: 85%;
+  // margin-left: 50px;
+  width: 100%;
 
   position: relative;
   .date__box {
@@ -31,7 +32,7 @@ $text-color: #363738;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 93%;
     height: 100%;
   }
   .blog-card__background {
@@ -141,4 +142,9 @@ a.icon-link {
   &.btn--only-icon {
     width: 50px;
   }
+}
+
+.likes-container {
+  display:flex;
+  justify-content: space-between;
 }

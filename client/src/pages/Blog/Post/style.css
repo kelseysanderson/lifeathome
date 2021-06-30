@@ -171,3 +171,8 @@ a.icon-link i {
     width: 50px;
   }
 } */
+
+.likes-container {
+  display:flex;
+  background-color:red;
+}

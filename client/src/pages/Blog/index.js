@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import API from '../../utils/API'
 import Post from './Post';
 import TablePagination from '@material-ui/core/TablePagination';
-import { Grid, Box } from '@material-ui/core';
+import { Grid, Container } from '@material-ui/core';
+import CardComp from '../../components/CardComp'
 import './style.css';
 
 const Blog = () => {
@@ -44,14 +45,19 @@ const Blog = () => {
     return <h2>Loading...</h2>;
   }
   return (
-
-    <Grid container direction="column" spacing={3}>
-      <Box display="flex" justifyContent="center" alignItems="center">
-        <Grid item xs={8}>
-        {currentPosts.map(currentPosts => (
-          <Post key={currentPosts._id} posts={currentPosts} loading={loading} handlePostClick={goToPost} />
+    <Container maxWidth="xl" style={{ marginTop: "30px", width: "100%" }}>
+      <Grid container spacing={3}>
+        <Grid item xs={12} sm={4} >
+          <div>
+            <h1>News</h1>
+            <CardComp />
+            <CardComp />
+          </div>
+        </Grid>
+        <Grid item xs={12} sm={8}>
+          {currentPosts.map(currentPosts => (
+            <Post key={currentPosts._id} posts={currentPosts} loading={loading} handlePostClick={goToPost} />
           ))}
-
           <TablePagination
             component="div"
             count={posts.length}
@@ -62,8 +68,8 @@ const Blog = () => {
             style={{ margin: "50px 0" }}
           />
         </Grid>
-      </Box>
-    </Grid>
+      </Grid>
+    </Container>
   );
 }
 

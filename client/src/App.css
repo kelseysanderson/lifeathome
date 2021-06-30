@@ -89,3 +89,18 @@ textarea, input{
 .auto-width {
    width:auto;
 }
+
+.additional-info-edit {
+   font-size: 16px;
+}
+
+.edit-btn {
+   padding: 0;
+   border: none;
+   background: none;
+   color:rgb(95, 95, 95);
+}
+
+.icon:hover {
+   cursor:pointer;
+}

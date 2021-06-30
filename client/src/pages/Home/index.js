@@ -5,26 +5,37 @@ import AboutStatement from './HomeComponents/AboutStatement';
 import Stats from './HomeComponents/Stats';
 import AdditionalInfo from './HomeComponents/AdditionalInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
-import { faEye } from '@fortawesome/free-solid-svg-icons'
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import IconButton from '@material-ui/core/IconButton';
+import EditIcon from '@material-ui/icons/Edit';
+import VisibilityIcon from '@material-ui/icons/Visibility';
 import './style.css';
 
 const Home = (props) => {
   const [editBtn, setEditBtn] = useState({ shown: false })
-  const [toggleClass, setToggleClass] = useState({ text: "Edit as Admin", render: <span id="edit-icon"><FontAwesomeIcon icon={faEye} /></span> });
+  const [toggleClass, setToggleClass] = useState({ edit:false, render:  <EditIcon className="icon" /> });
+  const loggedIn = true;
+  console.log(toggleClass.edit)
 
   function toggleEditBtn() {
     setEditBtn({ shown: !editBtn.shown })
-    if (toggleClass.text === "Edit as Admin") {
-      setToggleClass({ text: "View as User", render: <span id="edit-icon"><FontAwesomeIcon icon={faEye} /></span> })
-    } else if (toggleClass.text === "View as User") {
-      setToggleClass({ text: "Edit as Admin", render: <span id="edit-icon"><FontAwesomeIcon icon={faEdit} /></span> })
+    if (toggleClass.edit === false) {
+      setToggleClass({ edit: true, render: <VisibilityIcon className="icon"/> })
+    } else if (toggleClass.edit === true) {
+      setToggleClass({ edit: false,  render: <EditIcon className="icon"/> })
     }
   }
 
   return (
     <div className="home-page">
-      <button className={`edit-btn ${toggleClass.class}`} onClick={toggleEditBtn}>{toggleClass.text}{toggleClass.render}</button>
+      {loggedIn ? (
+        <>
+          <IconButton aria-label="delete" style={{marginLeft: '80px'}}>
+            <button className="edit-btn" onClick={toggleEditBtn}>{toggleClass.render}</button>
+          </IconButton>
+        </>
+      ) : null}
       <Banner edit={editBtn} />
       <AboutStatement edit={editBtn} />
       <Stats edit={editBtn} />

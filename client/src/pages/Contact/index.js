@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import SocialMediaIcons from '../../components/SocialMediaIcons';
 import { Grid } from '@material-ui/core';
 import ContactForm from './ContactForm';

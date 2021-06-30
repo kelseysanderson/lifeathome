@@ -3,22 +3,17 @@
 }
 
 .edit-btn {
-    background-color:rgb(228, 235, 228);
-    border:none;
-    font-size: 16px;
-    margin-left: 25px;
-    padding: 10px;
-    font-family: 'Mulish', 'Verdana', 'sans-serif';
+    padding: 0;
+    border: none;
+    background: none;
+    color:rgb(95, 95, 95);
 }
 
-.edit-btn:hover {
-    cursor: pointer;
-    background-color:rgb(213, 224, 213);
-    border-radius: 5px;
+/* .icon {
+    margin-left: 50px;
+} */
+
+.icon:hover {
+    cursor:pointer;
 }
 
-#edit-icon {
-    margin-left:10px;
-    font-size:20px;
-    color:rgb(85, 85, 85);
-}
