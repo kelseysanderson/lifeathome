@@ -1,94 +1,43 @@
-import React, {useState, useEffect, useContext} from "react";
-import { SiteContext } from '../../Context/SiteContext';
+import React, {useContext} from "react";
 import { BlogContext } from '../../Context/BlogContext';
-import API from "../../utils/API.js";
 import { Grid, Container } from '@material-ui/core';
 
 import SiteDataInput from "../../components/Inputs/siteDataInput"
 import BlogDataInput from "../../components/Inputs/blogDataInput"
+import BlogDataFormInput from "../../components/Inputs/blogDataFormInput"
+import BlogDataDelete from "../../components/DeleteButtons/blogDataDelete"
 
 import './style.css'
 
 const Manager = (props) => {
-  const {sitePage} = useContext(SiteContext);
-  const {blogData} = useContext(BlogContext)
-  const [blogArr, setBlogArr] = useState("loading")
-  const [blogForm, setBlogForm] = useState({
-    title: "",
-    description: "",
-    img_src: "",
-    body: ""
-  })
+  const {blogData, postBlogData} = useContext(BlogContext)
 
-  useEffect(() => {
-    loadBlogData()
-  }, []);
-
-  function loadBlogData() {
-    API.getPosts()
-      .then(res => {
-        setBlogArr(res.data)
-      })
-      .catch(err => console.log(err));
-  }
-
-  function handleBlogInputChange(event) {
-    console.log(event.target)
-    // Getting the value and name of the input which triggered the change
-    let value = event.target.value;
-    const key1 = event.target.dataset.key1;
-
-    // Updating the input's state
-    setBlogForm({
-      ...blogForm,
-      [key1]: value
-    });
-  };
-
-  function blogDelete(event) {
-    API.deletePost(event.target.dataset.id)
-      .then(res => {
-        loadBlogData()
-      })
-      .catch(err => console.log(err));
-  }
-
-  function submitPost() {
-    API.postPost(blogForm)
-      .then(res => {
-        setBlogForm({
-          title: "",
-          description: "",
-          img_src: "",
-          body: ""
-        })
-        loadBlogData()
-      })
-      .catch(err => console.log(err));
-  }
 
   return (
     <>
-      {sitePage === "loading" || blogArr === "loading" ? (<><h1>LOADING</h1></>) : (
         <Container maxWidth="xl"  style={{ marginTop: "30px", width:"80%" }}>
           <Grid container spacing={4}>
-                  {/* <Grid item xs={12}className="logoContainer">
+                  <Grid item xs={12}className="logoContainer">
                     <div className="management-card">
                       <h2>New Post</h2>
-                      <BlogDataInput path="title" />
-                      <BlogDataInput path="description" />
-                      <BlogDataInput path="img_src" />
-                      <BlogDataInput path="body" inputType={"textarea"}/>
-                      <button className="green-btn" onClick={submitPost}>Submit Post</button>
+                      <BlogDataFormInput path="title" />
+                      <BlogDataFormInput path="author" />
+                      <BlogDataFormInput path="description" inputType="textarea" />
+                      <BlogDataFormInput path="img_src" />
+                      <BlogDataFormInput path="body" inputType={"textarea"}/>
+                      <button className="green-btn" onClick={postBlogData}>Submit Post</button>
                     </div>
-                  </Grid> */}
+                  </Grid>
 
                   <Grid item xs={12} className="logoContainer" >
                     <div>
                       <h2>Blog Management</h2>
                       <ul className="database-management">
                         {blogData.array.map((post, index) => (
-                          <BlogDataInput {...post} index={index} path="title"/>
+                          <>
+                            <BlogDataInput key={"title" + index} {...post} index={index} path="title"/>
+                            <BlogDataDelete key={"deleteBtn" + index} postId={post._id}/>
+                          </>
                         ))}
                       </ul>
                     </div>
@@ -203,7 +152,6 @@ const Manager = (props) => {
                   </Grid>
           </Grid>
         </Container>
-      )}
     </>
   )
 }
