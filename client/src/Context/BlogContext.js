@@ -5,7 +5,8 @@ export const BlogContext = createContext();
 
 export const BlogProvider = ({ children }) => {
     const [blogData, setBlogData] = useState("loading");
-    const [blogUpdateQueue, setBlogUpdateQueue] = useState({})
+    const [blogUpdateQueue, setBlogUpdateQueue] = useState({array: []})
+    console.log(blogUpdateQueue)
     console.log(blogData)
 
     useEffect(() => {
@@ -15,7 +16,7 @@ export const BlogProvider = ({ children }) => {
     function loadBlogData() {
         API.getPosts()
             .then(res => {
-                setBlogData(res.data)
+                setBlogData({array: res.data})
             })
             .catch(err => console.log(err));
     };
@@ -28,25 +29,29 @@ export const BlogProvider = ({ children }) => {
     function updateInputChange(event) {
         let value = event.target.value;
         const path = event.target.dataset.path;
-        updatePathHandler(setBlogData, path, {...blogData}, value)
+        const index = parseInt(event.target.dataset.index)
+        updatePathHandler(setBlogData, path, blogData.array, value, index)
     }
     
     function updateUpdateQueue (event) {
         const path = event.target.dataset.path;
-        updatePathHandler(setBlogUpdateQueue, path, {...blogUpdateQueue}, true)
+        const index = parseInt(event.target.dataset.index)
+        updatePathHandler(setBlogUpdateQueue, path, blogUpdateQueue.array, true, index)
     }
     
-    function updateBlogData(path, value) {
-        API.updateBlog(blogData._id,{[path]: value})
+    function updateBlogData(path, value, id, index) {
+        API.updatePost(id, {[path]: value})
            .then(res => {
-            updatePathHandler(setBlogUpdateQueue, path, {...blogUpdateQueue}, false)
+            updatePathHandler(setBlogUpdateQueue, path, blogUpdateQueue.array, false, parseInt(index))
             })
             .catch(err => console.log(err));
     }
     
-    function updatePathHandler (updateFunction, path, object, value) {
-        let newState = object
-        var schema = newState;  // a moving reference to internal objects within obj
+    function updatePathHandler (updateFunction, path, array, value, index) {
+        if (array[index] === undefined) {array[index]= {}}
+        console.log(array)
+        let newState = array[index]
+        var schema = newState;  // a moving reference to internal object within obj
         var pList = path.split('.');
         for(var i = 0; i < pList.length-1; i++) {
           var elem = pList[i];
@@ -54,7 +59,7 @@ export const BlogProvider = ({ children }) => {
           schema = schema[elem];
         }
         schema[pList[pList.length-1]] = value;
-        updateFunction(newState)
+        updateFunction({array: array})
     }
 
     if (blogData === "loading")

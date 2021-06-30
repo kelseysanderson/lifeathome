@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {BlogContext} from '../../Context/SiteContext'
+import {BlogContext} from '../../Context/BlogContext'
 
 const BlogDataInput = (props) => {
   const {blogData, blogUpdateQueue, handleInputChange, updateBlogData} = useContext(BlogContext);
@@ -10,12 +10,12 @@ const BlogDataInput = (props) => {
 
   //FINDS VALUE OUT OF PATH STRING
   const valueArr = props.path.split(".")
-  const value = valueArr.reduce((object, property) => object[property], blogData)
+  const value = valueArr.reduce((object, property) => object[property], blogData.array[props.index])
 
   //FINDS QUEUE STATUS
   const updateQueueStatus = () => { 
     try {
-      return valueArr.reduce((object, property) => object[property], blogUpdateQueue)
+      return valueArr.reduce((object, property) => object[property], blogUpdateQueue.array[props.index])
     } catch {
       return false
     }
@@ -30,6 +30,7 @@ const BlogDataInput = (props) => {
         <textarea 
           className="management-input"
           data-path={props.path}
+          data-index={props.index}
           value={value}
           onChange={handleInputChange}
           style={updateQueueStatus() ? ({border: "2px solid red", width: "100%", height: "200px", resize: "none"}) : ({border: "2px solid green", width: "100%", height: "200px", resize: "none"})} 
@@ -37,6 +38,7 @@ const BlogDataInput = (props) => {
           <input 
           className="management-input"
           data-path={props.path}
+          data-index={props.index}
           value={value}
           onChange={handleInputChange} 
           style={updateQueueStatus() ? ({border: "2px solid red", width: "100%"}) : ({border: "2px solid green", width: "100%"})}
@@ -44,7 +46,7 @@ const BlogDataInput = (props) => {
         {/* RENDERS UPDATE BUTTON */}
         {updateQueueStatus() ? (
         <>
-          <button className="red-btn" onClick={() => updateBlogData(props.path, value)}>Update</button>
+          <button className="red-btn" onClick={() => updateBlogData(props.path, value, props._id, props.index)}>Update</button>
         </>) : (<></>)}
         <br></br>
       </div>

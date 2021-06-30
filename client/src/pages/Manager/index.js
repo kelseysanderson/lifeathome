@@ -1,17 +1,17 @@
-import React, {useState, createContext, useEffect, useContext} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { SiteContext } from '../../Context/SiteContext';
+import { BlogContext } from '../../Context/BlogContext';
 import API from "../../utils/API.js";
 import { Grid, Container } from '@material-ui/core';
 
 import SiteDataInput from "../../components/Inputs/siteDataInput"
-import BlogHandler from "./blogHandler"
-import BlogInput from "./blogInput"
-import './style.css'
+import BlogDataInput from "../../components/Inputs/blogDataInput"
 
-export const BlogContext = createContext()
+import './style.css'
 
 const Manager = (props) => {
   const {sitePage} = useContext(SiteContext);
+  const {blogData} = useContext(BlogContext)
   const [blogArr, setBlogArr] = useState("loading")
   const [blogForm, setBlogForm] = useState({
     title: "",
@@ -19,27 +19,10 @@ const Manager = (props) => {
     img_src: "",
     body: ""
   })
-  // const [dataObj, setDataObj] = useState("loading");
-  // const [loginForm, setLoginForm] = useState({
-  //   login: {
-  //     username: "",
-  //     password: ""
-  //   }
-  // })
-  // const [updateQueue, setUpdateQueue] = useState({})
 
   useEffect(() => {
-    // loadSiteData();
     loadBlogData()
   }, []);
-
-  // function loadSiteData() {
-  //   API.getSite()
-  //     .then(res => {
-  //       setDataObj(res.data[1])
-  //     })
-  //     .catch(err => console.log(err));
-  // };
 
   function loadBlogData() {
     API.getPosts()
@@ -48,24 +31,6 @@ const Manager = (props) => {
       })
       .catch(err => console.log(err));
   }
-
-  // function handleLoginInputChange(event) {
-  //   console.log(event.target)
-  //   console.log(event.target.dataset)
-  //   // Getting the value and name of the input which triggered the change
-  //   let value = event.target.value;
-  //   const key1 = event.target.dataset.key1;
-  //   const key2 = event.target.dataset.key2;
-
-  //   // Updating the input's state
-  //   setLoginForm({
-  //     ...loginForm,
-  //     [key1]: {
-  //       ...loginForm[key1],
-  //       [key2]: value
-  //     }
-  //   });;
-  // };
 
   function handleBlogInputChange(event) {
     console.log(event.target)
@@ -102,81 +67,28 @@ const Manager = (props) => {
       .catch(err => console.log(err));
   }
 
-  // function updateAdmin() {
-  //   API.updateSite(dataObj._id, loginForm)
-  //   .then(res => {
-  //     console.log(res)
-  //     setLoginForm({
-  //       login: {
-  //         username: "",
-  //         password: ""
-  //       }
-  //     })
-  //   })
-  //   .catch(err => console.log(err));
-  // }
-
-  //DYNAMIC REST FUNCTIONALITY
-  // function handleInputChange (event) {
-  //   updateInputChange(event)
-  //   updateUpdateQueue(event)
-  // }
-
-  // function updateInputChange(event) {
-  //   let value = event.target.value;
-  //   const path = event.target.dataset.path;
-  //   updatePathHandler(setDataObj, path, {...dataObj}, value)
-  // }
-
-  // function updateUpdateQueue (event) {
-  //   const path = event.target.dataset.path;
-  //   updatePathHandler(setUpdateQueue, path, {...updateQueue}, true)
-  // }
-
-  // function updateSiteData(path, value) {
-  //   API.updateSite(dataObj._id,{[path]: value})
-  //     .then(res => {
-  //       updatePathHandler(setUpdateQueue, path, {...updateQueue}, false)
-  //     })
-  //     .catch(err => console.log(err));
-  // }
-
-  // function updatePathHandler (updateFunction, path, object, value) {
-  //   let newState = object
-  //   var schema = newState;  // a moving reference to internal objects within obj
-  //   var pList = path.split('.');
-  //   for(var i = 0; i < pList.length-1; i++) {
-  //     var elem = pList[i];
-  //     if( !schema[elem] ) schema[elem] = {}
-  //     schema = schema[elem];
-  //   }
-  //   schema[pList[pList.length-1]] = value;
-  //   updateFunction(newState)
-  // }
-
   return (
     <>
       {sitePage === "loading" || blogArr === "loading" ? (<><h1>LOADING</h1></>) : (
         <Container maxWidth="xl"  style={{ marginTop: "30px", width:"80%" }}>
           <Grid container spacing={4}>
-              <BlogContext.Provider value={{ blogForm, handleBlogInputChange }}>
-                  <Grid item xs={12}className="logoContainer">
+                  {/* <Grid item xs={12}className="logoContainer">
                     <div className="management-card">
                       <h2>New Post</h2>
-                      <BlogInput key1="title" />
-                      <BlogInput key1="description" />
-                      <BlogInput key1="img_src" />
-                      <BlogInput key1="body" inputType={"textarea"}/>
+                      <BlogDataInput path="title" />
+                      <BlogDataInput path="description" />
+                      <BlogDataInput path="img_src" />
+                      <BlogDataInput path="body" inputType={"textarea"}/>
                       <button className="green-btn" onClick={submitPost}>Submit Post</button>
                     </div>
-                  </Grid>
+                  </Grid> */}
 
                   <Grid item xs={12} className="logoContainer" >
                     <div>
                       <h2>Blog Management</h2>
                       <ul className="database-management">
-                        {blogArr.map((post, index) => (
-                          <BlogHandler key={index} post={post} deleteFunction={blogDelete} />
+                        {blogData.array.map((post, index) => (
+                          <BlogDataInput {...post} index={index} path="title"/>
                         ))}
                       </ul>
                     </div>
@@ -289,7 +201,6 @@ const Manager = (props) => {
                       <SiteDataInput path="login.password" />
                     </div>
                   </Grid>
-              </BlogContext.Provider>
           </Grid>
         </Container>
       )}
