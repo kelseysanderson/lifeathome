@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import SocialMediaIcons from '../../components/SocialMediaIcons';
 import { Grid } from '@material-ui/core';
 import ContactForm from './ContactForm';
 import { InlineWidget } from "react-calendly";
-
 import './style.css'
 
 const Contact = (props) => {
@@ -27,9 +26,9 @@ const Contact = (props) => {
                     </div>
                 </Grid>
             </Grid>
-            </div>
+        </div>
     )
-    
+
 }
 
 export default Contact;

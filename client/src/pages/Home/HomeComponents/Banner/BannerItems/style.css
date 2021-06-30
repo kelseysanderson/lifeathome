@@ -7,24 +7,15 @@
     color: #AED3BE
 }
 
-/* .banner-image { */
-    /* float:left; */
-    /* width: 80%; */
-    /* border-radius: 30px; */
-    /* margin-left: 10%;
-    -moz-box-shadow: 0 0 3px rgb(170, 170, 170);
-    -webkit-box-shadow: 0 0 3px rgb(170, 170, 170);
-    box-shadow: 0 0 5px rgb(151, 151, 151);
-} */
 .banner-description {
     font-size: 15px !important;
+    font-family: 'Mulish', 'Verdana', 'sans-serif';
     width:80%;
-    margin-left: 10%;
+    margin-left: 14%;
     letter-spacing: 0.25px;
     line-height: 20px;
     text-align:left;
     margin-bottom: 15px !important;
-
 }
 
 .banner-btn {

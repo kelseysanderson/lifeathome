@@ -14,6 +14,10 @@ h1, h2 {
    font-family: 'Baloo 2', 'Roboto', 'Verdana', 'sans-serif'
 }
 
+textarea {
+   font-family: 'Mulish', 'Verdana', 'sans-serif';
+}
+
 .orange-btn {
    padding:7px;
    background-color: #EB712F;
@@ -29,11 +33,12 @@ h1, h2 {
 }
 
 .red-btn {
+   margin: 5px;
    padding:7px;
    background-color: #e94343;
    border-radius: 5px;
    color:white;
-   border: 2px solid #e94343;
+   border: 2px solid #e94343; 
 }
 .red-btn:hover {
    background-color: #ff5d5d;
@@ -60,6 +65,27 @@ h1, h2 {
    font-family: 'Baloo 2' !important; 
    font-weight: 200;
 }
-textarea {
+textarea, input{
    resize: none;
+   outline:none;
+}
+
+.dark-background {
+   background-color:#2E343C ;
+}
+
+.light-text {
+   color:white;
+}
+
+#align-btn-left {
+   margin-left: 150px !important;
+}
+
+.full-width {
+   width:100%;
+}
+
+.auto-width {
+   width:auto;
 }

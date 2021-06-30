@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
-import {SiteContext} from '../../Context/SiteContext'
+import {SiteContext} from '../../Context/SiteContext';
+import TextareaAutosize from 'react-textarea-autosize';
 
 const SiteDataInput = (props) => {
   const {siteData, siteUpdateQueue, handleInputChange, updateSiteData} = useContext(SiteContext);
@@ -24,27 +25,29 @@ const SiteDataInput = (props) => {
   return (
     <>
       <div className="data-form">
-        <label>{label}:</label>
+        {/* <label>{label}:</label> */}
         {/* TEXTAREA VS. INPUT */}
         {props.inputType === "textarea" ? (
-        <textarea 
-          className="management-input"
+        <TextareaAutosize
+          // className="management-input"
+          className={props.className}
           data-path={props.path}
           value={value}
           onChange={handleInputChange}
-          style={updateQueueStatus() ? ({border: "2px solid red", width: "100%", height: "200px", resize: "none"}) : ({border: "2px solid green", width: "100%", height: "200px", resize: "none"})} 
+          style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding:"8px",}) : ({border: "0.25px solid #AED3BE", borderRadius: "5px", padding:"5px", outline:"none", resize: "none"})} 
         />) : (
           <input 
-          className="management-input"
+          // className="management-input"
+          className={props.className}
           data-path={props.path}
           value={value}
           onChange={handleInputChange} 
-          style={updateQueueStatus() ? ({border: "2px solid red", width: "100%"}) : ({border: "2px solid green", width: "100%"})}
+          style={updateQueueStatus() ? ({border: "0.25px solid #EE5F5F", resize: "none", padding:"8px",}) : ({border: "0.25px solid #AED3BE", borderRadius: "5px", padding:"5px", resize: "none"})}
         />)}
         {/* RENDERS UPDATE BUTTON */}
         {updateQueueStatus() ? (
         <>
-          <button className="red-btn" onClick={() => updateSiteData(props.path, value)}>Update</button>
+          <button className="red-btn" id={props.updateBtn ? props.updateBtn : ""} onClick={() => updateSiteData(props.path, value)}>Update</button>
         </>) : (<></>)}
         <br></br>
       </div>

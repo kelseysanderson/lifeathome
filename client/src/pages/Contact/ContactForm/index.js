@@ -4,8 +4,7 @@ import emailjs from 'emailjs-com';
 import './style.css';
 
 function ContactUs() {
-  const {siteData} = useContext(SiteContext);
-
+  const { siteData } = useContext(SiteContext);
 
   function sendEmail(e) {
     e.preventDefault();
@@ -37,7 +36,6 @@ function ContactUs() {
         <div className="name-email-row">
           <label>Message: </label>
           <textarea className="name-email" name="message" />
-
         </div>
         <input className="contact-button" type="submit" value="Send" />
       </form>

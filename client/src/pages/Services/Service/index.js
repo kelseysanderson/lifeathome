@@ -7,6 +7,7 @@ import './style.css'
 const Service = (props) => {
     const siteData = useContext(SiteContext);
     const servicesPageData = siteData.servicesPage;
+    
     return (
         <>
             <div className="dropdown">
