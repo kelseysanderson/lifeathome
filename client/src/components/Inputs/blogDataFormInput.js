@@ -1,5 +1,6 @@
 import React, {useContext} from "react";
-import {BlogContext} from '../../Context/BlogContext'
+import {BlogContext} from '../../Context/BlogContext';
+import TextareaAutosize from 'react-textarea-autosize';
 
 const BlogDataFormInput = (props) => {
   const {blogDataForm, formInputChange} = useContext(BlogContext);
@@ -24,8 +25,8 @@ const BlogDataFormInput = (props) => {
         <label>{label}:</label>
         {/* TEXTAREA VS. INPUT */}
         {props.inputType === "textarea" ? (
-        <textarea 
-          className="management-input"
+        <textarea
+          className={props.className ? props.className : ""}          
           data-path={props.path}
           value={value()}
           onChange={formInputChange}

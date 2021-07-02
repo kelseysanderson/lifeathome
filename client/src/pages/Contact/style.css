@@ -1,26 +1,24 @@
-
 .contact-page {
-    margin-left:5%;
-    margin-right:5%;
-    height:100%;
-    margin-bottom: 5%;
+  margin-left:5%;
+  margin-right:5%;
+  height:100%;
+  margin-bottom: 5%;
 }
 
 .contact-header {
-    margin:0;
-    text-align: center;
-
+  margin:0;
+  text-align: center;
 }
 
 .contact-container{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    background-color:#2E343C ;
-    border-radius: 4px;
-    color:white;
-    height:100%;
-    margin:0 0 50px 0 ;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background-color:#2E343C ;
+  border-radius: 4px;
+  color:white;
+  height:100%;
+  margin:0 0 50px 0 ;
 }
 
 

@@ -1,48 +1,48 @@
 .comment-container {
-    margin-top:30px;
+  margin-top:30px;
 }
 
 #comment-title {
-    width: 70%;
-    margin:10px;
-    padding:0;
+  width: 70%;
+  margin:10px;
+  padding:0;
 }
 
 .add-comment-container {
-    width: 100%;
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
-    padding-bottom: 10px;
-    padding-top: 20px;
+  width: 100%;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  padding-bottom: 10px;
+  padding-top: 20px;
 }
 
 .username-text-area {
-    height:20px;
-    width:40%;
-    margin-bottom: 10px;
-    border:1px solid rgb(182, 182, 182);
-    border-radius: 5px;
+  height:20px;
+  width:40%;
+  margin-bottom: 10px;
+  border:1px solid rgb(182, 182, 182);
+  border-radius: 5px;
 }
 .comment-text-area{
-    width:61%;
-    height: 50px;
-    border-radius:10px;
-    border:1px solid rgb(182, 182, 182)
+  width:61%;
+  height: 50px;
+  border-radius:10px;
+  border:1px solid rgb(182, 182, 182)
 }
 
 .save-comment-btn {
-    padding: 8px 15px !important;
+  padding: 8px 15px !important;
 }
 #add-comment {
-    display:inherit;
-    justify-content: center;
-    align-items: center;
-    padding:18px;
-    margin:0;
-    margin-right:10px;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    font-size: 30px;
-    font-weight:lighter;
+  display:inherit;
+  justify-content: center;
+  align-items: center;
+  padding:18px;
+  margin:0;
+  margin-right:10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  font-size: 30px;
+  font-weight:lighter;
 }

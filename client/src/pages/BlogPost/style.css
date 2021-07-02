@@ -1,36 +1,36 @@
 .single-blog-header {
-    font-size: 40px;
-    font-weight: normal
+  font-size: 40px;
+  font-weight: normal
 }
 
 .single-post-image {
-    width: 50%;
-    text-align: center;
-    border-radius: 5px;
-    -moz-box-shadow: 0 0 3px rgb(170, 170, 170);
-    -webkit-box-shadow: 0 0 3px rgb(170, 170, 170);
-    box-shadow: 0 0 10px rgb(192, 192, 192);
-    padding: 10px 10px;
-    object-fit: cover;
+  width: 50%;
+  text-align: center;
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 3px rgb(170, 170, 170);
+  -webkit-box-shadow: 0 0 3px rgb(170, 170, 170);
+  box-shadow: 0 0 10px rgb(192, 192, 192);
+  padding: 10px 10px;
+  object-fit: cover;
 }
 
 .image-container {
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    background-color: rgb(231, 231, 231);
-    max-height: 500px;
-    margin-bottom:20px;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  background-color: rgb(231, 231, 231);
+  max-height: 500px;
+  margin-bottom:20px;
 }
 .blog-paragraphs {
-    font-size: 17px;
-    line-height: 23px;
-    word-spacing: 3px;
-    font-weight: lighter;
-    width: 70%;
-    white-space: pre-line;
+  font-size: 17px;
+  line-height: 23px;
+  word-spacing: 3px;
+  font-weight: lighter;
+  width: 70%;
+  white-space: pre-line;
 }
 
 .blog-post-container {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }

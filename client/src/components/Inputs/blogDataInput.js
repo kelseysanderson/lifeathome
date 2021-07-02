@@ -1,8 +1,10 @@
-import React, {useContext} from "react";
-import {BlogContext} from '../../Context/BlogContext'
+import React, { useContext } from "react";
+import { BlogContext } from '../../Context/BlogContext';
+import TextareaAutosize from 'react-textarea-autosize';
+
 
 const BlogDataInput = (props) => {
-  const {blogData, blogUpdateQueue, handleInputChange, updateBlogData} = useContext(BlogContext);
+  const { blogData, blogUpdateQueue, handleInputChange, updateBlogData } = useContext(BlogContext);
 
   //CREATES LABEL OUT OF PATH STRING
   const lastPath = props.path.split('.').pop()
@@ -13,7 +15,7 @@ const BlogDataInput = (props) => {
   const value = valueArr.reduce((object, property) => object[property], blogData.array[props.index])
 
   //FINDS QUEUE STATUS
-  const updateQueueStatus = () => { 
+  const updateQueueStatus = () => {
     try {
       return valueArr.reduce((object, property) => object[property], blogUpdateQueue.array[props.index])
     } catch {
@@ -27,27 +29,27 @@ const BlogDataInput = (props) => {
         <label>{label}:</label>
         {/* TEXTAREA VS. INPUT */}
         {props.inputType === "textarea" ? (
-        <textarea 
-          className="management-input"
-          data-path={props.path}
-          data-index={props.index}
-          value={value}
-          onChange={handleInputChange}
-          style={updateQueueStatus() ? ({border: "2px solid red", width: "100%", height: "200px", resize: "none"}) : ({border: "2px solid green", width: "100%", height: "200px", resize: "none"})} 
-        />) : (
-          <input 
-          className="management-input"
-          data-path={props.path}
-          data-index={props.index}
-          value={value}
-          onChange={handleInputChange} 
-          style={updateQueueStatus() ? ({border: "2px solid red", width: "100%"}) : ({border: "2px solid green", width: "100%"})}
-        />)}
+          <TextareaAutosize
+            className={props.className ? props.className : ""}
+            data-path={props.path}
+            data-index={props.index}
+            value={value}
+            onChange={handleInputChange}
+            style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "8px", }) : ({ border: "0.25px solid #AED3BE", width: '100%', borderRadius: "5px", padding: "5px", outline: "none", resize: "none" })}
+          />) : (
+          <input
+            className={props.className ? props.className : ""}
+            data-path={props.path}
+            data-index={props.index}
+            value={value}
+            onChange={handleInputChange}
+            style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "8px", }) : ({ border: "0.25px solid #AED3BE", borderRadius: "5px", padding: "5px", resize: "none" })}
+          />)}
         {/* RENDERS UPDATE BUTTON */}
         {updateQueueStatus() ? (
-        <>
-          <button className="red-btn" onClick={() => updateBlogData(props.path, value, props._id, props.index)}>Update</button>
-        </>) : (<></>)}
+          <>
+            <button className="red-btn" onClick={() => updateBlogData(props.path, value, props._id, props.index)}>Update</button>
+          </>) : (<></>)}
         <br></br>
       </div>
     </>

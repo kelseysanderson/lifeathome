@@ -1,16 +1,18 @@
 import React from 'react';
 import moment from 'moment';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-// import {Grid} from '@material-ui/core'
+import BlogDataInput from '../../../components/Inputs/blogDataInput';
+import BlogDataDelete from '../../../components/DeleteButtons/blogDataDelete';
+import { NavLink } from 'react-router-dom';
 import './style.scss';
 
-const Post = ({ posts, loading, handlePostClick }) => {
+const Post = ({ posts, index, loggedIn, loading, toggleClass, toggleEditFunction, edit }) => {
 
   if (loading) {
     return <h2>Loading...</h2>;
   }
+  console.log(index)
 
   return (
     <>
@@ -31,16 +33,39 @@ const Post = ({ posts, loading, handlePostClick }) => {
               </span>
             </div>
             <div className="blog-card__info">
-              <h5>{posts.title}</h5>
-              <p className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> Mason Marshall</p>
-              <p>{posts.description}</p>
+              {loggedIn && edit === true ? (
+                <>
+                  <BlogDataInput {...posts} key={posts.title} index={index} className="admin-blog-input" path="title" />
+                  <BlogDataInput {...posts} key={posts.author} index={index} className="admin-blog-input" path="author" />
+                  <BlogDataInput {...posts} key={posts.description} index={index} className="admin-blog-input" path="description" />
+                  <div className="likes-container">
+                    <NavLink exact to={{ pathname: `/blog/${posts._id}`, aboutProps: { toggleEditFunction: toggleEditFunction, toggleClass: toggleClass } }}>
+                      <button className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>READ MORE</button>
+                    </NavLink>
+                    <div>
+                      <IconButton aria-label="add to favorites">
+                        <FavoriteIcon />
+                      </IconButton>
+                      <BlogDataDelete postId={posts._id} />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <h5>{posts.title}</h5>
+                  <p className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> {posts.author}</p>
+                  <p>{posts.description}</p>
+                  <div className="likes-container">
+                    <NavLink exact to={{ pathname: `/blog/${posts._id}`, aboutProps: { toggleEditFunction: toggleEditFunction, toggleClass: toggleClass } }}>
+                      <button className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>READ MORE</button>
+                    </NavLink>
+                    <IconButton aria-label="add to favorites">
+                      <FavoriteIcon />
+                    </IconButton>
+                  </div>
+                </>
+              )}
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <div className="likes-container">
-                <a onClick={() => handlePostClick(posts._id)} className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>READ MORE</a>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-              </div>
             </div>
           </article>
         </div>
@@ -49,22 +74,6 @@ const Post = ({ posts, loading, handlePostClick }) => {
           </div>
         </section>
       </div>
-      {/* 
-        <Grid key={posts._id} container direction="row" spacing={3} alignItems="center" style={{ borderBottom: "1px solid grey", marginBottom: "20px", width: "70%", marginLeft: "15%" }}>
-            <Grid item container direction="column" xs={6} spacing={2}>
-                <Grid item xs>
-                    <img className="post-image" src={posts.img_src} alt="smarthome with phone app"></img>
-                </Grid>
-            </Grid>
-            <Grid style={{ border: "none" }} item xs={6}>
-                <div className="s-text">
-                    <h2>{posts.title}</h2>
-                    <p>{posts.description}</p>
-                    <button className="green-btn post-btn" onClick={() => handlePostClick(posts._id)}>See Full Post</button>
-                </div>
-                <p id="post-subtext">{moment(posts.date_posted).format("LL")}</p>
-            </Grid>
-        </Grid> */}
     </>
 
   );

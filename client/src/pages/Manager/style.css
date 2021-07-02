@@ -1,37 +1,37 @@
 ul.database-management{
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    columns: 3;
-    -webkit-columns: 3;
-    -moz-columns: 3;
-    margin:0;
-    padding:0;
-    
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  columns: 3;
+  -webkit-columns: 3;
+  -moz-columns: 3;
+  margin:0;
+  padding:0;
+  
 }
 ul.database-management li{
-    padding:20px;
-    list-style-type:none;
+  padding:20px;
+  list-style-type:none;
 }
 
 .database-management-title {
-    margin:5px 0;
+  margin:5px 0;
 }
 
 .update-btn {
-    padding:15px 70px !important;
-    margin-bottom: 50px;
+  padding:15px 70px !important;
+  margin-bottom: 50px;
 }
 
 .blog-body{
-    height:500px;
-    width:80vw;
+  height:500px;
+  width:80vw;
 }
 
 .management-input{
-    width:20vw;
-    margin-bottom: 10px;
-    height:25px;
+  width:20vw;
+  margin-bottom: 10px;
+  height:25px;
 }
 

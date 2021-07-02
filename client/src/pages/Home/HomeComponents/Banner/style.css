@@ -1,34 +1,31 @@
 .banner-visual {
-    margin-top: -125px;
+  margin-top: -125px;
 }
 .curved-div {
-    position: relative;
-    background: #2E343C;
-    color: black;
-    /* text-align: center; */
-    overflow: hidden;   
+  position: relative;
+  background: #2E343C;
+  color: black;
+  overflow: hidden;   
 }
 .curved-div svg {
-    display: block;
+  display: block;
 }
 .curved-div.upper {
-    background: #fff;
-    
+  background: #fff;
 }
 .curved-div h1 {
-    font-size: 6rem;
-    margin-top:0rem;
+  font-size: 6rem;
+  margin-top:0rem;
 }
 .curved-div p {
-    font-size: 1rem;
-    margin:0 5rem 0rem 5rem;
+  font-size: 1rem;
+  margin:0 5rem 0rem 5rem;
 }
-
 svg{
-    stroke: rgb(255,255,255);
-    stroke-width: 0;}
-
+  stroke: rgb(255,255,255);
+  stroke-width: 0;
+}
 .banner-items{
-    color:white;
-    position:relative
+  color:white;
+  position:relative
 }

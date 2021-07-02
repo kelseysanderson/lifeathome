@@ -1,4 +1,13 @@
-/* .blog-container {
-    display:flex;
-    flex-direction: column;
-} */
+.sidebar {
+    padding: 10px 30px;
+    /* border-radius: 3px; */
+    margin-bottom:50px;
+}
+
+.sidebar-header {
+    color: #2E343C 
+}
+
+.blog-container{
+    border-top: 1px solid black;
+}

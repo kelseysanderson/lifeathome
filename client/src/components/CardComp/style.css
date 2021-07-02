@@ -1,0 +1,11 @@
+.card {
+    overflow-y: auto;
+    max-width: 345;
+    margin-top: 15px;
+    font-family: 'Mulish', 'Verdana', 'sans-serif';
+}
+
+.card-image {
+    height: 0;
+    padding-top: 56.25%
+}

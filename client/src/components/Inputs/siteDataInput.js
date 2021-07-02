@@ -6,8 +6,8 @@ const SiteDataInput = (props) => {
   const {siteData, siteUpdateQueue, handleInputChange, updateSiteData} = useContext(SiteContext);
 
   //CREATES LABEL OUT OF PATH STRING
-  const lastPath = props.path.split('.').pop()
-  const label = lastPath.split("_").map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')
+  // const lastPath = props.path.split('.').pop()
+  // const label = lastPath.split("_").map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')
 
   //FINDS VALUE OUT OF PATH STRING
   const valueArr = props.path.split(".")
@@ -29,16 +29,14 @@ const SiteDataInput = (props) => {
         {/* TEXTAREA VS. INPUT */}
         {props.inputType === "textarea" ? (
         <TextareaAutosize
-          // className="management-input"
-          className={props.className}
+          className={props.className ? props.className : ""}          
           data-path={props.path}
           value={value}
           onChange={handleInputChange}
           style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding:"8px",}) : ({border: "0.25px solid #AED3BE", borderRadius: "5px", padding:"5px", outline:"none", resize: "none"})} 
         />) : (
           <input 
-          // className="management-input"
-          className={props.className}
+          className={props.className ? props.className : ""}
           data-path={props.path}
           value={value}
           onChange={handleInputChange} 

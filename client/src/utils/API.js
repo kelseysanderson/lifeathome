@@ -64,4 +64,21 @@ export default {
     return axios.delete("/api/email/" + id);
   },
 
+    //Email
+    getContributors: function () {
+      return axios.get("/api/contributor");
+    },
+    getContributor: function (id) {
+      return axios.get("/api/contributor/" + id);
+    },
+    postContributor: function (newContributor) {
+      return axios.post("/api/contributor", newContributor);
+    },
+    updateContributor: function (id, newContributor) {
+      return axios.put("/api/contributor/" + id, newContributor);
+    },
+    deleteContributor: function (id) {
+      return axios.delete("/api/contributor/" + id);
+    },
+
 }

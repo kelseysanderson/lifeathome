@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import API from '../../../../utils/API';
 import moment from 'moment';
-import showRepliesIcon from '../../../../assets/showreplies.png';
-import hideRepliesIcon from '../../../../assets/hidereplies.png';
+import showRepliesIcon from '../../../../assets/commentIcons/showreplies.png';
+import hideRepliesIcon from '../../../../assets/commentIcons/hidereplies.png';
 import './style.css';
 
 const Comments = (props) => {

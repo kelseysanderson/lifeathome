@@ -1,13 +1,15 @@
-import React, {useContext} from "react";
-import {BlogContext} from '../../Context/BlogContext'
+import React, { useContext } from "react";
+import { BlogContext } from '../../Context/BlogContext';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 
 const BlogDataDelete = (props) => {
-  const {deletePost} = useContext(BlogContext);
+  const { deletePost } = useContext(BlogContext);
 
   return (
-    <>
-      <button><button className="red-btn" onClick={() => deletePost(props.postId)}>Delete Post</button></button>
-    </>
+      <IconButton onClick={() => deletePost(props.postId)}>
+        <DeleteIcon />
+      </IconButton>
   )
 }
 

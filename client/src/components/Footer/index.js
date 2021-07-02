@@ -9,9 +9,9 @@ const Footer = (props) => {
     <footer>
       <section className="container">
         <div className="footer-contact">
-          <p>{siteData.siteData.contact.name}</p>
-          <p>{siteData.siteData.contact.location}</p>
-          <p>{siteData.siteData.contact.email}</p>
+          <p>{siteData.siteData.contact.name ? siteData.siteData.contact.name : ""}</p>
+          <p>{siteData.siteData.contact.location ? siteData.siteData.contact.location :""}</p>
+          <p>{siteData.siteData.contact.email ? siteData.siteData.contact.email : ""}</p>
         </div>
         <SocialMediaIcons/>
         <div>

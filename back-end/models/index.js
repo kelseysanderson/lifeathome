@@ -3,5 +3,6 @@ module.exports = {
   Email: require("./email"),
   Post: require("./post"),
   Comment: require("./comment"),
-  Service: require("./service")
+  Service: require("./service"),
+  Contributor: require("./contributor")
 };

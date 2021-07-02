@@ -1,18 +1,18 @@
 .additional-info{
-    margin: 100px 0 100px 0;
+  margin: 100px 0 100px 0;
 }
 
 .top-bottom-border {
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 .mission-text {
-    padding:50px;
-    text-align: center;
+  padding:50px;
+  text-align: center;
 }
 
 .learn-more-btn {
-    display:flex;
-    justify-content: center;
+  display:flex;
+  justify-content: center;
 }
