@@ -64,4 +64,21 @@ export default {
     return axios.delete("/api/email/" + id);
   },
 
+    //Service
+    getServices: function () {
+      return axios.get("/api/service");
+    },
+    getService: function (id) {
+      return axios.get("/api/service/" + id);
+    },
+    postService: function (newService) {
+      return axios.post("/api/service", newService);
+    },
+    updateService: function (id, newService) {
+      return axios.put("/api/service/" + id, newService);
+    },
+    deleteService: function (id) {
+      return axios.delete("/api/service/" + id);
+    },
+
 }
