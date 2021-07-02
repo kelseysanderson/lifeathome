@@ -4,6 +4,13 @@ module.exports = {
   findAll: function(req, res) {
     db.Post
       .find(req.query)
+      .populate({
+        path: 'comments',
+          populate: {
+            path: "replies",
+            model: "Comment"
+          }
+        })
       .sort({ date_posted: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));

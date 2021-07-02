@@ -6,11 +6,12 @@ export default {
   getSite: function () {
     return axios.get("/api/site");
   },
-  replaceSite: function (id, newData) {
-    return axios.put("/api/site/"+ id, newData);
-  },
   updateSite: function (id, newData) {
     return axios.put("/api/site/"+ id, newData);
+  },
+  updateLogin: function (id, newData) {
+    console.log(newData)
+    return axios.put("/api/site/auth/" + id, newData)
   },
 
   //Post
