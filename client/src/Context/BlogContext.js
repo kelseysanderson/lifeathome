@@ -14,6 +14,7 @@ export const BlogProvider = ({ children }) => {
             body: ""
         }
     })
+    
     const [blogUpdateQueue, setBlogUpdateQueue] = useState({array: []})
 
     useEffect(() => {

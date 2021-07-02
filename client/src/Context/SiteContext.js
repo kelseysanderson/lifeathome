@@ -5,7 +5,14 @@ export const SiteContext = createContext();
 
 export const SiteProvider = ({ children }) => {
     const [siteData, setSiteData] = useState("loading");
+    const [siteDataForm, setSiteDataForm] = useState({
+        login: {
+            username: "",
+            password: "",
+        }
+    })
     const [siteUpdateQueue, setSiteUpdateQueue] = useState({})
+    console.log(siteDataForm)
 
     useEffect(() => {
         loadSiteData();
@@ -18,6 +25,42 @@ export const SiteProvider = ({ children }) => {
             })
             .catch(err => console.log(err));
     };
+
+        //FORM FUNCTIONS
+        function formInputChange(event) {
+            let value = event.target.value;
+            const path = event.target.dataset.path;
+            updatePathHandlerForm(setSiteDataForm, path, {...siteDataForm}, value)
+        }
+    
+        function updateLoginSiteData() {
+
+            API.updateSite(siteData._id, siteDataForm)
+                .then(() => {
+                    setSiteDataForm({
+                        login: {
+                            username: "",
+                            password: "",
+                        }
+                    })
+                    loadSiteData()
+                })
+                .catch(err => console.log(err));
+        }
+    
+        function updatePathHandlerForm (updateFunction, path, object, value) {
+            var schema = object;  // a moving reference to internal object within obj
+            var pList = path.split('.');
+            for(var i = 0; i < pList.length-1; i++) {
+              var elem = pList[i];
+              if( !schema[elem] ) schema[elem] = {}
+              schema = schema[elem];
+            }
+            schema[pList[pList.length-1]] = value;
+            updateFunction(object)
+        }
+    
+        //UPDATE FUNCTIONS
 
     function handleInputChange (event) {
         updateInputChange(event)
@@ -60,7 +103,7 @@ export const SiteProvider = ({ children }) => {
         return (<h1>LOADING</h1>);
 
     return (
-        <SiteContext.Provider value={{siteData, siteUpdateQueue, handleInputChange, updateSiteData}}>
+        <SiteContext.Provider value={{siteData, siteUpdateQueue, siteDataForm, handleInputChange, updateSiteData, formInputChange, updateLoginSiteData}}>
             {children}
         </SiteContext.Provider>
     );

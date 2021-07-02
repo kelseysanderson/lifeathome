@@ -15,7 +15,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Manager from './pages/Manager'
 
-
 function App() {
   return (
     <SiteProvider>
