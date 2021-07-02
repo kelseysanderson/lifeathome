@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import { BlogContext } from '../../Context/BlogContext';
-import TextareaAutosize from 'react-textarea-autosize';
-
 
 const BlogDataInput = (props) => {
   const { blogData, blogUpdateQueue, handleInputChange, updateBlogData } = useContext(BlogContext);
@@ -29,13 +27,13 @@ const BlogDataInput = (props) => {
         <label>{label}:</label>
         {/* TEXTAREA VS. INPUT */}
         {props.inputType === "textarea" ? (
-          <TextareaAutosize
+          <textarea
             className={props.className ? props.className : ""}
             data-path={props.path}
             data-index={props.index}
             value={value}
             onChange={handleInputChange}
-            style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "8px", }) : ({ border: "0.25px solid #AED3BE", width: '100%', borderRadius: "5px", padding: "5px", outline: "none", resize: "none" })}
+            style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "5px", borderRadius: "5px", }) : ({ border: "0.25px solid #AED3BE", borderRadius: "5px", padding: "5px", outline: "none", resize: "none" })}
           />) : (
           <input
             className={props.className ? props.className : ""}
@@ -43,7 +41,7 @@ const BlogDataInput = (props) => {
             data-index={props.index}
             value={value}
             onChange={handleInputChange}
-            style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "8px", }) : ({ border: "0.25px solid #AED3BE", borderRadius: "5px", padding: "5px", resize: "none" })}
+            style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "5px", borderRadius: "5px"}) : ({ border: "0.25px solid #AED3BE", borderRadius: "5px", padding: "5px", resize: "none" })}
           />)}
         {/* RENDERS UPDATE BUTTON */}
         {updateQueueStatus() ? (

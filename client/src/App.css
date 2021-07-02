@@ -16,9 +16,6 @@ h1, h2 {
   color:#2E343C ;
 }
 
-textarea {
-  font-family: 'Mulish', 'Verdana', 'sans-serif';
-}
 
 .orange-btn {
   padding:7px;
@@ -70,6 +67,7 @@ textarea {
 textarea, input{
   resize: none;
   outline:none;
+  font-family: 'Mulish', 'Verdana', 'sans-serif';
 }
 
 .dark-background {
@@ -115,3 +113,4 @@ textarea, input{
   justify-content: center;
   align-items: center;
 }
+

@@ -1,8 +1,8 @@
 import React, {useContext} from "react";
-import {BlogContext} from '../../Context/BlogContext';
+import {ServicesContext} from '../../Context/ServicesContext'
 
-const BlogDataFormInput = (props) => {
-  const {blogDataForm, formInputChange} = useContext(BlogContext);
+const ServicesDataFormInput = (props) => {
+  const {servicesDataForm, formInputChange} = useContext(ServicesContext);
 
   //CREATES LABEL OUT OF PATH STRING
   const lastPath = props.path.split('.').pop()
@@ -12,7 +12,7 @@ const BlogDataFormInput = (props) => {
   const valueArr = props.path.split(".")
   const value = () => { 
     try {
-      return valueArr.reduce((object, property) => object[property], blogDataForm.post)
+      return valueArr.reduce((object, property) => object[property], servicesDataForm.post)
     } catch {
       return ""
     }
@@ -24,12 +24,12 @@ const BlogDataFormInput = (props) => {
         <label>{label}:</label>
         {/* TEXTAREA VS. INPUT */}
         {props.inputType === "textarea" ? (
-        <textarea
-          className={props.className ? props.className : ""}          
+        <textarea 
+          className="management-input"
           data-path={props.path}
           value={value()}
           onChange={formInputChange}
-          style={{ height: "200px", resize: "none"}} 
+          style={{width: "100%", height: "200px", resize: "none"}} 
         />) : (
           <input 
           className="management-input"
@@ -44,4 +44,4 @@ const BlogDataFormInput = (props) => {
   )
 }
 
-export default BlogDataFormInput
+export default ServicesDataFormInput

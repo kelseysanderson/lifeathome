@@ -1,22 +1,53 @@
 import React, {useContext} from "react";
 import { BlogContext } from '../../Context/BlogContext';
+import { ServicesContext } from '../../Context/ServicesContext';
 import { Grid, Container } from '@material-ui/core';
-
 import SiteDataInput from "../../components/Inputs/siteDataInput"
 import BlogDataInput from "../../components/Inputs/blogDataInput"
 import BlogDataFormInput from "../../components/Inputs/blogDataFormInput"
 import BlogDataDelete from "../../components/DeleteButtons/blogDataDelete"
-
+import ServicesDataInput from "../../components/Inputs/servicesDataInput"
+import ServicesDataFormInput from "../../components/Inputs/servicesDataFormInput"
+import ServicesDataDelete from "../../components/DeleteButtons/servicesDataDelete"
 import './style.css'
 
 const Manager = (props) => {
   const {blogData, postBlogData} = useContext(BlogContext)
-
+  const {servicesData, postServicesData} = useContext(ServicesContext)
 
   return (
     <>
         <Container maxWidth="xl"  style={{ marginTop: "30px", width:"80%" }}>
           <Grid container spacing={4}>
+
+                  <Grid item xs={12}className="logoContainer">
+                    <div className="management-card">
+                      <h2>Services</h2>
+                      <ServicesDataFormInput path="title" />
+                      <ServicesDataFormInput path="body" inputType="textarea"  />
+                      <ServicesDataFormInput path="img_src" />
+                      <ServicesDataFormInput path="button_text" />
+                      <ServicesDataFormInput path="internal_link" />
+                      <button className="green-btn" onClick={postServicesData}>Submit Post</button>
+                    </div>
+                  </Grid>
+
+                  <Grid item xs={12} className="logoContainer" >
+                    <div>
+                      <h2>Services Management</h2>
+                      <ul className="database-management">
+                        {servicesData.array.map((post, index) => (
+                          <>
+                            <ServicesDataInput key={"title" + index} {...post} index={index} path="title"/>
+                            <ServicesDataDelete key={"deleteBtn" + index} postId={post._id}/>
+                          </>
+                        ))}
+                      </ul>
+                    </div>
+                  </Grid>
+
+
+
                   <Grid item xs={12}className="logoContainer">
                     <div className="management-card">
                       <h2>New Post</h2>

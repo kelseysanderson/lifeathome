@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import API from '../../utils/API'
+import { BlogContext } from '../../Context/BlogContext';
 import Post from './Post';
 import TablePagination from '@material-ui/core/TablePagination';
 import { Grid, Container } from '@material-ui/core';
@@ -13,29 +13,18 @@ import CardComp from '../../components/CardComp'
 import './style.css';
 
 const Blog = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = React.useState(0);
-  const [postsPerPage, setPostsPerPage] = React.useState(10);
+  const { blogData } = useContext(BlogContext);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [postsPerPage, setPostsPerPage] = useState(10);
   const [editBtn, setEditBtn] = useState({ shown: false })
-  const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon className="icon" />, renderAddPost: <AddIcon /> });
+  const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon />, renderAddPost: <AddIcon /> });
   const [addPost, setAddPost] = useState({ shown: false, renderAddPost: <AddIcon /> })
 
-  // Get current posts
+  // Get current posts for pagination
   const indexOfLastPost = (currentPage * postsPerPage) + (postsPerPage);
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-  const loggedIn = false;
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      setLoading(true);
-      const res = await API.getPosts();
-      setPosts(res.data);
-      setLoading(false);
-    }
-    fetchPosts();
-  }, []);
+  const currentPosts = blogData.array.slice(indexOfFirstPost, indexOfLastPost);
+  const loggedIn = true;
 
   const handleChangePage = (event, newPage) => {
     setCurrentPage(newPage);
@@ -77,9 +66,6 @@ const Blog = () => {
     }
   }
 
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
   return (
     <div className="blog-container">
       {loggedIn ? (
@@ -125,17 +111,17 @@ const Blog = () => {
               </div>
             </div>
           </Grid>
-          <Grid item xs={12} sm={7}>
+          <Grid item xs={12} sm={8}>
             <div style={{ display: "flex", justifyContent: "center" }}>
               <h1>Blog Posts</h1>
             </div>
             {currentPosts.map((currentPosts, index) => (
-              <Post key={currentPosts._id} index={index} loggedIn={loggedIn} edit={toggleClass.edit} posts={currentPosts} loggedIn={loggedIn} toggleClass={toggleClass.render} toggleEditFunction={toggleEditBtn} loading={loading} />
+              <Post key={currentPosts._id} index={index} loggedIn={loggedIn} edit={toggleClass.edit} posts={currentPosts} loggedIn={loggedIn} toggleClass={toggleClass.render} toggleEditFunction={toggleEditBtn} />
             )
             )}
             <TablePagination
               component="div"
-              count={posts.length}
+              count={blogData.array.length}
               page={currentPage}
               onChangePage={handleChangePage}
               rowsPerPage={postsPerPage}

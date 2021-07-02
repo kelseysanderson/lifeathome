@@ -7,12 +7,7 @@ import BlogDataDelete from '../../../components/DeleteButtons/blogDataDelete';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
 
-const Post = ({ posts, index, loggedIn, loading, toggleClass, toggleEditFunction, edit }) => {
-
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
-  console.log(index)
+const Post = ({ posts, index, loggedIn, toggleClass, toggleEditFunction, edit }) => {
 
   return (
     <>
@@ -35,9 +30,9 @@ const Post = ({ posts, index, loggedIn, loading, toggleClass, toggleEditFunction
             <div className="blog-card__info">
               {loggedIn && edit === true ? (
                 <>
-                  <BlogDataInput {...posts} key={posts.title} index={index} className="admin-blog-input" path="title" />
-                  <BlogDataInput {...posts} key={posts.author} index={index} className="admin-blog-input" path="author" />
-                  <BlogDataInput {...posts} key={posts.description} index={index} className="admin-blog-input" path="description" />
+                  <BlogDataInput {...posts} index={index} className="admin-blog-input" path="title" />
+                  <BlogDataInput {...posts} index={index} className="admin-blog-input" path="author" />
+                  <BlogDataInput {...posts} index={index} className="admin-blog-input" path="description" />
                   <div className="likes-container">
                     <NavLink exact to={{ pathname: `/blog/${posts._id}`, aboutProps: { toggleEditFunction: toggleEditFunction, toggleClass: toggleClass } }}>
                       <button className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>READ MORE</button>
@@ -56,7 +51,7 @@ const Post = ({ posts, index, loggedIn, loading, toggleClass, toggleEditFunction
                   <p className="icon-link mr-3"><i className="fa fa-pencil-square-o"></i> {posts.author}</p>
                   <p>{posts.description}</p>
                   <div className="likes-container">
-                    <NavLink exact to={{ pathname: `/blog/${posts._id}`, aboutProps: { toggleEditFunction: toggleEditFunction, toggleClass: toggleClass } }}>
+                    <NavLink exact to={{ pathname: `/blog/${index}`, aboutProps: { toggleEditFunction: toggleEditFunction, toggleClass: toggleClass } }}>
                       <button className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>READ MORE</button>
                     </NavLink>
                     <IconButton aria-label="add to favorites">

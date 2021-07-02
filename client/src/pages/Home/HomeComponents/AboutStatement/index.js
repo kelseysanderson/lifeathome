@@ -27,7 +27,6 @@ const AboutStatement = (props) => {
       </div>
     </>
   )
-
 }
 
 export default AboutStatement;
