@@ -96,12 +96,11 @@ export const SiteProvider = ({ children }) => {
         schema[pList[pList.length - 1]] = value;
         updateFunction(newState)
     }
-    schema[pList[pList.length - 1]] = value;
-    updateFunction(newState)
-  }
+
 
   if (siteData === "loading")
     return (<h1>LOADING</h1>);
+  
 
     return (
         <SiteContext.Provider value={{ siteData, siteUpdateQueue, siteDataForm, handleInputChange, updateSiteData, formInputChange, updateLoginSiteData }}>
@@ -109,4 +108,5 @@ export const SiteProvider = ({ children }) => {
         </SiteContext.Provider>
     );
 };
+
 
