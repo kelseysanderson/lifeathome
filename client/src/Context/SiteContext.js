@@ -13,17 +13,17 @@ export const SiteProvider = ({ children }) => {
     })
     const [siteUpdateQueue, setSiteUpdateQueue] = useState({})
 
-  useEffect(() => {
-    loadSiteData();
-  }, []);
+    useEffect(() => {
+        loadSiteData();
+    }, []);
 
-  function loadSiteData() {
-    API.getSite()
-      .then(res => {
-        setSiteData(res.data[0])
-      })
-      .catch(err => console.log(err));
-  };
+    function loadSiteData() {
+        API.getSite()
+            .then(res => {
+                setSiteData(res.data[0])
+            })
+            .catch(err => console.log(err));
+    };
 
     //FORM FUNCTIONS
     function formInputChange(event) {
@@ -96,17 +96,16 @@ export const SiteProvider = ({ children }) => {
         schema[pList[pList.length - 1]] = value;
         updateFunction(newState)
     }
-    schema[pList[pList.length - 1]] = value;
-    updateFunction(newState)
-  }
 
-  if (siteData === "loading")
-    return (<h1>LOADING</h1>);
+
+    if (siteData === "loading")
+        return (<h1>LOADING</h1>);
 
     return (
         <SiteContext.Provider value={{ siteData, siteUpdateQueue, siteDataForm, handleInputChange, updateSiteData, formInputChange, updateLoginSiteData }}>
             {children}
         </SiteContext.Provider>
     );
-};
+}
+
 
