@@ -98,8 +98,9 @@ export const SiteProvider = ({ children }) => {
     }
 
 
-    if (siteData === "loading")
-        return (<h1>LOADING</h1>);
+  if (siteData === "loading")
+    return (<h1>LOADING</h1>);
+  
 
     return (
         <SiteContext.Provider value={{ siteData, siteUpdateQueue, siteDataForm, handleInputChange, updateSiteData, formInputChange, updateLoginSiteData }}>
@@ -107,5 +108,6 @@ export const SiteProvider = ({ children }) => {
         </SiteContext.Provider>
     );
 }
+
 
 

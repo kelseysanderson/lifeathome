@@ -34,7 +34,7 @@ const Post = ({ posts, index, loggedIn, toggleClass, toggleEditFunction, edit })
                   <BlogDataInput {...posts} index={index} className="admin-blog-input" path="author" />
                   <BlogDataInput {...posts} index={index} className="admin-blog-input" path="description" />
                   <div className="likes-container">
-                    <NavLink exact to={{ pathname: `/blog/${posts._id}`, aboutProps: { toggleEditFunction: toggleEditFunction, toggleClass: toggleClass } }}>
+                    <NavLink exact to={{ pathname: `/blog/${index}`, aboutProps: { toggleEditFunction: toggleEditFunction, toggleClass: toggleClass } }}>
                       <button className="btn btn--with-icon"><i className="btn-icon fa fa-long-arrow-right"></i>READ MORE</button>
                     </NavLink>
                     <div>
