@@ -5,3 +5,22 @@
 .green-background{
     background-color: #AED3BE;
 }
+.card {
+    margin: 15px 0 25px 0 ;
+     font-family: 'Mulish', 'Verdana', 'sans-serif';
+     box-shadow:none !important;
+ }
+
+ .card-subtitle {
+    display:flex;
+    justify-content:center;
+    align-items:center; 
+    font-size:15px;
+    margin-bottom: 10px !important;
+ }
+ .card-subtitle-text {
+    text-align: center;
+    margin-left: 3px;
+     padding-top: 5px;
+
+ }

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { SiteContext } from '../../Context/SiteContext';
 import Banner from './HomeComponents/Banner';
 import AboutStatement from './HomeComponents/AboutStatement';
 import Stats from './HomeComponents/Stats';
@@ -12,6 +13,7 @@ const Home = (props) => {
   const [editBtn, setEditBtn] = useState({ shown: false })
   const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon className="icon" /> });
   const loggedIn = true;
+  const { siteData } = useContext(SiteContext);
 
   function toggleEditBtn() {
     setEditBtn({ shown: !editBtn.shown })

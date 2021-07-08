@@ -105,6 +105,7 @@ const Blog = () => {
                 index={index}
                 name={featured.name}
                 job={featured.job}
+                place={featured.place}
                 description={featured.description}
                 body={featured.body}
                 img_src={featured.img_src}
