@@ -10,8 +10,6 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Link from '@material-ui/core/Link';
 import './style.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -34,22 +32,35 @@ const CardComp = (props) => {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+  console.log(props.className)
 
   return (
-    <Card className="card">
-      <CardHeader 
-        title={props.name}
-      />
-      <CardMedia
-        className="card-image"
-        image={props.image}
-        title={props.name}
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          {props.description}
-        </Typography>
-      </CardContent>
+    <Card
+      className={`card`}
+    >
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+
+        <CardHeader
+          title={props.name}
+        />
+        <img
+          src={props.image}
+          className={`featured-img ${props.className}`}
+        >
+
+        </img>
+
+        <CardMedia
+          className={props.className}
+          image={props.image}
+          title={props.name}
+        />
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {props.description}
+          </Typography>
+        </CardContent>
+      </div>
       <CardActions disableSpacing>
         <IconButton
           className={clsx(classes.expand, {
@@ -71,7 +82,7 @@ const CardComp = (props) => {
             href={props.link}
             target="_blank"
           >
-            Find out more about {props.name}
+            See what {props.firstName} is up to!
           </a>
         </CardContent>
       </Collapse>

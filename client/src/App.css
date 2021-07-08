@@ -16,6 +16,10 @@ h1, h2 {
   color:#2E343C ;
 }
 
+h3, h4, h5, p {
+  color: #2E343C;
+}
+
 
 .orange-btn {
   padding:7px;

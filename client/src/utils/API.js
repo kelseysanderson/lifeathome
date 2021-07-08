@@ -82,20 +82,20 @@ export default {
     return axios.delete("/api/service/" + id);
   },
 
-  //Contributors
-  getContributors: function () {
-    return axios.get("/api/contributor");
+  //Featured
+  getAllFeatured: function () {
+    return axios.get("/api/featured");
   },
-  getContributor: function (id) {
-    return axios.get("/api/contributor/" + id);
+  getFeatured: function (id) {
+    return axios.get("/api/featured/" + id);
   },
-  postContributor: function (newContributor) {
-    return axios.post("/api/contributor", newContributor);
+  postFeatured: function (newFeatured) {
+    return axios.post("/api/featured", newFeatured);
   },
-  updateContributor: function (id, newContributor) {
-    return axios.put("/api/contributor/" + id, newContributor);
+  updateFeatured: function (id, newFeatured) {
+    return axios.put("/api/featured/" + id, newFeatured);
   },
-  deleteContributor: function (id) {
-    return axios.delete("/api/contributor/" + id);
+  deleteFeatured: function (id) {
+    return axios.delete("/api/featured/" + id);
   }
 }

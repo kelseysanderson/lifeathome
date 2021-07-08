@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const contributorSchema = new Schema({
+const featuredSchema = new Schema({
   name: String,
   job: String,
+  place: String,
   description: String, 
   img_src: String,
   body: String,
@@ -12,6 +13,6 @@ const contributorSchema = new Schema({
   tags: [String],
 });
 
-const Contributor = mongoose.model("Contributor", contributorSchema);
+const Featured = mongoose.model("Featured", featuredSchema);
 
-module.exports = Contributor;
+module.exports = Featured;

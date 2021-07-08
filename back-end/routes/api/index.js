@@ -5,7 +5,7 @@ const emailRoutes = require("./email");
 const postRoutes = require("./post");
 const siteRoutes = require("./site");
 const serviceRoutes = require("./service");
-const contributorRoutes = require("./contributor")
+const featuredRoutes = require("./featured")
 
 
 router.use("/comment", commentRoutes);
@@ -13,6 +13,6 @@ router.use("/email", emailRoutes);
 router.use("/post", postRoutes);
 router.use("/site", siteRoutes);
 router.use("/service", serviceRoutes);
-router.use("/contributor", contributorRoutes);
+router.use("/featured", featuredRoutes);
 
 module.exports = router;

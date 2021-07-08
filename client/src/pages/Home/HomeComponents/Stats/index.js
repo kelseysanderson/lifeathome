@@ -13,13 +13,13 @@ const Stats = (props) => {
       <Box display="flex" flexDirection="row">
         <Grid container justify="center" spacing={4}>
           <Grid item xs={12} sm={6} md={4} >
-            <StatsCircle key={homePageData.stat_1.title} loggedIn={props.loggedIn} titlePath="homePage.stat_1.title" bodyPath="homePage.stat_1.body" linkPath="homePage.stat_1.link" editShown={props.edit.shown} statTitle={homePageData.stat_1.title} statBody={homePageData.stat_1.body} statLinkButton={homePageData.stat_1.button_text} statLink={homePageData.stat_1.link} />
+            <StatsCircle loggedIn={props.loggedIn} titlePath="homePage.stat_1.title" bodyPath="homePage.stat_1.body" linkPath="homePage.stat_1.link" editShown={props.edit.shown} statTitle={homePageData.stat_1.title} statBody={homePageData.stat_1.body} statLinkButton={homePageData.stat_1.button_text} statLink={homePageData.stat_1.link} />
           </Grid>
           <Grid item xs={12} sm={6} md={4} >
-            <StatsCircle key={homePageData.stat_2.title} loggedIn={props.loggedIn} titlePath="homePage.stat_2.title" bodyPath="homePage.stat_2.body" linkPath="homePage.stat_2.link" editShown={props.edit.shown} statTitle={homePageData.stat_2.title} statBody={homePageData.stat_2.body} statLinkButton={homePageData.stat_2.button_text} statLink={homePageData.stat_2.link} />
+            <StatsCircle loggedIn={props.loggedIn} titlePath="homePage.stat_2.title" bodyPath="homePage.stat_2.body" linkPath="homePage.stat_2.link" editShown={props.edit.shown} statTitle={homePageData.stat_2.title} statBody={homePageData.stat_2.body} statLinkButton={homePageData.stat_2.button_text} statLink={homePageData.stat_2.link} />
           </Grid>
           <Grid item xs={12} sm={6} md={4} >
-            <StatsCircle key={homePageData.stat_3.title} loggedIn={props.loggedIn} titlePath="homePage.stat_3.title" bodyPath="homePage.stat_3.body" linkPath="homePage.stat_3.link" editShown={props.edit.shown} statTitle={homePageData.stat_3.title} statBody={homePageData.stat_3.body} statLinkButton={homePageData.stat_3.button_text} statLink={homePageData.stat_3.link} />
+            <StatsCircle loggedIn={props.loggedIn} titlePath="homePage.stat_3.title" bodyPath="homePage.stat_3.body" linkPath="homePage.stat_3.link" editShown={props.edit.shown} statTitle={homePageData.stat_3.title} statBody={homePageData.stat_3.body} statLinkButton={homePageData.stat_3.button_text} statLink={homePageData.stat_3.link} />
           </Grid>
         </Grid>
       </Box>

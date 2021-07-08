@@ -4,5 +4,5 @@ module.exports = {
   Post: require("./post"),
   Comment: require("./comment"),
   Service: require("./service"),
-  Contributor: require("./contributor")
+  Featured: require("./featured")
 };
