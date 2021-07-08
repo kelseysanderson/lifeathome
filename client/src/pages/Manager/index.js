@@ -1,5 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Grid, Container } from '@material-ui/core';
+import './style.css'
+
+import { LoginStatusContext } from '../../Context/LoginStatusContext';
+
 import { SiteContext } from '../../Context/SiteContext';
 import SiteDataInput from "../../components/Inputs/siteDataInput"
 import SiteDataFormInput from "../../components/Inputs/siteDataFormInput"
@@ -13,17 +17,48 @@ import { ServicesContext } from '../../Context/ServicesContext';
 import ServicesDataInput from "../../components/Inputs/servicesDataInput"
 import ServicesDataFormInput from "../../components/Inputs/servicesDataFormInput"
 import ServicesDataDelete from "../../components/DeleteButtons/servicesDataDelete"
-import './style.css'
+
 
 const Manager = (props) => {
-  const { updateLoginSiteData } = useContext(SiteContext)
+  const { loginState, authenticateLogin, logout } = useContext(LoginStatusContext)
+  const { siteData, updateLoginSiteData } = useContext(SiteContext)
   const { blogData, postBlogData } = useContext(BlogContext)
   const { servicesData, postServicesData } = useContext(ServicesContext)
+
+  const [loginForm, setLoginForm] = useState({
+    login: {
+      username: "",
+      password: ""
+    } 
+  })
+
+  function handleInputChange (event) {
+    const name = event.target.name
+    const value = event.target.value
+    let newState = {...loginForm}
+    newState.login[name] = value
+    setLoginForm(newState)
+  }
+
+  console.log(loginState)
 
   return (
     <>
       <Container maxWidth="xl" style={{ marginTop: "30px", width: "80%" }}>
         <Grid container spacing={4}>
+
+        <Grid item xs={12} className="logoContainer" >
+            <div className="management-card">
+            <h1>Logged In: {loginState.toString()}</h1>
+              {loginState ? (<button className="green-btn" onClick={logout}>Logout</button>) : (<></>)}
+              <h2>LOGIN</h2>
+              <label>Username:</label>
+              <input name="username" value={loginForm.login.username} onChange={handleInputChange}/>
+              <label>Password:</label>
+              <input name="password" value={loginForm.login.password} onChange={handleInputChange}/>
+              <button className="green-btn" onClick={() => authenticateLogin(siteData._id, loginForm)}>Login</button>
+            </div>
+          </Grid>
 
           <Grid item xs={12} className="logoContainer" >
             <div className="management-card">

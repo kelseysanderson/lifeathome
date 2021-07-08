@@ -27,9 +27,29 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  auth: function (req, res) {
+    const { username, password } = req.body.login
+    db.Site
+      .findById(req.params.id)
+      .then((dbModel) => {
+        if (dbModel.login.username !== username) {
+          return res.json(false)
+        }
+        bcrypt.compare(password, dbModel.login.password)
+          .then(matched => {
+            if (matched) {
+              return res.json(true)
+            } else {
+              return res.json(false)
+            }
+          })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  },
   save: function (req, res) {
     const { username, password } = req.body.login
-    console.log(username)
     bcrypt.hash(password, 12)
       .then(hashedPassword => {
         db.Site

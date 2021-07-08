@@ -10,8 +10,11 @@ export default {
     return axios.put("/api/site/"+ id, newData);
   },
   updateLogin: function (id, newData) {
-    console.log(newData)
     return axios.put("/api/site/auth/" + id, newData)
+  },
+  authLogin: function (id, input) {
+    console.log(input)
+    return axios.post("/api/site/auth/" + id, input)
   },
 
   //Post

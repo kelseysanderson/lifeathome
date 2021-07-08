@@ -11,7 +11,8 @@ router.route("/:id")
   .put(siteController.update)
   .delete(siteController.remove);
 
-router.route("/auth/:id")
+router.route("/auth/:id") 
   .put(siteController.save)
+  .post(siteController.auth)
 
 module.exports = router;

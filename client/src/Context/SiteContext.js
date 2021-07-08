@@ -13,17 +13,17 @@ export const SiteProvider = ({ children }) => {
     })
     const [siteUpdateQueue, setSiteUpdateQueue] = useState({})
 
-  useEffect(() => {
-    loadSiteData();
-  }, []);
+    useEffect(() => {
+        loadSiteData();
+    }, []);
 
-  function loadSiteData() {
-    API.getSite()
-      .then(res => {
-        setSiteData(res.data[0])
-      })
-      .catch(err => console.log(err));
-  };
+    function loadSiteData() {
+        API.getSite()
+            .then(res => {
+                setSiteData(res.data[0])
+            })
+            .catch(err => console.log(err));
+    };
 
     //FORM FUNCTIONS
     function formInputChange(event) {
@@ -107,6 +107,7 @@ export const SiteProvider = ({ children }) => {
             {children}
         </SiteContext.Provider>
     );
-};
+}
+
 
 
