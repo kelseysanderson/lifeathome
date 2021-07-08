@@ -9,6 +9,7 @@ export const FeaturedProvider = ({ children }) => {
         featured: {
             name: "",
             job: "",
+            place: "",
             description: "",
             img_src: "",
             body: "",
@@ -43,6 +44,7 @@ export const FeaturedProvider = ({ children }) => {
                     featured: {
                         name: "",
                         job: "",
+                        place: "",
                         description: "",
                         img_src: "",
                         body: "",

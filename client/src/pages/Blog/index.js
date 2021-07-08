@@ -101,15 +101,18 @@ const Blog = () => {
             </div>
             {featuredData.array.map((featured, index) => (
               <Featured
-                key={featured.name}
                 index={index}
-                name={featured.name}
-                job={featured.job}
-                place={featured.place}
-                description={featured.description}
-                body={featured.body}
-                img_src={featured.img_src}
-                link={featured.external_link} />
+                featured={featured}
+                // id={featured._id}
+                // name={featured.name}
+                // job={featured.job}
+                // place={featured.place}
+                // description={featured.description}
+                // body={featured.body}
+                // img_src={featured.img_src}
+                // link={featured.external_link}
+                loggedIn={loggedIn} 
+                edit={toggleClass.edit} />
             )
             )}
           </div>
