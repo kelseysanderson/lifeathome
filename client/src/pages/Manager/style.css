@@ -30,8 +30,37 @@ ul.database-management li{
 }
 
 .management-input{
-  width:20vw;
+  width:100%;
+  margin-bottom: 10px;
+  height:25px;
+  text-align: center;
+}
+
+.manager-hide {
+  display: none
+}
+
+.manager-show {
+  display: initial
+}
+
+.management-login {
+  display: block;
   margin-bottom: 10px;
   height:25px;
 }
+
+.management-center {
+  text-align: center;
+  margin: 30px auto;
+  display: block;
+  padding: 10px 0px;
+  width: 500px;
+}
+
+.management-bottom-border {
+  border-bottom: 1px rgba(0, 0, 0, 0.39) solid;
+}
+
+
 

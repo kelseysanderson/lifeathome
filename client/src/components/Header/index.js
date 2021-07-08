@@ -1,10 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
 import originalLogo from '../../assets/logos/transparent_logo.png';
 import { Container, Grid } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
+import {LoginStatusContext} from '../../Context/LoginStatusContext';
+
 import './style.css'
 
 const Header = (props) => {
+  const {loginState} = useContext(LoginStatusContext)
 
   return (
     <header>
@@ -16,6 +19,7 @@ const Header = (props) => {
           </Grid>
           <Grid className="navBar" item xs={12} sm={4} lg={3}>
             <ul className="navList">
+              {loginState ? (<li><p><NavLink exact activeStyle={{ textDecoration: "underline" }} to="/manager">Manager</NavLink></p></li>): (<></>)}
               <li><p><NavLink exact activeStyle={{ textDecoration: "underline" }} to="/">Home</NavLink></p></li>
               <li><p><NavLink exact activeStyle={{ textDecoration: "underline" }} to="/services">Services</NavLink></p></li>
               <li><p><NavLink exact activeStyle={{ textDecoration: "underline" }} to="/blog">Blog</NavLink></p></li>

@@ -6,8 +6,8 @@ const SiteDataInput = (props) => {
   const {siteData, siteUpdateQueue, handleInputChange, updateSiteData} = useContext(SiteContext);
 
   //CREATES LABEL OUT OF PATH STRING
-  // const lastPath = props.path.split('.').pop()
-  // const label = lastPath.split("_").map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')
+  const lastPath = props.path.split('.').pop()
+  const label = lastPath.split("_").map((s) => s.charAt(0).toUpperCase() + s.substring(1)).join(' ')
 
   //FINDS VALUE OUT OF PATH STRING
   const valueArr = props.path.split(".")
@@ -25,7 +25,7 @@ const SiteDataInput = (props) => {
   return (
     <>
       <div className="data-form">
-        {/* <label>{label}:</label> */}
+        {props.label ? (<label>{label}:</label>) : ("")}
         {/* TEXTAREA VS. INPUT */}
         {props.inputType === "textarea" ? (
         <TextareaAutosize
