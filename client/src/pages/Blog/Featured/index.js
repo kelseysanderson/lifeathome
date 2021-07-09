@@ -12,6 +12,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import WorkIcon from '@material-ui/icons/Work';
 import FeaturedDataInput from '../../../components/Inputs/featuredDataInput';
+import FeaturedDataDelete from '../../../components/DeleteButtons/featuredDataDelete';
+
 import './style.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -45,25 +47,27 @@ const Featured = ({ featured, index, loggedIn, edit }) => {
             {loggedIn && edit === true ? (
                 <div className="card-container" style={{ padding: "5px 0", borderBottom: "1.5px solid #2E343C", borderRadius: "3px" }}>
                     <Card className="card">
+                        <FeaturedDataDelete id={featured._id} />
                         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                             <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input featured-title-input" path="name" />
                             <img src={featured.img_src} alt={featured.name} className={`featured-img ${cardBackgroundRender(featured.index)}`}></img>
                             <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input card-subtitle-text" path="img_src" />
                             <CardContent>
                                 <Typography color="textSecondary" component="p" className="card-subtitle" >
-                                    {featured.job ? (
-                                        <>
-                                            <WorkIcon />
-                                            <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input card-subtitle-text" path="job" />
-                                        </>
-                                    ) : (featured.place ? (
-                                        <>
-                                            <LocationOnIcon />
-                                            <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input card-subtitle-text" path="place" />
-                                        </>
-                                    ) : (null)
-                                    )}
+                                    <>
+                                        <WorkIcon />
+                                        <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input card-subtitle-text" path="job" />
+                                    </>
+
                                 </Typography>
+                                <Typography color="textSecondary" component="p" className="card-subtitle" >
+
+                                    <>
+                                        <LocationOnIcon />
+                                        <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input card-subtitle-text" path="place" />
+                                    </>
+                                </Typography>
+
                                 <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input full-width" path="description" inputType="textarea" />
                             </CardContent>
                         </div>
@@ -90,7 +94,7 @@ const Featured = ({ featured, index, loggedIn, edit }) => {
                 </div>
 
             ) : (
-                <div  className="card-container" style={{ padding: "5px 0", borderBottom: "1.5px solid #2E343C", borderRadius: "3px" }}>
+                <div className="card-container" style={{ padding: "5px 0", borderBottom: "1.5px solid #2E343C", borderRadius: "3px" }}>
                     <Card className="card">
                         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                             <CardHeader title={featured.name} ></CardHeader>
@@ -100,12 +104,12 @@ const Featured = ({ featured, index, loggedIn, edit }) => {
                                     {featured.job ? (
                                         <>
                                             <WorkIcon />
-                                             {featured.job} 
+                                            {featured.job}
                                         </>
                                     ) : (featured.place ? (
                                         <>
-                                        <LocationOnIcon /> 
-                                        {featured.place}
+                                            <LocationOnIcon />
+                                            {featured.place}
                                         </>
                                     ) : (null)
                                     )}
