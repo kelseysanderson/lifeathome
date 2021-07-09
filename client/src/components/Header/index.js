@@ -24,6 +24,7 @@ const Header = (props) => {
               <li><p><NavLink exact activeStyle={{ textDecoration: "underline" }} to="/services">Services</NavLink></p></li>
               <li><p><NavLink exact activeStyle={{ textDecoration: "underline" }} to="/blog">Blog</NavLink></p></li>
               <li><p><NavLink exact activeStyle={{ textDecoration: "underline" }} to="/contact">Contact</NavLink></p></li>
+              <li><p><NavLink exact activeStyle={{ textDecoration: "underline" }} to="/manager">Admin</NavLink></p></li>
             </ul>
           </Grid>
         </Grid>
