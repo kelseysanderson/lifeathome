@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import BlogDataInput from '../../../components/Inputs/blogDataInput';
-import BlogDataDelete from '../../../components/DeleteButtons/blogDataDelete';
+import BlogButtons from '../../../components/APIButtons/blog';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
 
@@ -23,7 +23,7 @@ const Post = ({ posts, index, loggedIn, toggleClass, toggleEditFunction, edit })
             <BlogDataInput {...posts} index={index} className="admin-blog-input" path="author" />
             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
               <BlogDataInput {...posts} index={index} className="admin-blog-input" path="description" />
-              <BlogDataDelete postId={posts._id} />
+              <BlogButtons.Delete postId={posts._id} />
             </div>
             <p className="read-more">
               <NavLink style={{ textDecoration: 'none', border: '1px solid #81a791', padding: '5px', borderRadius: '5px', textAlign: 'center', backgroundColor: '#AED3BE' }} exact to={{ pathname: `/blog/${index}`, aboutProps: { toggleEditFunction: toggleEditFunction, toggleClass: toggleClass } }}>

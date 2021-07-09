@@ -3,7 +3,7 @@ import { BlogContext } from '../../Context/BlogContext';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 
-const BlogDataDelete = (props) => {
+const Delete = (props) => {
   const { deletePost } = useContext(BlogContext);
 
   return (
@@ -13,4 +13,14 @@ const BlogDataDelete = (props) => {
   )
 }
 
-export default BlogDataDelete
+const Submit = (props) => {
+  const { postBlogData } = useContext(BlogContext);
+
+  return (
+      <button onClick={postBlogData}>Post to Blog</button>
+  )
+}
+
+const BlogButton = {Delete, Submit}
+
+export default BlogButton

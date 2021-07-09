@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import {ServicesContext} from '../../Context/ServicesContext'
 
-const ServicesDataDelete = (props) => {
+const Delete = (props) => {
   const {deleteService} = useContext(ServicesContext);
 
   return (
@@ -11,4 +11,14 @@ const ServicesDataDelete = (props) => {
   )
 }
 
-export default ServicesDataDelete
+const Submit = (props) => {
+  const { postServicesData } = useContext(ServicesContext);
+
+  return (
+      <button onClick={postServicesData}>Post to Services Bar</button>
+  )
+}
+
+const ServicesButton = {Delete, Submit}
+
+export default ServicesButton

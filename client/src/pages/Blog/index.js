@@ -11,6 +11,11 @@ import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import EditIcon from '@material-ui/icons/Edit';
 import BlogDataFormInput from '../../components/Inputs/blogDataFormInput';
+import BlogButton  from '../../components/APIButtons/blog';
+
+import FeaturedDataFormInput from '../../components/Inputs/featuredDataFormInput';
+import FeaturedButton  from '../../components/APIButtons/featured';
+
 import Featured from './Featured'
 import './style.css';
 
@@ -86,12 +91,24 @@ const Blog = () => {
 
       {addPost.shown === true ? (
         <div style={{ display: 'flex', flexDirection: 'column', marginLeft: "15%", marginRight: "15%", justifyContent: "center" }}>
-          <h1>Create New Post</h1>
-          <BlogDataFormInput path="title" />
-          <BlogDataFormInput path="author" />
-          <BlogDataFormInput path="description" />
-          <BlogDataFormInput path="img_src" />
-          <BlogDataFormInput className="full-width full-height" path="body" inputType="textarea" />
+          <div>
+            <h1>Create Featured Post</h1>
+            <FeaturedDataFormInput path="name" />
+            <FeaturedDataFormInput path="img_src" />
+            <FeaturedDataFormInput path="job" />
+            <FeaturedDataFormInput path="place" />
+            <FeaturedDataFormInput className="full-width full-height" path="description" inputType="textarea" />
+            <FeaturedButton.Submit/>
+          </div>
+          <div>
+            <h1>Create New Post</h1>
+            <BlogDataFormInput path="title" />
+            <BlogDataFormInput path="author" />
+            <BlogDataFormInput path="description" />
+            <BlogDataFormInput path="img_src" />
+            <BlogDataFormInput className="full-width full-height" path="body" inputType="textarea" />
+            <BlogButton.Submit/>
+          </div>
         </div>
       ) : null}
 

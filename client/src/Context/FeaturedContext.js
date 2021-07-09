@@ -34,11 +34,11 @@ export const FeaturedProvider = ({ children }) => {
     function formInputChange(event) {
         let value = event.target.value;
         const path = event.target.dataset.path;
-        updatePathHandlerForm(setFeaturedDataForm, path, featuredDataForm.post, value)
+        updatePathHandlerForm(setFeaturedDataForm, path, featuredDataForm.featured, value)
     }
 
     function postFeaturedData() {
-        API.postFeatured(featuredDataForm.post)
+        API.postFeatured(featuredDataForm.featured)
             .then(() => {
                 setFeaturedDataForm({
                     featured: {
@@ -66,7 +66,7 @@ export const FeaturedProvider = ({ children }) => {
             schema = schema[elem];
         }
         schema[pList[pList.length - 1]] = value;
-        updateFunction({ post: object })
+        updateFunction({ featured: object })
     }
 
     //UPDATE FUNCTIONS
