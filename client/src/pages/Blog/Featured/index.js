@@ -27,14 +27,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Featured = ({ featured, index, loggedIn, toggleClass, toggleEditFunction, edit }) => {
-    const firstName = (featured.name.split(' ').slice(0, -1).join(' '))
+const Featured = ({ featured, index, loggedIn, edit }) => {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-    console.log(featured)
 
     function cardBackgroundRender() {
         if (featured.index % 2 === 0) {
@@ -43,15 +41,14 @@ const Featured = ({ featured, index, loggedIn, toggleClass, toggleEditFunction, 
     }
 
     return (
-        <>
+        <div>
             {loggedIn && edit === true ? (
-                <div style={{ padding: "10px 0", borderBottom: "1.5px solid #2E343C", borderRadius: "3px" }}>
+                <div className="card-container" style={{ padding: "5px 0", borderBottom: "1.5px solid #2E343C", borderRadius: "3px" }}>
                     <Card className="card">
                         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                             <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input featured-title-input" path="name" />
-                            <img src={featured.img_src} className={`featured-img ${cardBackgroundRender(featured.index)}`}></img>
+                            <img src={featured.img_src} alt={featured.name} className={`featured-img ${cardBackgroundRender(featured.index)}`}></img>
                             <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input card-subtitle-text" path="img_src" />
-
                             <CardContent>
                                 <Typography color="textSecondary" component="p" className="card-subtitle" >
                                     {featured.job ? (
@@ -83,7 +80,7 @@ const Featured = ({ featured, index, loggedIn, toggleClass, toggleEditFunction, 
                         <Collapse in={expanded} timeout="auto" unmountOnExit>
                             <CardContent>
                                 <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input full-width" path="body" inputType="textarea" />
-                                <a href={featured.link} target="_blank">
+                                <a href={featured.link} target="_blank" rel="noreferrer">
                                     See more about {featured.name}
                                 </a>
                                 <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input card-subtitle-text" path="external_link" />
@@ -93,24 +90,27 @@ const Featured = ({ featured, index, loggedIn, toggleClass, toggleEditFunction, 
                 </div>
 
             ) : (
-                <div style={{ padding: "10px 0", borderBottom: "1.5px solid #2E343C", borderRadius: "3px" }}>
+                <div  className="card-container" style={{ padding: "5px 0", borderBottom: "1.5px solid #2E343C", borderRadius: "3px" }}>
                     <Card className="card">
                         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-                            <CardHeader title={featured.name} color="#2E343C" ></CardHeader>
-                            <img src={featured.img_src} className={`featured-img ${cardBackgroundRender(featured.index)}`}></img>
+                            <CardHeader title={featured.name} ></CardHeader>
+                            <img src={featured.img_src} alt={featured.name} className={`featured-img ${cardBackgroundRender(featured.index)}`}></img>
                             <CardContent>
-                                <Typography color="textSecondary" component="p" className="card-subtitle" >
+                                <Typography color="textSecondary" className="card-subtitle-text" component="p" className="card-subtitle" >
                                     {featured.job ? (
                                         <>
                                             <WorkIcon />
-                                            <div className="card-subtitle-text">  {featured.job} </div>
+                                             {featured.job} 
                                         </>
                                     ) : (featured.place ? (
-                                        <div><LocationOnIcon /> {featured.place}</div>
+                                        <>
+                                        <LocationOnIcon /> 
+                                        {featured.place}
+                                        </>
                                     ) : (null)
                                     )}
                                 </Typography>
-                                <Typography variant="body2" color="#2E343C" component="p">
+                                <Typography variant="body2" component="p" className="featured-description">
                                     {featured.description}
                                 </Typography>
                             </CardContent>
@@ -130,7 +130,7 @@ const Featured = ({ featured, index, loggedIn, toggleClass, toggleEditFunction, 
                                 <Typography paragraph>
                                     {featured.body}
                                 </Typography>
-                                <a href={featured.link} target="_blank">
+                                <a href={featured.link} target="_blank" rel="noreferrer">
                                     See more about {featured.name}
                                 </a>
                             </CardContent>
@@ -139,7 +139,7 @@ const Featured = ({ featured, index, loggedIn, toggleClass, toggleEditFunction, 
                 </div>
             )}
 
-        </>
+        </div>
     )
 }
 

@@ -1,14 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useContext } from 'react';
 import { ServicesContext } from '../../../Context/ServicesContext';
-import { Grid, Container } from '@material-ui/core';
-import smarthome from '../../../assets/smarthome.png';
+import { Grid } from '@material-ui/core';
 import './style.css'
 
 const Service = (props) => {
-  const { servicesData, postServicesData } = useContext(ServicesContext)
-  // const services = serviceData.servicesData.array
-  console.log(servicesData.array[0])
+  const { servicesData } = useContext(ServicesContext)
 
   return (
     <>

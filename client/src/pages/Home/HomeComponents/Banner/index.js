@@ -9,7 +9,6 @@ import './style.css'
 const Banner = (props) => {
   const { siteData } = useContext(SiteContext);
   const homePageData = siteData.homePage;
-  const loggedIn = true
 
   return (
     <>

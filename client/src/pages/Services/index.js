@@ -4,7 +4,7 @@ import Service from './Service'
 
 const Services = (props) => {
   return(
-    <div>
+    <div style={{height:"70vh"}}>
         <Service/>
     </div>
    )

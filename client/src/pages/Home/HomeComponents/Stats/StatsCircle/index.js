@@ -4,8 +4,6 @@ import Input from '../../../../../components/Inputs/siteDataInput'
 import './style.css';
 
 const StatsCircle = (props) => {
-  const loggedIn = true
-
   return (
     <>
       <div className="circle-container container-center">

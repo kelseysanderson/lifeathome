@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
+import { LoginStatusContext } from '../../Context/LoginStatusContext';
 import { BlogContext } from '../../Context/BlogContext';
 import { FeaturedContext } from '../../Context/FeaturedContext';
 import Post from './Post';
 import TablePagination from '@material-ui/core/TablePagination';
-import { Grid, Container } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import AddIcon from '@material-ui/icons/Add';
@@ -14,6 +15,7 @@ import Featured from './Featured'
 import './style.css';
 
 const Blog = () => {
+  const loggedInContext = (useContext(LoginStatusContext));
   const { blogData } = useContext(BlogContext);
   const { featuredData } = useContext(FeaturedContext);
   const [currentPage, setCurrentPage] = useState(0);
@@ -21,13 +23,13 @@ const Blog = () => {
   const [editBtn, setEditBtn] = useState({ shown: false })
   const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon />, renderAddPost: <AddIcon /> });
   const [addPost, setAddPost] = useState({ shown: false, renderAddPost: <AddIcon /> })
+  const loggedIn = loggedInContext.loginState
 
-  console.log("DATAAA", featuredData)
   // Get current posts for pagination
   const indexOfLastPost = (currentPage * postsPerPage) + (postsPerPage);
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = blogData.array.slice(indexOfFirstPost, indexOfLastPost);
-  const loggedIn = true;
+  // const loggedIn = true;
 
   const handleChangePage = (event, newPage) => {
     setCurrentPage(newPage);
@@ -70,7 +72,7 @@ const Blog = () => {
   }
 
   return (
-    <div className="blog-page" style={{height:'100%'}}>
+    <div className="blog-page" style={{ height: '100%' }}>
       {loggedIn ? (
         <>
           <IconButton onClick={toggleEditBtn}>
@@ -94,7 +96,7 @@ const Blog = () => {
       ) : null}
 
       <Grid container spacing={0} justify="space-between" >
-        <Grid item md={3} style={{backgroundColor:'#2E343C', borderRadius: '0 10px 10px 0', height:'100%', marginTop: '25px'}}>
+        <Grid item xs={12} sm={4} md={3} className="sidebar-container">
           <div className="sidebar">
             <div className="blog-header">
               <h2 className="sidebar-header">Featured People and Events</h2>
@@ -103,25 +105,22 @@ const Blog = () => {
               <Featured
                 index={index}
                 featured={featured}
-                // id={featured._id}
-                // name={featured.name}
-                // job={featured.job}
-                // place={featured.place}
-                // description={featured.description}
-                // body={featured.body}
-                // img_src={featured.img_src}
-                // link={featured.external_link}
-                loggedIn={loggedIn} 
+                loggedIn={loggedIn}
                 edit={toggleClass.edit} />
             )
             )}
           </div>
         </Grid>
-
-
-        <Grid item sm={12} md={9}>
+        <Grid item xs={12} sm={8} md={9}>
           {currentPosts.map((currentPosts, index) => (
-            <Post key={currentPosts._id} index={index} loggedIn={loggedIn} edit={toggleClass.edit} posts={currentPosts} loggedIn={loggedIn} toggleClass={toggleClass.render} toggleEditFunction={toggleEditBtn} />
+            <Post
+              key={currentPosts._id}
+              index={index}
+              loggedIn={loggedIn}
+              edit={toggleClass.edit}
+              posts={currentPosts}
+              toggleClass={toggleClass.render}
+              toggleEditFunction={toggleEditBtn} />
           )
           )}
           <TablePagination

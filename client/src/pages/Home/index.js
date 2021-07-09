@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { SiteContext } from '../../Context/SiteContext';
+import { LoginStatusContext } from '../../Context/LoginStatusContext';
 import Banner from './HomeComponents/Banner';
 import AboutStatement from './HomeComponents/AboutStatement';
 import Stats from './HomeComponents/Stats';
@@ -10,10 +10,10 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import './style.css';
 
 const Home = (props) => {
+  const loggedInContext= (useContext(LoginStatusContext));
   const [editBtn, setEditBtn] = useState({ shown: false })
   const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon className="icon" /> });
-  const loggedIn = true;
-  const { siteData } = useContext(SiteContext);
+  const loggedIn = loggedInContext.loginState
 
   function toggleEditBtn() {
     setEditBtn({ shown: !editBtn.shown })

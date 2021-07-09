@@ -16,7 +16,7 @@ export const FeaturedProvider = ({ children }) => {
             external_link: ""
         }
     })
-    const [featuredUpdateQueue, setFeaturedUpdateQueue] = useState({array: []})
+    const [featuredUpdateQueue, setFeaturedUpdateQueue] = useState({ array: [] })
 
     useEffect(() => {
         loadFeaturedData();
@@ -25,7 +25,7 @@ export const FeaturedProvider = ({ children }) => {
     function loadFeaturedData() {
         API.getAllFeatured()
             .then(res => {
-                setFeaturedData({array: res.data})
+                setFeaturedData({ array: res.data })
             })
             .catch(err => console.log(err));
     };
@@ -56,17 +56,17 @@ export const FeaturedProvider = ({ children }) => {
             .catch(err => console.log(err));
     }
 
-    function updatePathHandlerForm (updateFunction, path, object, value) {
+    function updatePathHandlerForm(updateFunction, path, object, value) {
         // let newState = object
         var schema = object;  // a moving reference to internal object within obj
         var pList = path.split('.');
-        for(var i = 0; i < pList.length-1; i++) {
-          var elem = pList[i];
-          if( !schema[elem] ) schema[elem] = {}
-          schema = schema[elem];
+        for (var i = 0; i < pList.length - 1; i++) {
+            var elem = pList[i];
+            if (!schema[elem]) schema[elem] = {}
+            schema = schema[elem];
         }
-        schema[pList[pList.length-1]] = value;
-        updateFunction({post: object})
+        schema[pList[pList.length - 1]] = value;
+        updateFunction({ post: object })
     }
 
     //UPDATE FUNCTIONS
@@ -74,50 +74,50 @@ export const FeaturedProvider = ({ children }) => {
         updateInputChange(event)
         updateUpdateQueue(event)
     }
-    
+
     function updateInputChange(event) {
         let value = event.target.value;
         const path = event.target.dataset.path;
         const index = parseInt(event.target.dataset.index)
         updatePathHandler(setFeaturedData, path, featuredData.array, value, index)
     }
-    
-    function updateUpdateQueue (event) {
+
+    function updateUpdateQueue(event) {
         const path = event.target.dataset.path;
         const index = parseInt(event.target.dataset.index)
         updatePathHandler(setFeaturedUpdateQueue, path, featuredUpdateQueue.array, true, index)
     }
-    
+
     function updateFeaturedData(path, value, id, index) {
-        API.updateFeatured(id, {[path]: value})
-           .then(res => {
-            updatePathHandler(setFeaturedUpdateQueue, path, featuredUpdateQueue.array, false, parseInt(index))
+        API.updateFeatured(id, { [path]: value })
+            .then(res => {
+                updatePathHandler(setFeaturedUpdateQueue, path, featuredUpdateQueue.array, false, parseInt(index))
             })
             .catch(err => console.log(err));
     }
-    
-    function updatePathHandler (updateFunction, path, array, value, index) {
-        if (array[index] === undefined) {array[index]= {}}
+
+    function updatePathHandler(updateFunction, path, array, value, index) {
+        if (array[index] === undefined) { array[index] = {} }
         console.log(array)
         let newState = array[index]
         var schema = newState;  // a moving reference to internal object within obj
         var pList = path.split('.');
-        for(var i = 0; i < pList.length-1; i++) {
-          var elem = pList[i];
-          if( !schema[elem] ) schema[elem] = {}
-          schema = schema[elem];
+        for (var i = 0; i < pList.length - 1; i++) {
+            var elem = pList[i];
+            if (!schema[elem]) schema[elem] = {}
+            schema = schema[elem];
         }
-        schema[pList[pList.length-1]] = value;
-        updateFunction({array: array})
+        schema[pList[pList.length - 1]] = value;
+        updateFunction({ array: array })
     }
 
     //DELETE FUNCTNIOS
     function deleteFeatured(id) {
         API.deleteFeatured(id)
-        .then(() => {
-            loadFeaturedData()
-        })
-        .catch(err => console.log(err));
+            .then(() => {
+                loadFeaturedData()
+            })
+            .catch(err => console.log(err));
     }
 
     if (featuredData === "loading")
@@ -125,14 +125,15 @@ export const FeaturedProvider = ({ children }) => {
 
     return (
         <FeaturedContext.Provider value={{
-            featuredData, 
-            featuredUpdateQueue, 
-            featuredDataForm, 
-            handleInputChange, 
-            updateFeaturedData, 
-            formInputChange, 
-            postFeaturedData, 
-            deleteFeatured}
+            featuredData,
+            featuredUpdateQueue,
+            featuredDataForm,
+            handleInputChange,
+            updateFeaturedData,
+            formInputChange,
+            postFeaturedData,
+            deleteFeatured
+        }
         }>
             {children}
         </FeaturedContext.Provider>

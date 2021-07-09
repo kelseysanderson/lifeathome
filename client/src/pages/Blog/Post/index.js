@@ -8,15 +8,13 @@ import './style.scss';
 const Post = ({ posts, index, loggedIn, toggleClass, toggleEditFunction, edit }) => {
 
   return (
-
     <div className="blog-card">
-
       {loggedIn && edit === true ? (
         <>
           <div className="meta">
             <div className="photo" style={{ backgroundImage: `url(${posts.img_src})` }}></div>
             <ul className="details">
-              <li className="author"><a href="#">{posts.author}</a></li>
+              <li className="author">{posts.author}</li>
               <li className="date">{moment(posts.date_posted).format("MMMM DD YYYY")}</li>
             </ul>
           </div>

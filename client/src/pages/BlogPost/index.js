@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
+import { LoginStatusContext } from '../../Context/LoginStatusContext';
 import { BlogContext } from '../../Context/BlogContext';
 import { useParams } from "react-router-dom";
-import { Grid, Box } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import AddIcon from '@material-ui/icons/Add';
@@ -9,21 +10,19 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import EditIcon from '@material-ui/icons/Edit';
 import BlogDataInput from '../../components/Inputs/blogDataInput';
 import BlogDataFormInput from '../../components/Inputs/blogDataFormInput';
-
 import CommentSection from './CommentSection';
 import moment from 'moment'
 import './style.css';
 
-
 const BlogPost = () => {
+  const loggedInContext= (useContext(LoginStatusContext));
   const [editBtn, setEditBtn] = useState({ shown: false })
   const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon />, renderAddPost: <AddIcon /> });
   const [addPost, setAddPost] = useState({ shown: false, renderAddPost: <AddIcon /> })
-
   const { blogData } = useContext(BlogContext);
   const { index } = useParams();
   const post = blogData.array[index];
-  const loggedIn = true
+  const loggedIn = loggedInContext.loginState
 
   function toggleEditBtn() {
     setEditBtn({ shown: !editBtn.shown })
