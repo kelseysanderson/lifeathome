@@ -29,199 +29,65 @@ const Manager = (props) => {
     login: {
       username: "",
       password: ""
-    } 
+    }
   })
 
-  function handleInputChange (event) {
+  function handleInputChange(event) {
     const name = event.target.name
     const value = event.target.value
-    let newState = {...loginForm}
+    let newState = { ...loginForm }
     newState.login[name] = value
     setLoginForm(newState)
   }
 
-  console.log(loginState)
-
   return (
     <>
-      <Container maxWidth="xl" style={{ marginTop: "30px", width: "80%" }}>
-        <Grid container spacing={4}>
+      {loginState ? (
+        <>
+          <div className="management-center">
+            <button style={{padding: "10px 20px"}} className="green-btn" onClick={logout}>Logout</button>
+          </div>
 
-        <Grid item xs={12} className="logoContainer" >
-            <div className="management-card">
-            <h1>Logged In: {loginState.toString()}</h1>
-              {loginState ? (<button className="green-btn" onClick={logout}>Logout</button>) : (<></>)}
-              <h2>LOGIN</h2>
-              <label>Username:</label>
-              <input name="username" value={loginForm.login.username} onChange={handleInputChange}/>
-              <label>Password:</label>
-              <input name="password" value={loginForm.login.password} onChange={handleInputChange}/>
-              <button className="green-btn" onClick={() => authenticateLogin(siteData._id, loginForm)}>Login</button>
-            </div>
-          </Grid>
+          <div className="management-card management-center">
+            <h2>Admin Login Update</h2>
+            <SiteDataFormInput path="login.username" />
+            <SiteDataFormInput path="login.password" />
+            <button className="green-btn" onClick={updateLoginSiteData}>Update Login</button>
+          </div>
 
-          <Grid item xs={12} className="logoContainer" >
-            <div className="management-card">
-              <h2>Admin Login Update</h2>
-              <SiteDataFormInput path="login.username" />
-              <SiteDataFormInput path="login.password" />
-              <button className="green-btn" onClick={updateLoginSiteData}>Update Login</button>
-            </div>
-          </Grid>
 
-          <Grid item xs={12} className="logoContainer">
-            <div className="management-card">
-              <h2>Services</h2>
-              <ServicesDataFormInput path="title" />
-              <ServicesDataFormInput path="body" inputType="textarea" />
-              <ServicesDataFormInput path="img_src" />
-              <ServicesDataFormInput path="button_text" />
-              <ServicesDataFormInput path="internal_link" />
-              <button className="green-btn" onClick={postServicesData}>Submit Post</button>
-            </div>
-          </Grid>
+          
 
-          <Grid item xs={12} className="logoContainer" >
+          <div className="management-card management-center">
+            <h2>Site Data</h2>
+            <SiteDataInput path="siteData.company_name" label={true} className="management-input" />
+            <SiteDataInput path="siteData.contact.name" label={true} className="management-input" />
+            <SiteDataInput path="siteData.contact.email" label={true} className="management-input" />
+            {/* <SiteDataInput path="siteData.contact.phone" label={true} className="management-input" /> */}
+            <SiteDataInput path="siteData.contact.location" label={true} className="management-input" />
+            <SiteDataInput path="siteData.contact.facebook_link" label={true} className="management-input" />
+            <SiteDataInput path="siteData.contact.instagram_link"  label={true} className="management-input"/>
+            <SiteDataInput path="siteData.contact.twitter_link"  label={true} className="management-input"/>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="management-card management-center">
+            <h2>LOGIN</h2>
             <div>
-              <h2>Services Management</h2>
-              <ul className="database-management">
-                {servicesData.array.map((post, index) => (
-                  <>
-                    <ServicesDataInput key={"title" + index} {...post} index={index} path="title" />
-                    <ServicesDataDelete key={"deleteBtn" + index} postId={post._id} />
-                  </>
-                ))}
-              </ul>
+              <div className="management-login">
+                <label>Username:</label>
+                <input style={{ marginLeft: "10px" }} name="username" value={loginForm.login.username} onChange={handleInputChange} />
+              </div>
+              <div className="management-login">
+                <label>Password:</label>
+                <input style={{ marginLeft: "10px" }} name="password" value={loginForm.login.password} onChange={handleInputChange} />
+              </div>
+              <button style={{ marginBottom: "60px" }} className="green-btn" onClick={() => authenticateLogin(siteData._id, loginForm)}>Login</button>
             </div>
-          </Grid>
-
-          <Grid item xs={12} className="logoContainer">
-            <div className="management-card">
-              <h2>New Post</h2>
-              <BlogDataFormInput path="title" />
-              <BlogDataFormInput path="author" />
-              <BlogDataFormInput path="description" inputType="textarea" />
-              <BlogDataFormInput path="img_src" />
-              <BlogDataFormInput path="body" inputType={"textarea"} />
-              <button className="green-btn" onClick={postBlogData}>Submit Post</button>
-            </div>
-          </Grid>
-
-          <Grid item xs={12} className="logoContainer" >
-            <div>
-              <h2>Blog Management</h2>
-              <ul className="database-management">
-                {blogData.array.map((post, index) => (
-                  <>
-                    <BlogDataInput key={"title" + index} {...post} index={index} path="title" />
-                    <BlogDataDelete key={"deleteBtn" + index} postId={post._id} />
-                  </>
-                ))}
-              </ul>
-            </div>
-          </Grid>
-
-          <Grid item xs={6} className="logoContainer">
-            <div className="management-card">
-              <h2>Site Data</h2>
-              <SiteDataInput path="siteData.company_name" />
-              <h3>Contact</h3>
-              <SiteDataInput path="siteData.contact.name" />
-              <SiteDataInput path="siteData.contact.email" />
-              {/* <SiteDataInput path="siteData.contact.phone" /> */}
-              <SiteDataInput path="siteData.contact.location" />
-              <SiteDataInput path="siteData.contact.facebook_link" />
-              <SiteDataInput path="siteData.contact.instagram_link" />
-              <SiteDataInput path="siteData.contact.twitter_link" />
-            </div>
-          </Grid>
-
-          <Grid item xs={12} className="logoContainer">
-            <div className="management-card home-page-data">
-              <h2>Home Page Data</h2>
-              <ul className="database-management">
-                <li>
-                  <h4>Banner 1</h4>
-                  <SiteDataInput path="homePage.banner_1.title" />
-                  <SiteDataInput path="homePage.banner_1.body" inputType={"textarea"} />
-                  <SiteDataInput path="homePage.banner_1.link_button_text" />
-                  {/* <SiteDataInput path="homePage.banner_1.link" /> */}
-                </li>
-
-                <li>
-                  <h4>Banner 2</h4>
-                  <SiteDataInput path="homePage.banner_2.title" />
-                  <SiteDataInput path="homePage.banner_2.body" inputType={"textarea"} />
-                  <SiteDataInput path="homePage.banner_2.link_button_text" />
-                  {/* <SiteDataInput path="homePage.banner_2.link" /> */}
-                </li>
-
-                <li>
-                  <h4>About Statement</h4>
-                  {/* <SiteDataInput path="homePage.about_statement.title" /> */}
-                  <SiteDataInput path="homePage.about_statement.body" inputType={"textarea"} />
-                </li>
-
-                <li>
-                  <h4>Stat 1</h4>
-                  <SiteDataInput path="homePage.stat_1.title" />
-                  <SiteDataInput path="homePage.stat_1.body" inputType={"textarea"} />
-                  {/* <SiteDataInput path="homePage.stat_1.link_button_text" /> */}
-                  <SiteDataInput path="homePage.stat_1.link" />
-                </li>
-
-                <li>
-                  <h4>Stat 2</h4>
-                  <SiteDataInput path="homePage.stat_2.title" />
-                  <SiteDataInput path="homePage.stat_2.body" inputType={"textarea"} />
-                  {/* <SiteDataInput path="homePage.stat_2.link_button_text" /> */}
-                  <SiteDataInput path="homePage.stat_2.link" />
-                </li>
-
-                <li>
-                  <h4>Stat 3</h4>
-                  <SiteDataInput path="homePage.stat_3.title" />
-                  <SiteDataInput path="homePage.stat_3.body" inputType={"textarea"} />
-                  {/* <SiteDataInput path="homePage.stat_3.link_button_text" /> */}
-                  <SiteDataInput path="homePage.stat_3.link" />
-                </li>
-
-                <li>
-                  <h4>Additional Box 1</h4>
-                  {/* <SiteDataInput path="homePage.additional_box_1.title" /> */}
-                  <SiteDataInput path="homePage.additional_box_1.body" inputType={"textarea"} />
-                  <SiteDataInput path="homePage.additional_box_1.link_button_text" />
-                  <SiteDataInput path="homePage.additional_box_1.link" />
-                </li>
-
-                <li>
-                  <h4>Additional Box 2</h4>
-                  {/* <SiteDataInput path="homePage.additional_box_2.title" /> */}
-                  <SiteDataInput path="homePage.additional_box_2.body" inputType={"textarea"} />
-                  {/* <SiteDataInput path="homePage.additional_box_2.link_button_text" />
-                          <SiteDataInput path="homePage.additional_box_2.link" /> */}
-                  <br></br>
-                </li>
-              </ul>
-            </div>
-          </Grid>
-
-          {/* <Grid item xs={12} className="logoContainer" >
-                    <div className="management-card">
-                      <h2>Services Page Data</h2>
-                      {dataObj.servicePage.posts.map((post, index) => ( 
-                      <>
-                        <SiteDataInput path={`servicesPage.posts[${index}].title`} />
-                        <SiteDataInput path={`servicesPage.posts[${index}].body`} inputType={"textarea"} />
-                        <SiteDataInput path={`servicesPage.posts[${index}].link_button_text`} />
-                        <SiteDataInput path="servicesPage.post.link" /> 
-                      </>
-                      ))}
-                    
-                    </div>
-                  </Grid>  */}
-        </Grid>
-      </Container>
+          </div>
+        </>
+      )}
     </>
   )
 }
