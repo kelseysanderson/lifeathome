@@ -80,7 +80,7 @@ const Featured = ({ featured, index, loggedIn, edit }) => {
                         <Collapse in={expanded} timeout="auto" unmountOnExit>
                             <CardContent>
                                 <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input full-width" path="body" inputType="textarea" />
-                                <a href={featured.link} target="_blank" rel="noreferrer">
+                                <a href={featured.external_link} target="_blank" rel="noreferrer">
                                     See more about {featured.name}
                                 </a>
                                 <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input card-subtitle-text" path="external_link" />
@@ -130,7 +130,7 @@ const Featured = ({ featured, index, loggedIn, edit }) => {
                                 <Typography paragraph>
                                     {featured.body}
                                 </Typography>
-                                <a href={featured.link} target="_blank" rel="noreferrer">
+                                <a href={featured.external_link} target="_blank" rel="noreferrer">
                                     See more about {featured.name}
                                 </a>
                             </CardContent>

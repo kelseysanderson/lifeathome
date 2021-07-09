@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Grid, Container } from '@material-ui/core';
+// import { Grid, Container } from '@material-ui/core';
 import './style.css'
 
 import { LoginStatusContext } from '../../Context/LoginStatusContext';
@@ -8,22 +8,22 @@ import { SiteContext } from '../../Context/SiteContext';
 import SiteDataInput from "../../components/Inputs/siteDataInput"
 import SiteDataFormInput from "../../components/Inputs/siteDataFormInput"
 
-import { BlogContext } from '../../Context/BlogContext';
-import BlogDataInput from "../../components/Inputs/blogDataInput"
-import BlogDataFormInput from "../../components/Inputs/blogDataFormInput"
-import BlogDataDelete from "../../components/DeleteButtons/blogDataDelete"
+// import { BlogContext } from '../../Context/BlogContext';
+// import BlogDataInput from "../../components/Inputs/blogDataInput"
+// import BlogDataFormInput from "../../components/Inputs/blogDataFormInput"
+// import BlogDataDelete from "../../components/DeleteButtons/blogDataDelete"
 
-import { ServicesContext } from '../../Context/ServicesContext';
-import ServicesDataInput from "../../components/Inputs/servicesDataInput"
-import ServicesDataFormInput from "../../components/Inputs/servicesDataFormInput"
-import ServicesDataDelete from "../../components/DeleteButtons/servicesDataDelete"
+// import { ServicesContext } from '../../Context/ServicesContext';
+// import ServicesDataInput from "../../components/Inputs/servicesDataInput"
+// import ServicesDataFormInput from "../../components/Inputs/servicesDataFormInput"
+// import ServicesDataDelete from "../../components/DeleteButtons/servicesDataDelete"
 
 
 const Manager = (props) => {
   const { loginState, authenticateLogin, logout } = useContext(LoginStatusContext)
   const { siteData, updateLoginSiteData } = useContext(SiteContext)
-  const { blogData, postBlogData } = useContext(BlogContext)
-  const { servicesData, postServicesData } = useContext(ServicesContext)
+  // const { blogData, postBlogData } = useContext(BlogContext)
+  // const { servicesData, postServicesData } = useContext(ServicesContext)
 
   const [loginForm, setLoginForm] = useState({
     login: {
