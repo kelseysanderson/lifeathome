@@ -1,6 +1,7 @@
 if (process.env.NODE_ENV !== "production") {
   require('dotenv').config();
 }
+
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
@@ -13,7 +14,7 @@ app.use(express.json());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
+  app.use('/static', express.static(path.join(__dirname, "../client/build")));
 }
 
 app.get('/*', function(req, res) {
