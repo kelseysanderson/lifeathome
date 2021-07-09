@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 
 require('dotenv').config();
+=======
+if (process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
+}const express = require("express");
+>>>>>>> 48ed552f02e82e61d9507879b2a15876911058b5
 
-const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
@@ -13,10 +18,14 @@ app.use(express.json());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
+<<<<<<< HEAD
   app.use('/static', express.static(path.join(__dirname, "../client/build")));
   app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
   })
+=======
+  app.use(express.static(path.join(__dirname, "../client/build")));
+>>>>>>> 48ed552f02e82e61d9507879b2a15876911058b5
 }
 
 // Add routes, both API and view
