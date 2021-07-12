@@ -11,10 +11,10 @@ import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import EditIcon from '@material-ui/icons/Edit';
 import BlogDataFormInput from '../../components/Inputs/blogDataFormInput';
-import BlogButton  from '../../components/APIButtons/blog';
+import BlogButton from '../../components/APIButtons/blog';
 
 import FeaturedDataFormInput from '../../components/Inputs/featuredDataFormInput';
-import FeaturedButton  from '../../components/APIButtons/featured';
+import FeaturedButton from '../../components/APIButtons/featured';
 
 import Featured from './Featured'
 import './style.css';
@@ -77,37 +77,38 @@ const Blog = () => {
   }
 
   return (
-    <div className="blog-page" style={{ height: '100%' }}>
+    <div className="blog-page blog-page-animation" style={{ height: '100%' }}>
       {loggedIn ? (
-        <>
+        <section className="edit-buttons">
           <IconButton onClick={toggleEditBtn}>
             {toggleClass.render}
           </IconButton>
           <IconButton onClick={handleAddPost}>
             {addPost.renderAddPost}
           </IconButton>
-        </>
+        </section>
       ) : null}
 
       {addPost.shown === true ? (
         <div style={{ display: 'flex', flexDirection: 'column', marginLeft: "15%", marginRight: "15%", justifyContent: "center" }}>
           <div>
+            <div>
+              <h1>Create New Blog Post</h1>
+              <BlogDataFormInput path="title" />
+              <BlogDataFormInput path="author" />
+              <BlogDataFormInput path="description" />
+              <BlogDataFormInput path="img_src" />
+              <BlogDataFormInput className="full-width full-height" path="body" inputType="textarea" />
+              <BlogButton.Submit />
+            </div>
             <h1>Create Featured Post</h1>
             <FeaturedDataFormInput path="name" />
             <FeaturedDataFormInput path="img_src" />
             <FeaturedDataFormInput path="job" />
             <FeaturedDataFormInput path="place" />
-            <FeaturedDataFormInput className="full-width full-height" path="description" inputType="textarea" />
-            <FeaturedButton.Submit/>
-          </div>
-          <div>
-            <h1>Create New Post</h1>
-            <BlogDataFormInput path="title" />
-            <BlogDataFormInput path="author" />
-            <BlogDataFormInput path="description" />
-            <BlogDataFormInput path="img_src" />
-            <BlogDataFormInput className="full-width full-height" path="body" inputType="textarea" />
-            <BlogButton.Submit/>
+            <FeaturedDataFormInput className="full-width full-height" path="description" />
+            <FeaturedDataFormInput className="full-width full-height" path="body" inputType="textarea" />
+            <FeaturedButton.Submit />
           </div>
         </div>
       ) : null}

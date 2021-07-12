@@ -6,7 +6,7 @@ const Delete = (props) => {
 
   return (
     <>
-      <button><button className="red-btn" onClick={() => deleteService(props.postId)}>Delete Post</button></button>
+      <button><button className="red-btn" onClick={() => deleteService(props.postId)} style={{color:'rgb(177, 9, 9)'}}>Delete Post</button></button>
     </>
   )
 }

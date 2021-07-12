@@ -7,7 +7,7 @@ import './style.css'
 
 const Contact = (props) => {
   return (
-    <div className="contact-page">
+    <div className="contact-page blog-page-animation">
       <Grid container spacing={4}>
         <Grid item sm={12} >
           <h1 className="contact-header">Contact Us</h1>

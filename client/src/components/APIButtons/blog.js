@@ -7,7 +7,7 @@ const Delete = (props) => {
   const { deletePost } = useContext(BlogContext);
 
   return (
-      <IconButton onClick={() => deletePost(props.postId)}>
+      <IconButton onClick={() => deletePost(props.postId)} style={{color:'rgb(177, 9, 9)'}}>
         <DeleteIcon />
       </IconButton>
   )
@@ -17,7 +17,7 @@ const Submit = (props) => {
   const { postBlogData } = useContext(BlogContext);
 
   return (
-      <button onClick={postBlogData}>Post to Blog</button>
+      <button onClick={postBlogData} className="green-btn">Post to Blog</button>
   )
 }
 

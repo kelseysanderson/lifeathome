@@ -21,9 +21,12 @@ const Post = ({ posts, index, loggedIn, toggleClass, toggleEditFunction, edit })
           <div className="description">
             <BlogDataInput {...posts} index={index} className="admin-blog-input" path="title" />
             <BlogDataInput {...posts} index={index} className="admin-blog-input" path="author" />
-            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent:'space-between' }} >
               <BlogDataInput {...posts} index={index} className="admin-blog-input" path="description" />
-              <BlogButtons.Delete postId={posts._id} />
+              <div className="delete-row">
+                <BlogButtons.Delete postId={posts._id}></BlogButtons.Delete>
+                <p>Delete Post</p>
+              </div>
             </div>
             <p className="read-more">
               <NavLink style={{ textDecoration: 'none', border: '1px solid #81a791', padding: '5px', borderRadius: '5px', textAlign: 'center', backgroundColor: '#AED3BE' }} exact to={{ pathname: `/blog/${index}`, aboutProps: { toggleEditFunction: toggleEditFunction, toggleClass: toggleClass } }}>

@@ -33,3 +33,15 @@
      text-align: center;
      font-family: 'Mulish', 'Verdana', 'sans-serif';
  }
+
+ .delete-row {
+     display:flex;
+     flex-direction: row;
+     justify-content: flex-end;
+     align-items: center;
+
+ }
+
+ .delete-row p {
+     color: rgb(177, 9, 9) !important;
+ }

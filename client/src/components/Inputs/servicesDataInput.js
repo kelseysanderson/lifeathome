@@ -20,7 +20,7 @@ const ServicesDataInput = (props) => {
       return false
     }
   }
-
+  console.log(props[props.index]._id)
   return (
     <>
       <div className="data-form">
@@ -28,21 +28,21 @@ const ServicesDataInput = (props) => {
         {/* TEXTAREA VS. INPUT */}
         {props.inputType === "textarea" ? (
         <textarea 
-          className="management-input"
+          className={props.className ? props.className : ""}
           data-path={props.path}
           data-index={props.index}
           value={value}
           onChange={handleInputChange}
-          style={updateQueueStatus() ? ({border: "2px solid red", width: "100%", height: "200px", resize: "none"}) : ({border: "2px solid green", width: "100%", height: "200px", resize: "none"})} 
-        />) : (
+          style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "5px", borderRadius: "5px", }) : ({ border: "0.25px solid #AED3BE", borderRadius: "5px", padding: "5px", outline: "none", resize: "none" })}
+          />) : (
           <input 
-          className="management-input"
+          className={props.className ? props.className : ""}
           data-path={props.path}
           data-index={props.index}
           value={value}
           onChange={handleInputChange} 
-          style={updateQueueStatus() ? ({border: "2px solid red", width: "100%"}) : ({border: "2px solid green", width: "100%"})}
-        />)}
+          style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "5px", borderRadius: "5px"}) : ({ border: "0.25px solid #AED3BE", borderRadius: "5px", padding: "5px", resize: "none" })}
+          />)}
         {/* RENDERS UPDATE BUTTON */}
         {updateQueueStatus() ? (
         <>

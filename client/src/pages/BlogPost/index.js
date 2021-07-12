@@ -10,12 +10,13 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import EditIcon from '@material-ui/icons/Edit';
 import BlogDataInput from '../../components/Inputs/blogDataInput';
 import BlogDataFormInput from '../../components/Inputs/blogDataFormInput';
+import BlogButton from '../../components/APIButtons/blog';
 import CommentSection from './CommentSection';
 import moment from 'moment'
 import './style.css';
 
 const BlogPost = () => {
-  const loggedInContext= (useContext(LoginStatusContext));
+  const loggedInContext = (useContext(LoginStatusContext));
   const [editBtn, setEditBtn] = useState({ shown: false })
   const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon />, renderAddPost: <AddIcon /> });
   const [addPost, setAddPost] = useState({ shown: false, renderAddPost: <AddIcon /> })
@@ -59,27 +60,28 @@ const BlogPost = () => {
   return (
     <div>
       {loggedIn ? (
-        <>
+        <section className="edit-buttons">
           <IconButton onClick={toggleEditBtn}>
             {toggleClass.render}
           </IconButton>
           <IconButton onClick={handleAddPost}>
             {addPost.renderAddPost}
           </IconButton>
-        </>
+        </section>
       ) : null}
-
       {addPost.shown === true ? (
         <div style={{ display: 'flex', flexDirection: 'column', marginLeft: "15%", marginRight: "15%", justifyContent: "center" }}>
-          <h1>Create New Post</h1>
-          <BlogDataFormInput path="title" />
-          <BlogDataFormInput path="author" />
-          <BlogDataFormInput path="description" />
-          <BlogDataFormInput path="img_src" />
-          <BlogDataFormInput path="body" inputType="textarea" />
+          <div>
+            <h1>Create New Blog Post</h1>
+            <BlogDataFormInput path="title" />
+            <BlogDataFormInput path="author" />
+            <BlogDataFormInput path="description" />
+            <BlogDataFormInput path="img_src" />
+            <BlogDataFormInput className="full-width full-height" path="body" inputType="textarea" />
+            <BlogButton.Submit />
+          </div>
         </div>
       ) : null}
-
       {loggedIn && toggleClass.edit === true ? (
         <>
           <Box display="flex" flexDirection="column" justifyContent="flex-end" alignItems="center" style={{ marginBottom: "100px" }}>
@@ -94,9 +96,12 @@ const BlogPost = () => {
               <BlogDataInput {...post} index={index} className="admin-blog-input" path="description" />
             </div>
           </Box>
-          <div style={{width:"70%", marginLeft:"15%", overflowWrap:"normal"}}>
+          <div style={{ width: "70%", marginLeft: "15%", overflowWrap: "normal" }}>
             <BlogDataInput {...post} index={index} className="blog-paragraphs" path="body" inputType="textarea" style={{ width: "70% !important" }} />
-
+          </div>
+          <div className="delete-row" style={{ marginRight: '50px' }}>
+            <BlogButton.Delete postId={post._id} />
+            <p>Delete Post</p>
           </div>
           <Box display="flex" flexDirection="column" justifyContent="flex-end" alignItems="center" style={{ marginBottom: "100px" }}>
             <CommentSection key={post._id} postId={post._id} className="blog-paragraphs " postComments={post.comments} />

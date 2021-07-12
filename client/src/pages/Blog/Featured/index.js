@@ -13,7 +13,6 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import WorkIcon from '@material-ui/icons/Work';
 import FeaturedDataInput from '../../../components/Inputs/featuredDataInput';
 import FeaturedButton from '../../../components/APIButtons/featured';
-
 import './style.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +46,6 @@ const Featured = ({ featured, index, loggedIn, edit }) => {
             {loggedIn && edit === true ? (
                 <div className="card-container" style={{ padding: "5px 0", borderBottom: "1.5px solid #2E343C", borderRadius: "3px" }}>
                     <Card className="card">
-                        <FeaturedButton.Delete id={featured._id} />
                         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
                             <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input featured-title-input" path="name" />
                             <img src={featured.img_src} alt={featured.name} className={`featured-img ${cardBackgroundRender(featured.index)}`}></img>
@@ -58,17 +56,18 @@ const Featured = ({ featured, index, loggedIn, edit }) => {
                                         <WorkIcon />
                                         <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input card-subtitle-text" path="job" />
                                     </>
-
                                 </Typography>
                                 <Typography color="textSecondary" component="p" className="card-subtitle" >
-
                                     <>
                                         <LocationOnIcon />
                                         <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input card-subtitle-text" path="place" />
                                     </>
                                 </Typography>
-
                                 <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input full-width" path="description" inputType="textarea" />
+                                <div className="delete-row">
+                                    <FeaturedButton.Delete id={featured._id} />
+                                    <p>Delete Card</p>
+                                </div>
                             </CardContent>
                         </div>
                         <CardActions disableSpacing>
