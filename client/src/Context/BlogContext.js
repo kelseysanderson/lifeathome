@@ -16,7 +16,7 @@ export const BlogProvider = ({ children }) => {
     })
     const [blogUpdateQueue, setBlogUpdateQueue] = useState({ array: [] })
     const [blogBodyInputs, setBlogBodyInputs] = useState({ form: [0] })
-    console.log(blogBodyInputs)
+
 
     useEffect(() => {
         loadBlogData();
@@ -101,8 +101,9 @@ export const BlogProvider = ({ children }) => {
     }
 
     function updateBlogData(path, value, id, index) {
-        API.updatePost(id, { [path]: value })
+        API.updatePost(id, {$set: { [path]: value }})
             .then(res => {
+                console.log(res)
                 updatePathHandler(setBlogUpdateQueue, path, blogUpdateQueue.array, false, parseInt(index))
             })
             .catch(err => console.log(err));
@@ -110,7 +111,6 @@ export const BlogProvider = ({ children }) => {
 
     function updatePathHandler(updateFunction, path, array, value, index) {
         if (array[index] === undefined) { array[index] = {} }
-        console.log(array)
         let newState = array[index]
         var schema = newState;  // a moving reference to internal object within obj
         var pList = path.split('.');
@@ -121,6 +121,14 @@ export const BlogProvider = ({ children }) => {
         }
         schema[pList[pList.length - 1]] = value;
         updateFunction({ array: array })
+    }
+
+    //APPEND NEW BLOG BODY TO STATE
+    function appendBlogBodyInput(index, length) {
+        updatePathHandler(setBlogData, "body." + length + ".type", blogData.array, "new", index)
+        updatePathHandler(setBlogData, "body." + length + ".data", blogData.array, "", index)
+        updatePathHandler(setBlogUpdateQueue, "body." + length + ".type", blogUpdateQueue.array, true, index)
+        updatePathHandler(setBlogUpdateQueue, "body." + length + ".data", blogUpdateQueue.array, true, index)
     }
 
     //DELETE FUNCTNIOS
@@ -145,6 +153,7 @@ export const BlogProvider = ({ children }) => {
             formInputChange,
             postBlogData,
             deletePost,
+            appendBlogBodyInput,
             blogBodyInputs,
             appendInput,
             resetInputs

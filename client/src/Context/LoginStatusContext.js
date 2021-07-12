@@ -4,7 +4,7 @@ import API from "../utils/API";
 export const LoginStatusContext = createContext();
 
 export const LoginStatusProvider = ({ children }) => {
-    const [loginState, setLoginState] = useState(false)
+    const [loginState, setLoginState] = useState(true)
 
     function authenticateLogin (id, input) {
         API.authLogin(id, input)

@@ -44,6 +44,9 @@ const BlogDataFormInput = (props) => {
                   <option value="link">
                     Link
                   </option>
+                  <option value="image">
+                    Image
+                  </option>
                 </select>
               </>) : (<>
                 <input
@@ -56,11 +59,6 @@ const BlogDataFormInput = (props) => {
                 <br></br>
               </>)}
           </>)}
-
-
-
-
-
       </div>
     </>
   )
