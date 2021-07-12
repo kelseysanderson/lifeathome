@@ -10,11 +10,7 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import EditIcon from '@material-ui/icons/Edit';
 import BlogDataInput from '../../components/Inputs/blogDataInput';
 import BlogDataFormInput from '../../components/Inputs/blogDataFormInput';
-<<<<<<< HEAD
-import BlogButton  from '../../components/APIButtons/blog';
-=======
 import BlogButton from '../../components/APIButtons/blog';
->>>>>>> 4ae59df3d407b775dc392ddc723012644fb2cd42
 import CommentSection from './CommentSection';
 import moment from 'moment'
 import './style.css';
@@ -24,7 +20,7 @@ const BlogPost = () => {
   const [editBtn, setEditBtn] = useState({ shown: false })
   const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon />, renderAddPost: <AddIcon /> });
   const [addPost, setAddPost] = useState({ shown: false, renderAddPost: <AddIcon /> })
-  const { blogData } = useContext(BlogContext);
+  const { blogData, blogBodyInputs, appendInput, resetInputs } = useContext(BlogContext);
   const { index } = useParams();
   const post = blogData.array[index];
   const loggedIn = loggedInContext.loginState
@@ -87,15 +83,6 @@ const BlogPost = () => {
       ) : null}
       {addPost.shown === true ? (
         <div style={{ display: 'flex', flexDirection: 'column', marginLeft: "15%", marginRight: "15%", justifyContent: "center" }}>
-<<<<<<< HEAD
-          <h1>Create New Post</h1>
-          <BlogDataFormInput path="title" />
-          <BlogDataFormInput path="author" />
-          <BlogDataFormInput path="description" />
-          <BlogDataFormInput path="img_src" />
-          <BlogDataFormInput path="body" inputType="textarea" />
-          <BlogButton.Submit/>
-=======
           <div>
             <h1>Create New Blog Post</h1>
             <BlogDataFormInput path="title" />
@@ -105,7 +92,6 @@ const BlogPost = () => {
             <BlogDataFormInput className="full-width full-height" path="body" inputType="textarea" />
             <BlogButton.Submit />
           </div>
->>>>>>> 4ae59df3d407b775dc392ddc723012644fb2cd42
         </div>
       ) : null}
       {loggedIn && toggleClass.edit === true ? (
@@ -123,7 +109,12 @@ const BlogPost = () => {
             </div>
           </Box>
           <div style={{ width: "70%", marginLeft: "15%", overflowWrap: "normal" }}>
-            <BlogDataInput {...post} index={index} className="blog-paragraphs" path="body" inputType="textarea" style={{ width: "70% !important" }} />
+            {post.body.map((section, i) => (
+              <>
+                <BlogDataInput {...post} index={index} className="blog-paragraphs" path={"body." + i + ".type"} inputType="blogBody" />
+                <BlogDataInput {...post} index={index} className="blog-paragraphs" path={"body." + i + ".data"} inputType="textarea" style={{ width: "70% !important" }} />
+              </>
+            ))}
           </div>
           <div className="delete-row" style={{ marginRight: '50px' }}>
             <BlogButton.Delete postId={post._id} />

@@ -22,7 +22,7 @@ import BlogButton from "../../components/APIButtons/blog"
 const Manager = (props) => {
   const { loginState, authenticateLogin, logout } = useContext(LoginStatusContext)
   const { siteData, updateLoginSiteData } = useContext(SiteContext)
-  const [blogBodyInputs, setBlogBodyInputs] = useState({ inputs: [0] })
+  const {blogBodyInputs, appendInput, resetInputs } = useContext(BlogContext)
   // const { blogData, postBlogData } = useContext(BlogContext)
   // const { servicesData, postServicesData } = useContext(ServicesContext)
 
@@ -41,15 +41,6 @@ const Manager = (props) => {
     setLoginForm(newState)
   }
 
-  function appendInput() {
-    var newInput = blogBodyInputs.inputs.length;
-    setBlogBodyInputs(prevState => ({ inputs: prevState.inputs.concat([newInput]) }));
-  }
-
-  function resetInputs () {
-    setBlogBodyInputs({ inputs: [0] })
-  }
-
   return (
     <>
       <div>
@@ -59,15 +50,15 @@ const Manager = (props) => {
         <BlogDataFormInput path="description" />
         <BlogDataFormInput path="img_src" />
 
-        {blogBodyInputs.inputs.map(input =>
+        {blogBodyInputs.form.map(input =>
           <div key={input}>
             <BlogDataFormInput path={"body." + input + ".type"} inputType="blogBody" />
             <BlogDataFormInput className="full-width full-height" path={"body." + input + ".data"} inputType="textarea" />
           </div>)}
-        <button onClick={appendInput}>
+        <button onClick={() => appendInput("form")}>
           ADD INPUT
         </button>
-        <div onClick={resetInputs}>
+        <div onClick={() => resetInputs("form")}>
           <BlogButton.Submit />
         </div>
       </div>
