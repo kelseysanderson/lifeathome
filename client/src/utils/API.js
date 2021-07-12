@@ -13,7 +13,6 @@ export default {
     return axios.put("/api/site/auth/" + id, newData)
   },
   authLogin: function (id, input) {
-    console.log(input)
     return axios.post("/api/site/auth/" + id, input)
   },
 

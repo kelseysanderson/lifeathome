@@ -12,7 +12,13 @@ const BlogDataInput = (props) => {
 
   //FINDS VALUE OUT OF PATH STRING
   const valueArr = props.path.split(".")
-  const value = valueArr.reduce((object, property) => object[property], blogData.array[props.index])
+  const value = () => {
+    try {
+      return valueArr.reduce((object, property) => object[property], blogData.array[props.index])
+    } catch {
+      return ""
+    }
+  }
 
   //FINDS QUEUE STATUS
   const updateQueueStatus = () => {
@@ -33,18 +39,32 @@ const BlogDataInput = (props) => {
             className={props.className ? props.className : ""}
             data-path={props.path}
             data-index={props.index}
-            value={value}
+            value={value()}
             onChange={handleInputChange}
             style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "5px", borderRadius: "5px", }) : ({ border: "0.25px solid #AED3BE", borderRadius: "5px", padding: "5px", outline: "none", resize: "none" })}
-          />) : (
-          <input
-            className={props.className ? props.className : ""}
-            data-path={props.path}
-            data-index={props.index}
-            value={value}
-            onChange={handleInputChange}
-            style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "5px", borderRadius: "5px"}) : ({ border: "0.25px solid #AED3BE", borderRadius: "5px", padding: "5px", resize: "none" })}
-          />)}
+          />) : (<>
+            {props.inputType === "blogBody" ? (
+              <select data-path={props.path} data-index={props.index} onChange={handleInputChange}>
+                <option value="text" selected={value() === "text" ? ("selected") : ("")}>
+                  Text
+                </option>
+                <option value="embedded_video" selected={value() === "embedded_video" ? ("selected") : ("")}>
+                  Embedded Video
+                </option>
+                <option value="link" selected={value() === "link" ? ("selected") : ("")}>
+                  Link
+                </option>
+              </select>
+            ) : (
+              <input
+                className={props.className ? props.className : ""}
+                data-path={props.path}
+                data-index={props.index}
+                value={value()}
+                onChange={handleInputChange}
+                style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "5px", borderRadius: "5px" }) : ({ border: "0.25px solid #AED3BE", borderRadius: "5px", padding: "5px", resize: "none" })}
+              />)}
+          </>)}
         {/* RENDERS UPDATE BUTTON */}
         {updateQueueStatus() ? (
           <>

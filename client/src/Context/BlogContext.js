@@ -11,10 +11,12 @@ export const BlogProvider = ({ children }) => {
             author: "",
             description: "",
             img_src: "",
-            body: ""
+            body: []
         }
     })
     const [blogUpdateQueue, setBlogUpdateQueue] = useState({ array: [] })
+    const [blogBodyInputs, setBlogBodyInputs] = useState({ form: [0] })
+    console.log(blogBodyInputs)
 
     useEffect(() => {
         loadBlogData();
@@ -27,6 +29,20 @@ export const BlogProvider = ({ children }) => {
             })
             .catch(err => console.log(err));
     };
+
+    //BLOG BODY INPUTS
+    function appendInput(input) {
+        var newInput = blogBodyInputs[input].length;
+        setBlogBodyInputs(prevState => ({ [input]: prevState[input].concat([newInput]) }));
+      }
+    
+      function resetInputs (input) {
+        if (input === "form") {
+            setBlogBodyInputs({ form: [0] })
+        } else {
+            setBlogBodyInputs({ [input]: [] })
+        }
+      }
 
     //FORM FUNCTIONS
     function formInputChange(event) {
@@ -44,7 +60,7 @@ export const BlogProvider = ({ children }) => {
                         author: "",
                         description: "",
                         img_src: "",
-                        body: ""
+                        body: []
                     }
                 })
                 loadBlogData()
@@ -128,7 +144,10 @@ export const BlogProvider = ({ children }) => {
             updateBlogData,
             formInputChange,
             postBlogData,
-            deletePost
+            deletePost,
+            blogBodyInputs,
+            appendInput,
+            resetInputs
         }
         }>
             {children}

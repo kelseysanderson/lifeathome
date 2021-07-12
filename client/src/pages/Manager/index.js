@@ -8,10 +8,10 @@ import { SiteContext } from '../../Context/SiteContext';
 import SiteDataInput from "../../components/Inputs/siteDataInput"
 import SiteDataFormInput from "../../components/Inputs/siteDataFormInput"
 
-// import { BlogContext } from '../../Context/BlogContext';
-// import BlogDataInput from "../../components/Inputs/blogDataInput"
-// import BlogDataFormInput from "../../components/Inputs/blogDataFormInput"
-// import BlogDataDelete from "../../components/DeleteButtons/blogDataDelete"
+import { BlogContext } from '../../Context/BlogContext';
+import BlogDataInput from "../../components/Inputs/blogDataInput"
+import BlogDataFormInput from "../../components/Inputs/blogDataFormInput"
+import BlogButton from "../../components/APIButtons/blog"
 
 // import { ServicesContext } from '../../Context/ServicesContext';
 // import ServicesDataInput from "../../components/Inputs/servicesDataInput"
@@ -22,6 +22,7 @@ import SiteDataFormInput from "../../components/Inputs/siteDataFormInput"
 const Manager = (props) => {
   const { loginState, authenticateLogin, logout } = useContext(LoginStatusContext)
   const { siteData, updateLoginSiteData } = useContext(SiteContext)
+  const {blogBodyInputs, appendInput, resetInputs } = useContext(BlogContext)
   // const { blogData, postBlogData } = useContext(BlogContext)
   // const { servicesData, postServicesData } = useContext(ServicesContext)
 
@@ -42,10 +43,30 @@ const Manager = (props) => {
 
   return (
     <>
+      <div>
+        <h1>Create New Post</h1>
+        <BlogDataFormInput path="title" />
+        <BlogDataFormInput path="author" />
+        <BlogDataFormInput path="description" />
+        <BlogDataFormInput path="img_src" />
+
+        {blogBodyInputs.form.map(input =>
+          <div key={input}>
+            <BlogDataFormInput path={"body." + input + ".type"} inputType="blogBody" />
+            <BlogDataFormInput className="full-width full-height" path={"body." + input + ".data"} inputType="textarea" />
+          </div>)}
+        <button onClick={() => appendInput("form")}>
+          ADD INPUT
+        </button>
+        <div onClick={() => resetInputs("form")}>
+          <BlogButton.Submit />
+        </div>
+      </div>
+
       {loginState ? (
         <>
           <div className="management-center">
-            <button style={{padding: "10px 20px"}} className="green-btn" onClick={logout}>Logout</button>
+            <button style={{ padding: "10px 20px" }} className="green-btn" onClick={logout}>Logout</button>
           </div>
 
           <div className="management-card management-center">
@@ -56,7 +77,7 @@ const Manager = (props) => {
           </div>
 
 
-          
+
 
           <div className="management-card management-center">
             <h2>Site Data</h2>
@@ -66,8 +87,8 @@ const Manager = (props) => {
             {/* <SiteDataInput path="siteData.contact.phone" label={true} className="management-input" /> */}
             <SiteDataInput path="siteData.contact.location" label={true} className="management-input" />
             <SiteDataInput path="siteData.contact.facebook_link" label={true} className="management-input" />
-            <SiteDataInput path="siteData.contact.instagram_link"  label={true} className="management-input"/>
-            <SiteDataInput path="siteData.contact.twitter_link"  label={true} className="management-input"/>
+            <SiteDataInput path="siteData.contact.instagram_link" label={true} className="management-input" />
+            <SiteDataInput path="siteData.contact.twitter_link" label={true} className="management-input" />
           </div>
         </>
       ) : (

@@ -31,7 +31,7 @@ function App() {
                 <Route exact path="/blog" component={Blog} />
                 <Route exact path="/blog/:index" component={BlogPost} />
                 <Route exact path="/contact" component={Contact} />
-                <Route exact path="/admin" component={Manager} />
+                <Route exact path="/manager" component={Manager} />
                 <Footer />
               </Router>
             </FeaturedProvider>

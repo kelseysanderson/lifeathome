@@ -20,7 +20,7 @@ const BlogPost = () => {
   const [editBtn, setEditBtn] = useState({ shown: false })
   const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon />, renderAddPost: <AddIcon /> });
   const [addPost, setAddPost] = useState({ shown: false, renderAddPost: <AddIcon /> })
-  const { blogData } = useContext(BlogContext);
+  const { blogData, blogBodyInputs, appendInput, resetInputs } = useContext(BlogContext);
   const { index } = useParams();
   const post = blogData.array[index];
   const loggedIn = loggedInContext.loginState
@@ -53,6 +53,18 @@ const BlogPost = () => {
         shown: true,
         renderAddPost: <RemoveIcon />
       })
+    }
+  }
+
+  function blogBodyRender(section) {
+    if (section.type === "text") {
+      return (<p className="blog-paragraphs" >{section.data}</p>)
+    }
+    if (section.type === "embedded_video") {
+      return (<p className="blog-paragraphs" >AS AND EMBEDDED VIDEO{section.data}</p>)
+    }
+    if (section.type === "link") {
+      return (<a href={section.data} className="blog-paragraphs">Link</a>)
     }
   }
 
@@ -97,7 +109,12 @@ const BlogPost = () => {
             </div>
           </Box>
           <div style={{ width: "70%", marginLeft: "15%", overflowWrap: "normal" }}>
-            <BlogDataInput {...post} index={index} className="blog-paragraphs" path="body" inputType="textarea" style={{ width: "70% !important" }} />
+            {post.body.map((section, i) => (
+              <>
+                <BlogDataInput {...post} index={index} className="blog-paragraphs" path={"body." + i + ".type"} inputType="blogBody" />
+                <BlogDataInput {...post} index={index} className="blog-paragraphs" path={"body." + i + ".data"} inputType="textarea" style={{ width: "70% !important" }} />
+              </>
+            ))}
           </div>
           <div className="delete-row" style={{ marginRight: '50px' }}>
             <BlogButton.Delete postId={post._id} />
@@ -117,7 +134,11 @@ const BlogPost = () => {
             <p>{post.author}</p>
             <p>{moment(post.date_posted).format("LL")}</p>
           </div>
-          <p className="blog-paragraphs" >{post.body} </p>
+          {post.body.map((section, index) => (
+            <div key={index}>
+              {blogBodyRender(section)}
+            </div>
+          ))}
           <CommentSection key={post._id} postId={post._id} postComments={post.comments} />
         </Box>
       )}
