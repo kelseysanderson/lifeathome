@@ -89,6 +89,7 @@ const BlogPost = () => {
             <BlogDataFormInput path="author" />
             <BlogDataFormInput path="description" />
             <BlogDataFormInput path="img_src" />
+            <BlogDataFormInput path="img_description" />
             <BlogDataFormInput className="full-width full-height" path="body" inputType="textarea" />
             <BlogButton.Submit />
           </div>
@@ -99,8 +100,10 @@ const BlogPost = () => {
           <Box display="flex" flexDirection="column" justifyContent="flex-end" alignItems="center" style={{ marginBottom: "100px" }}>
             <h1 className="single-blog-header">{post.title}</h1>
             <div className="image-container">
-              <img className="single-post-image" src={post.img_src} alt=""></img>
-              <BlogDataInput {...post} key={post.img_src} index={index} className="admin-blog-input" path="image_src" />
+              <img className="single-post-image" src={post.img_src} alt={post.img_description}></img>
+              <BlogDataInput {...post} key={post.img_src} index={index} className="admin-blog-input" path="img_src" />
+              <BlogDataInput {...post} key={post.img_src} index={index} className="admin-blog-input" path="img_description" />
+
             </div>
             <div>
               <BlogDataInput {...post} index={index} className="admin-blog-input" path="title" />

@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const serviceSchema = new Schema({
   title: String,
   img_src: String,
+  img_description: String,
   body: String,
   button_text: String,
   // ex: "blog", "contact", etc.

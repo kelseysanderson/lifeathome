@@ -7,6 +7,7 @@ const featuredSchema = new Schema({
   place: String,
   description: String, 
   img_src: String,
+  img_description: String,
   body: String,
   external_link: String,
   embedded_video_link: String,

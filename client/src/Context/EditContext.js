@@ -4,7 +4,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 
 export const EditStatusContext = createContext();
 
-export const LoginStatusProvider = ({ children }) => {
+export const EditStatusProvider = ({ children }) => {
     const [editBtn, setEditBtn] = useState({ shown: false })
     const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon className="icon" /> });
 
@@ -26,7 +26,7 @@ export const LoginStatusProvider = ({ children }) => {
     }
 
     return (
-        <EditStatusContext.Provider value={{ loginState, editBtn, toggleClass, authenticateLogin, logout, toggleEditBtn }}>
+        <EditStatusContext.Provider value={{  editBtn, toggleClass, toggleEditBtn }}>
             {children}
         </EditStatusContext.Provider>
     );

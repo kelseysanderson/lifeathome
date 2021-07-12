@@ -97,12 +97,14 @@ const Blog = () => {
               <BlogDataFormInput path="author" />
               <BlogDataFormInput path="description" />
               <BlogDataFormInput path="img_src" />
+              <BlogDataFormInput path="img_description" />
               <BlogDataFormInput className="full-width full-height" path="body" inputType="textarea" />
               <BlogButton.Submit />
             </div>
             <h1>Create Featured Post</h1>
             <FeaturedDataFormInput path="name" />
             <FeaturedDataFormInput path="img_src" />
+            <FeaturedDataFormInput path="img_description" />
             <FeaturedDataFormInput path="job" />
             <FeaturedDataFormInput path="place" />
             <FeaturedDataFormInput className="full-width full-height" path="description" />

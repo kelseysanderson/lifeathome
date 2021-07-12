@@ -31,7 +31,8 @@ const Service = (props) => {
   const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon className="icon" /> });
   const [addPost, setAddPost] = useState({ shown: false, renderAddPost: <AddIcon /> })
   const loggedInContext = (useContext(LoginStatusContext));
-  const loggedIn = loggedInContext.loginState;
+  const loggedIn = true
+  // loggedInContext.loginState;
 
   function toggleEditBtn() {
     setEditBtn({ shown: !editBtn.shown })
@@ -87,6 +88,7 @@ const Service = (props) => {
             <h1>Create a Service</h1>
             <ServiceDataFormInput path="title" />
             <ServiceDataFormInput path="img_src" />
+            <ServiceDataFormInput path="img_description" />
             <ServiceDataFormInput path="body" inputType="textarea" />
             <ServiceDataFormInput path="button_text" />
             <ServiceDataFormInput className="full-width full-height" path="internal_link" />
@@ -103,6 +105,7 @@ const Service = (props) => {
                 <Grid style={{ border: "none" }} item xs={7}>
                   <img className="service-image" src={service.img_src} alt="smarthome with phone app"></img>
                   <ServiceInput {...servicesData.array} id={service._id} index={index} path="img_src" />
+                  <ServiceInput {...servicesData.array} id={service._id} index={index} path="img_description" />
                 </Grid>
                 <Grid style={{ border: "none" }} item xs={5}>
                   <div className="service-text">
@@ -124,7 +127,7 @@ const Service = (props) => {
             {servicesData.array.map((service, index) => (
               <div className="container service-container" id="smarthome">
                 <Grid style={{ border: "none" }} item xs={7}>
-                  <img className="service-image" src={service.img_src} alt="smarthome with phone app"></img>
+                  <img className="service-image" src={service.img_src} alt={service.img_description}></img>
                 </Grid>
                 <Grid style={{ border: "none" }} item xs={5}>
                   <div className="service-text">
