@@ -6,7 +6,7 @@ const postSchema = new Schema({
   author: String,
   description: String, 
   img_src: String,
-  body: String,
+  body: [],
   external_link: String,
   embedded_video_link: String,
   tags: [String],

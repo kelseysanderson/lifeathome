@@ -11,7 +11,7 @@ export const BlogProvider = ({ children }) => {
             author: "",
             description: "",
             img_src: "",
-            body: ""
+            body: []
         }
     })
     const [blogUpdateQueue, setBlogUpdateQueue] = useState({ array: [] })
@@ -44,7 +44,7 @@ export const BlogProvider = ({ children }) => {
                         author: "",
                         description: "",
                         img_src: "",
-                        body: ""
+                        body: []
                     }
                 })
                 loadBlogData()

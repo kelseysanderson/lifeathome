@@ -10,6 +10,7 @@ import RemoveIcon from '@material-ui/icons/Remove';
 import EditIcon from '@material-ui/icons/Edit';
 import BlogDataInput from '../../components/Inputs/blogDataInput';
 import BlogDataFormInput from '../../components/Inputs/blogDataFormInput';
+import BlogButton  from '../../components/APIButtons/blog';
 import CommentSection from './CommentSection';
 import moment from 'moment'
 import './style.css';
@@ -55,6 +56,18 @@ const BlogPost = () => {
     }
   }
 
+  function blogBodyRender(section) {
+    if (section.type === "text") {
+      return (<p className="blog-paragraphs" >{section.data}</p>)
+    }
+    if (section.type === "embedded_video") {
+      return (<p className="blog-paragraphs" >AS AND EMBEDDED VIDEO{section.data}</p>)
+    }
+    if (section.type === "link") {
+      return (<a href={section.data} className="blog-paragraphs">Link</a>)
+    }
+  }
+
 
   return (
     <div>
@@ -77,6 +90,7 @@ const BlogPost = () => {
           <BlogDataFormInput path="description" />
           <BlogDataFormInput path="img_src" />
           <BlogDataFormInput path="body" inputType="textarea" />
+          <BlogButton.Submit/>
         </div>
       ) : null}
 
@@ -112,7 +126,11 @@ const BlogPost = () => {
             <p>{post.author}</p>
             <p>{moment(post.date_posted).format("LL")}</p>
           </div>
-          <p className="blog-paragraphs" >{post.body} </p>
+          {post.body.map((section, index) => (
+            <div key={index}>
+              {blogBodyRender(section)}
+            </div>
+          ))}
           <CommentSection key={post._id} postId={post._id} postComments={post.comments} />
         </Box>
       )}
