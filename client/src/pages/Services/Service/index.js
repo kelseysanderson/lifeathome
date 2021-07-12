@@ -31,8 +31,7 @@ const Service = (props) => {
   const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon className="icon" /> });
   const [addPost, setAddPost] = useState({ shown: false, renderAddPost: <AddIcon /> })
   const loggedInContext = (useContext(LoginStatusContext));
-  const loggedIn = true
-  // loggedInContext.loginState;
+  const loggedIn = loggedInContext.loginState;
 
   function toggleEditBtn() {
     setEditBtn({ shown: !editBtn.shown })
