@@ -45,6 +45,7 @@ const BlogDataInput = (props) => {
           />) : (<>
             {props.inputType === "blogBody" ? (
               <select data-path={props.path} data-index={props.index} onChange={handleInputChange}>
+                <option disabled selected={value() === "new" ? ("selected") : ("")} value="text"> -- select an option -- </option>
                 <option value="text" selected={value() === "text" ? ("selected") : ("")}>
                   Text
                 </option>
@@ -53,6 +54,9 @@ const BlogDataInput = (props) => {
                 </option>
                 <option value="link" selected={value() === "link" ? ("selected") : ("")}>
                   Link
+                </option>
+                <option value="image" selected={value() === "image" ? ("selected") : ("")}>
+                  Image
                 </option>
               </select>
             ) : (
@@ -68,7 +72,8 @@ const BlogDataInput = (props) => {
         {/* RENDERS UPDATE BUTTON */}
         {updateQueueStatus() ? (
           <>
-            <button className="red-btn" onClick={() => updateBlogData(props.path, value, props._id, props.index)}>Update</button>
+            {console.log(value())}
+            <button className="red-btn" onClick={() => updateBlogData(props.path, value(), props._id, props.index)}>Update</button>
           </>) : (<></>)}
         <br></br>
       </div>
