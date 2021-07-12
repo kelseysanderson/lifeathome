@@ -20,7 +20,7 @@ const ServicesDataInput = (props) => {
       return false
     }
   }
-  console.log(props[props.index]._id)
+  console.log(props.id)
   return (
     <>
       <div className="data-form">
@@ -46,7 +46,7 @@ const ServicesDataInput = (props) => {
         {/* RENDERS UPDATE BUTTON */}
         {updateQueueStatus() ? (
         <>
-          <button className="red-btn" onClick={() => updateServicesData(props.path, value, props._id, props.index)}>Update</button>
+          <button className="red-btn" onClick={() => updateServicesData(props.path, value, props.id, props.index)}>Update</button>
         </>) : (<></>)}
         <br></br>
       </div>

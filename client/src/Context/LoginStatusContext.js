@@ -24,4 +24,3 @@ export const LoginStatusProvider = ({ children }) => {
         </LoginStatusContext.Provider>
     );
 };
-

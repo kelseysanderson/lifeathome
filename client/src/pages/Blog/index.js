@@ -34,7 +34,6 @@ const Blog = () => {
   const indexOfLastPost = (currentPage * postsPerPage) + (postsPerPage);
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = blogData.array.slice(indexOfFirstPost, indexOfLastPost);
-  // const loggedIn = true;
 
   const handleChangePage = (event, newPage) => {
     setCurrentPage(newPage);

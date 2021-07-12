@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { LoginStatusContext } from '../../Context/LoginStatusContext';
+import { SiteContext } from '../../Context/SiteContext';
 import Banner from './HomeComponents/Banner';
 import AboutStatement from './HomeComponents/AboutStatement';
 import Stats from './HomeComponents/Stats';
@@ -10,9 +11,10 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import './style.css';
 
 const Home = (props) => {
-  const loggedInContext = (useContext(LoginStatusContext));
+  const loggedInContext= (useContext(LoginStatusContext));
   const [editBtn, setEditBtn] = useState({ shown: false })
   const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon className="icon" /> });
+  const { siteData } = useContext(SiteContext);
   const loggedIn = loggedInContext.loginState
 
   function toggleEditBtn() {
@@ -35,13 +37,11 @@ const Home = (props) => {
   return (
     <div className="home-page">
       {loggedIn ? (
-        <section className="edit-buttons">
-          <IconButton onClick={toggleEditBtn}>
-            {toggleClass.render}
-          </IconButton>
-        </section>
+        <IconButton onClick={toggleEditBtn}>
+          {toggleClass.render}
+        </IconButton>
       ) : null}
-      <Banner edit={editBtn} loggedIn={loggedIn} />
+      <Banner edit={editBtn} loggedIn={loggedIn}/>
       <AboutStatement edit={editBtn} loggedIn={loggedIn} />
       <Stats edit={editBtn} loggedIn={loggedIn} />
       <AdditionalInfo edit={editBtn} loggedIn={loggedIn} />

@@ -85,7 +85,7 @@ export const ServicesProvider = ({ children }) => {
     }
     
     function updateServicesData(path, value, id, index) {
-        API.updatePost(id, {[path]: value})
+        API.updateService(id, {[path]: value})
            .then(res => {
             updatePathHandler(setServicesUpdateQueue, path, servicesUpdateQueue.array, false, parseInt(index))
             })
@@ -134,4 +134,3 @@ export const ServicesProvider = ({ children }) => {
         </ServicesContext.Provider>
     );
 };
-
