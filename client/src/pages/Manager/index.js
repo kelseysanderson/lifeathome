@@ -22,7 +22,7 @@ import BlogButton from "../../components/APIButtons/blog"
 const Manager = (props) => {
   const { loginState, authenticateLogin, logout } = useContext(LoginStatusContext)
   const { siteData, updateLoginSiteData } = useContext(SiteContext)
-  const {blogBodyInputs, appendInput, resetInputs } = useContext(BlogContext)
+  const { blogBodyInputs, appendInput, resetInputs } = useContext(BlogContext)
   // const { blogData, postBlogData } = useContext(BlogContext)
   // const { servicesData, postServicesData } = useContext(ServicesContext)
 

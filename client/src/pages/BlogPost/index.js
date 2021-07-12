@@ -68,7 +68,6 @@ const BlogPost = () => {
     }
   }
 
-
   return (
     <div>
       {loggedIn ? (
