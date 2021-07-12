@@ -67,7 +67,7 @@ const BlogPost = () => {
       return (<a href={section.data} className="blog-paragraphs">Link</a>)
     }
     if (section.type === "image") {
-      return (<div><img src={section.data} alt="blog-img"/></div>)
+      return (<div><img src={section.data} alt="blog-img" /></div>)
     }
   }
 
@@ -85,13 +85,21 @@ const BlogPost = () => {
       ) : null}
       {addPost.shown === true ? (
         <div style={{ display: 'flex', flexDirection: 'column', marginLeft: "15%", marginRight: "15%", justifyContent: "center" }}>
-          <div>
-            <h1>Create New Blog Post</h1>
-            <BlogDataFormInput path="title" />
-            <BlogDataFormInput path="author" />
-            <BlogDataFormInput path="description" />
-            <BlogDataFormInput path="img_src" />
-            <BlogDataFormInput className="full-width full-height" path="body" inputType="textarea" />
+          <h1>Create New Post</h1>
+          <BlogDataFormInput path="title" />
+          <BlogDataFormInput path="author" />
+          <BlogDataFormInput path="description" />
+          <BlogDataFormInput path="img_src" />
+
+          {blogBodyInputs.form.map(input =>
+            <div key={input}>
+              <BlogDataFormInput path={"body." + input + ".type"} inputType="blogBody" />
+              <BlogDataFormInput className="full-width full-height" path={"body." + input + ".data"} inputType="textarea" />
+            </div>)}
+          <button onClick={() => appendInput("form")}>
+            ADD INPUT
+          </button>
+          <div onClick={() => resetInputs("form")}>
             <BlogButton.Submit />
           </div>
         </div>
