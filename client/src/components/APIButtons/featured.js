@@ -7,7 +7,7 @@ const Delete = (props) => {
   const { deleteFeatured } = useContext(FeaturedContext);
 
   return (
-      <IconButton onClick={() => deleteFeatured(props.id)}>
+      <IconButton onClick={() => deleteFeatured(props.id)} style={{color:'rgb(177, 9, 9)'}}>
         <DeleteIcon />
       </IconButton>
   )

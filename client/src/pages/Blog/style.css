@@ -1,3 +1,16 @@
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-2%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  .blog-page-animation {  
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+    text-align: left;
+    padding-bottom: 20px;
+  }
 .blog-page{
     height:100%
 }
