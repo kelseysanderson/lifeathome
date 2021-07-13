@@ -91,7 +91,7 @@ const BlogPost = () => {
           <BlogDataFormInput path="description" />
           <BlogDataFormInput path="img_src" />
 
-          {blogBodyInputs.form.map(input =>
+          {blogBodyInputs.form.map((input, i) =>
             <div key={input}>
               <BlogDataFormInput path={"body." + input + ".type"} inputType="blogBody" />
               <BlogDataFormInput className="full-width full-height" path={"body." + input + ".data"} inputType="textarea" />
@@ -121,8 +121,10 @@ const BlogPost = () => {
           <div style={{ width: "70%", marginLeft: "15%", overflowWrap: "normal" }}>
             {post.body.map((section, i) => (
               <>
+                <BlogButton.Reorder direction={"Up"} sectionIndex={i} objIndex={index} postId={post._id} />
                 <BlogDataInput {...post} index={index} className="blog-paragraphs" path={"body." + i + ".type"} inputType="blogBody" />
                 <BlogDataInput {...post} index={index} className="blog-paragraphs" path={"body." + i + ".data"} inputType="textarea" style={{ width: "70% !important" }} />
+                <BlogButton.Reorder direction={"Down"} sectionIndex={i} objIndex={index} postId={post._id} />
               </>
             ))}
             <button onClick={() => appendBlogBodyInput(index, post.body.length)}>Add Section</button>

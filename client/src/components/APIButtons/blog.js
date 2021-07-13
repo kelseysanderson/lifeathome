@@ -21,6 +21,26 @@ const Submit = (props) => {
   )
 }
 
-const BlogButton = {Delete, Submit}
+const Reorder = (props) => {
+  const { reorderBlogBody, blogCounter } = useContext(BlogContext);
+
+  console.log(blogCounter.array[props.objIndex])
+  return (
+    <>
+      {blogCounter.array[props.objIndex] === 0 || blogCounter.array[props.objIndex] === undefined ? (
+        <>
+          <button onClick={() => reorderBlogBody(props.sectionIndex, props.objIndex, props.direction, props.postId)}>{props.direction}</button>
+        </>
+      ) : (
+        <>
+
+        </>
+      )}
+    </>
+
+  )
+}
+
+const BlogButton = {Delete, Submit, Reorder}
 
 export default BlogButton
