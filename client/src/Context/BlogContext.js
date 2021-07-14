@@ -11,7 +11,7 @@ export const BlogProvider = ({ children }) => {
             author: "",
             description: "",
             img_src: "",
-            body: []
+            body: [{type: "", data: ""}]
         }
     })
     const [blogUpdateQueue, setBlogUpdateQueue] = useState({ array: [] })
@@ -31,18 +31,10 @@ export const BlogProvider = ({ children }) => {
     };
 
     //BLOG BODY INPUTS
-    function appendInput(input) {
-        var newInput = blogBodyInputs[input].length;
-        setBlogBodyInputs(prevState => ({ [input]: prevState[input].concat([newInput]) }));
-      }
-    
-      function resetInputs (input) {
-        if (input === "form") {
-            setBlogBodyInputs({ form: [0] })
-        } else {
-            setBlogBodyInputs({ [input]: [] })
-        }
-      }
+    function appendInput() {
+        blogDataForm.post.body.push({type: "new", data: ""})
+        setBlogDataForm({post: blogDataForm.post })
+    }
 
     //FORM FUNCTIONS
     function formInputChange(event) {
@@ -61,7 +53,7 @@ export const BlogProvider = ({ children }) => {
                         author: "",
                         description: "",
                         img_src: "",
-                        body: []
+                        body: [{type: "", data: ""}]
                     }
                 })
                 loadBlogData()
@@ -81,6 +73,39 @@ export const BlogProvider = ({ children }) => {
         schema[pList[pList.length - 1]] = value;
         updateFunction({ post: object })
     }
+
+    //REORDER AND DELETE ON FORM
+    function reorderBlogBodyForm(moveIndex, direction) {
+        let toMove = blogDataForm.post.body.splice(moveIndex, 1)[0]
+        console.log(blogDataForm.post.body)
+
+        if (direction === "Up") {
+            if (moveIndex === 0) {
+                blogDataForm.post.body.push(toMove)
+            } else {
+                blogDataForm.post.body.splice(moveIndex - 1, 0, toMove)
+            }
+        }
+
+        if (direction === "Down") {
+            if (moveIndex === blogDataForm.post.body.length) {
+                blogDataForm.post.body.unshift(toMove)
+            } else {
+                blogDataForm.post.body.splice(moveIndex + 1, 0, toMove)
+            }
+        }
+
+        setBlogDataForm({post: blogDataForm.post})
+    }
+
+    function deleteBlogBodyForm(deleteIndex) {
+        blogDataForm.post.body.splice(deleteIndex, 1)
+        console.log(blogDataForm.post.body)
+
+        setBlogDataForm({post: blogDataForm.post})
+    }
+
+
 
     //UPDATE FUNCTIONS
     function handleInputChange(event) {
@@ -161,7 +186,7 @@ export const BlogProvider = ({ children }) => {
         updatePathHandler(setBlogUpdateQueue, "body." + length + ".data", blogUpdateQueue.array, true, index)
     }
 
-    //REORDERS BLOGBODY AND UPDATE API
+    //REORDER AND DELETE BLOGBODY, AND UPDATE API
     function reorderBlogBody(moveIndex, objIndex, direction, id) {
         let toMove = blogData.array[objIndex].body.splice(moveIndex, 1)[0]
 
@@ -188,10 +213,10 @@ export const BlogProvider = ({ children }) => {
         blogData.array[objIndex].body.splice(deleteIndex, 1)
         console.log(blogData.array[objIndex].body)
 
-        setBlogData({array: blogData.array}, updateBlogBody(objIndex, blogData.array[objIndex].body, id))
+        setBlogData({array: blogData.array}, updateBlogBody(blogData.array[objIndex].body, id))
     }
 
-    function updateBlogBody (objIndex, value, id) {
+    function updateBlogBody (value, id) {
         API.updatePost(id, {body: value })
             .then(res => {
                 console.log(res)
@@ -225,10 +250,12 @@ export const BlogProvider = ({ children }) => {
             appendBlogBodyInput,
             blogBodyInputs,
             appendInput,
-            resetInputs,
             reorderBlogBody,
+            deleteBlogBody,
+            reorderBlogBodyForm,
+            deleteBlogBodyForm,
             blogCounter,
-            deleteBlogBody
+            
         }
         }>
             {children}

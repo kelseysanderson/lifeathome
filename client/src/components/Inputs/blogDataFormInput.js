@@ -35,16 +35,16 @@ const BlogDataFormInput = (props) => {
               <>
                 <select data-path={props.path} onChange={formInputChange}>
                   <option disabled selected value> -- select an option -- </option>
-                  <option value="text">
+                  <option value="text" selected={value() === "text" ? ("selected") : ("")}>
                     Text
                   </option>
-                  <option value="embedded_video">
+                  <option value="embedded_video" selected={value() === "embedded_video" ? ("selected") : ("")}>
                     Embedded Video
                   </option>
-                  <option value="link">
+                  <option value="link" selected={value() === "link" ? ("selected") : ("")}>
                     Link
                   </option>
-                  <option value="image">
+                  <option value="image" selected={value() === "image" ? ("selected") : ("")}>
                     Image
                   </option>
                 </select>

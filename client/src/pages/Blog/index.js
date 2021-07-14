@@ -21,7 +21,7 @@ import './style.css';
 
 const Blog = () => {
   const loggedInContext = (useContext(LoginStatusContext));
-  const { blogData, blogBodyInputs, appendInput, resetInputs } = useContext(BlogContext);
+  const { blogData, blogDataForm, appendInput } = useContext(BlogContext);
   const { featuredData } = useContext(FeaturedContext);
   const [currentPage, setCurrentPage] = useState(0);
   const [postsPerPage, setPostsPerPage] = useState(10);
@@ -99,17 +99,18 @@ const Blog = () => {
               <BlogDataFormInput path="description" />
               <BlogDataFormInput path="img_src" />
 
-              {blogBodyInputs.form.map(input =>
-                <div key={input}>
-                  <BlogDataFormInput path={"body." + input + ".type"} inputType="blogBody" />
-                  <BlogDataFormInput className="full-width full-height" path={"body." + input + ".data"} inputType="textarea" />
+              {blogDataForm.post.body.map((input, i) =>
+                <div key={i}>
+                  <BlogButton.ReorderForm direction={"Up"} sectionIndex={i} />
+                  <BlogDataFormInput path={"body." + i + ".type"} inputType="blogBody" />
+                  <BlogDataFormInput className="full-width full-height" path={"body." + i + ".data"} inputType="textarea" />
+                  <BlogButton.ReorderForm direction={"Down"} sectionIndex={i} />
+                  <BlogButton.DeleteBlogBodyForm sectionIndex={i} />
                 </div>)}
-              <button onClick={() => appendInput("form")}>
+              <button onClick={() => appendInput()}>
                 ADD INPUT
               </button>
-              <div onClick={() => resetInputs("form")}>
                 <BlogButton.Submit />
-              </div>
             </div>
             <h1>Create Featured Post</h1>
             <FeaturedDataFormInput path="name" />

@@ -20,7 +20,7 @@ const BlogPost = () => {
   const [editBtn, setEditBtn] = useState({ shown: false })
   const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon />, renderAddPost: <AddIcon /> });
   const [addPost, setAddPost] = useState({ shown: false, renderAddPost: <AddIcon /> })
-  const { blogData, blogBodyInputs, appendInput, resetInputs, appendBlogBodyInput } = useContext(BlogContext);
+  const { blogData, blogDataForm, appendInput, appendBlogBodyInput } = useContext(BlogContext);
   const { index } = useParams();
   const post = blogData.array[index];
   const loggedIn = loggedInContext.loginState
@@ -91,17 +91,18 @@ const BlogPost = () => {
           <BlogDataFormInput path="description" />
           <BlogDataFormInput path="img_src" />
 
-          {blogBodyInputs.form.map((input, i) =>
-            <div key={input}>
-              <BlogDataFormInput path={"body." + input + ".type"} inputType="blogBody" />
-              <BlogDataFormInput className="full-width full-height" path={"body." + input + ".data"} inputType="textarea" />
+          {blogDataForm.post.body.map((input, i) =>
+            <div key={i}>
+              <BlogButton.ReorderForm direction={"Up"} sectionIndex={i} />
+              <BlogDataFormInput path={"body." + i + ".type"} inputType="blogBody" />
+              <BlogDataFormInput className="full-width full-height" path={"body." + i + ".data"} inputType="textarea" />
+              <BlogButton.ReorderForm direction={"Down"} sectionIndex={i}/>
+              <BlogButton.DeleteBlogBodyForm sectionIndex={i} />
             </div>)}
-          <button onClick={() => appendInput("form")}>
+          <button onClick={() => appendInput()}>
             ADD INPUT
           </button>
-          <div onClick={() => resetInputs("form")}>
-            <BlogButton.Submit />
-          </div>
+          <BlogButton.Submit />
         </div>
       ) : null}
       {loggedIn && toggleClass.edit === true ? (

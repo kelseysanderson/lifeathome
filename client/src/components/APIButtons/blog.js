@@ -58,6 +58,26 @@ const DeleteBlogBody = (props) => {
   )
 }
 
-const BlogButton = { Delete, Submit, Reorder, DeleteBlogBody }
+//requires sectionIndex and direction
+const ReorderForm = (props) => {
+  const { reorderBlogBodyForm } = useContext(BlogContext);
+
+  return (
+    <button onClick={() => reorderBlogBodyForm(props.sectionIndex, props.direction)}>{props.direction}</button>
+  )
+}
+
+//requires sectionIndex
+const DeleteBlogBodyForm = (props) => {
+  const { deleteBlogBodyForm } = useContext(BlogContext);
+
+  return (
+    <IconButton onClick={() => deleteBlogBodyForm(props.sectionIndex)} style={{ color: 'rgb(177, 9, 9)' }}>
+      <DeleteIcon />
+    </IconButton>
+  )
+}
+
+const BlogButton = { Delete, Submit, Reorder, DeleteBlogBody, ReorderForm, DeleteBlogBodyForm }
 
 export default BlogButton
