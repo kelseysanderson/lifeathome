@@ -12,7 +12,7 @@ import BlogDataInput from '../../components/Inputs/blogDataInput';
 import BlogDataFormInput from '../../components/Inputs/blogDataFormInput';
 import BlogButton from '../../components/APIButtons/blog';
 import CommentSection from './CommentSection';
-import moment from 'moment'
+import moment from 'moment';
 import './style.css';
 
 const BlogPost = () => {
@@ -61,13 +61,14 @@ const BlogPost = () => {
       return (<p className="blog-paragraphs" >{section.data}</p>)
     }
     if (section.type === "embedded_video") {
-      return (<p className="blog-paragraphs" >AS AN EMBEDDED VIDEO{section.data}</p>)
+      return (<div>{section.data}</div>
+      )
     }
     if (section.type === "link") {
-      return (<a href={section.data} className="blog-paragraphs">Link</a>)
+      return (<a href={section.data} className="blog-paragraphs">{section.data}</a>)
     }
     if (section.type === "image") {
-      return (<div><img src={section.data} alt="blog-img" /></div>)
+      return (<img src={section.data} className="blog-img" alt="blog-img" />)
     }
   }
 
@@ -96,11 +97,13 @@ const BlogPost = () => {
               <BlogDataFormInput path={"body." + input + ".type"} inputType="blogBody" />
               <BlogDataFormInput className="full-width full-height" path={"body." + input + ".data"} inputType="textarea" />
             </div>)}
-          <button onClick={() => appendInput("form")}>
-            ADD INPUT
-          </button>
-          <div onClick={() => resetInputs("form")}>
-            <BlogButton.Submit />
+          <div className="add-input">
+            <button className="orange-btn" onClick={() => appendInput("form")}>
+              <p>+ Add Input</p>
+            </button>
+            <div onClick={() => resetInputs("form")}>
+              <BlogButton.Submit />
+            </div>
           </div>
         </div>
       ) : null}
