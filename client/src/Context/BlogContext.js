@@ -15,7 +15,6 @@ export const BlogProvider = ({ children }) => {
         }
     })
     const [blogUpdateQueue, setBlogUpdateQueue] = useState({ array: [] })
-    const [blogBodyInputs, setBlogBodyInputs] = useState({ form: [0] })
     const [blogCounter, setBlogCounter] = useState({array: []})
 
     useEffect(() => {
@@ -248,7 +247,6 @@ export const BlogProvider = ({ children }) => {
             postBlogData,
             deletePost,
             appendBlogBodyInput,
-            blogBodyInputs,
             appendInput,
             reorderBlogBody,
             deleteBlogBody,
