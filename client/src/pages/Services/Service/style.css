@@ -46,7 +46,7 @@
 .service-image {
   margin-top:5px;
   margin-left:5px;
-  width: 90%;
+  width: 80%;
   border-radius: 3px;
   -moz-box-shadow: 0 0 3px rgb(170, 170, 170);
   -webkit-box-shadow: 0 0 3px rgb(170, 170, 170);
@@ -54,4 +54,37 @@
 }
 .service-text {
   margin-left:35px;
+}
+
+@media only screen and (max-width: 960px) {
+  .service-container {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin:0 0 25px 0 ;
+    padding:0;
+    border-top: 1px solid #AED3BE;
+    width:100%;
+  }
+  .service-text {
+    text-align:center;
+    margin-left:0px;
+  }
+  .service-text-heading {
+    background-color: #2E343C;
+    border-radius: 3px;
+    color:white;
+  }
+  
+  .service-image {
+    margin-top:25px;
+    margin-left:0px;
+    width: 90%;
+    border-radius: 3px;
+    -moz-box-shadow: 0 0 3px rgb(170, 170, 170);
+    -webkit-box-shadow: 0 0 3px rgb(170, 170, 170);
+    box-shadow: 0 0 2px rgb(151, 151, 151);
+  }
+
 }

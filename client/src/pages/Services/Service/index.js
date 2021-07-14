@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useContext } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { ServicesContext } from '../../../Context/ServicesContext';
 import { LoginStatusContext } from '../../../Context/LoginStatusContext';
 import { Grid } from '@material-ui/core';
@@ -15,16 +14,6 @@ import EditIcon from '@material-ui/icons/Edit';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import './style.css'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-}));
 const Service = (props) => {
   const { servicesData } = useContext(ServicesContext)
   const [editBtn, setEditBtn] = useState({ shown: false })
@@ -124,13 +113,13 @@ const Service = (props) => {
         ) : (
           <Grid item xs={12}>
             {servicesData.array.map((service, index) => (
-              <div className="container service-container" id="smarthome">
-                <Grid style={{ border: "none" }} item xs={7}>
+              <div className="container service-container" key={service._id} id="smarthome">
+                <Grid style={{ border: "none" }} item xs={9} md={7}>
                   <img className="service-image" src={service.img_src} alt={service.img_description}></img>
                 </Grid>
-                <Grid style={{ border: "none" }} item xs={5}>
+                <Grid style={{ border: "none" }} item xs={11} md={5}>
                   <div className="service-text">
-                    <h1>{service.title}</h1>
+                    <h1 className="service-text-heading">{service.title}</h1>
                     <p> {service.body}</p>            
                     <NavLink exact to={service.internal_link}><button className="green-btn">{service.button_text}</button></NavLink>
                   </div>

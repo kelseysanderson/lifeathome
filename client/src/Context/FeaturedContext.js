@@ -98,7 +98,6 @@ export const FeaturedProvider = ({ children }) => {
 
     function updatePathHandler(updateFunction, path, array, value, index) {
         if (array[index] === undefined) { array[index] = {} }
-        console.log(array)
         let newState = array[index]
         var schema = newState;  // a moving reference to internal object within obj
         var pList = path.split('.');

@@ -8,10 +8,10 @@ import { SiteContext } from '../../Context/SiteContext';
 import SiteDataInput from "../../components/Inputs/siteDataInput"
 import SiteDataFormInput from "../../components/Inputs/siteDataFormInput"
 
-import { BlogContext } from '../../Context/BlogContext';
-import BlogDataInput from "../../components/Inputs/blogDataInput"
-import BlogDataFormInput from "../../components/Inputs/blogDataFormInput"
-import BlogButton from "../../components/APIButtons/blog"
+// import { BlogContext } from '../../Context/BlogContext';
+// import BlogDataInput from "../../components/Inputs/blogDataInput"
+// import BlogDataFormInput from "../../components/Inputs/blogDataFormInput"
+// import BlogButton from "../../components/APIButtons/blog"
 
 // import { ServicesContext } from '../../Context/ServicesContext';
 // import ServicesDataInput from "../../components/Inputs/servicesDataInput"

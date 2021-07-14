@@ -8,11 +8,19 @@
 }
 
 .mission-text {
-  padding:50px;
+  padding:55px;
   text-align: center;
 }
 
 .learn-more-btn {
   display:flex;
   justify-content: center;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .mission-text {
+    padding:10px;
+    text-align: center;
+  }
 }

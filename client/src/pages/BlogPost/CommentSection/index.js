@@ -50,7 +50,7 @@ const CommentSection = (props) => {
         </form>
       </div>
       {props.postComments.map((comment, index) => (
-        <Comment key={index} comment={comment} fetchPost={props.fetchPost} />
+        <Comment key={index} comment={comment} fetchPost={props.fetchPost} postId={props.postId} />
       ))}
     </div>
   )

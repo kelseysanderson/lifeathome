@@ -4,7 +4,6 @@
   width: 100%;
   padding: 20px;
 }
-
 .contact-form label {
   padding: 10px;
   padding-bottom: 15px;
@@ -15,7 +14,6 @@
   width: 80%;
   height: 35px;
 }
-
 .name-email-row {
   margin: 0 12% 0 8%;
   width:80%;
@@ -24,16 +22,13 @@
   align-content:center;
   padding-bottom:25px;
 }
-
 .name-email-row p{
   color:#2E343C;
 }
-
 textarea.name-email{
   width: 80%;
   height: 200px;
 }
-
 .contact-button {
   align-self: center;
   width: 100px;
@@ -43,14 +38,12 @@ textarea.name-email{
   border-radius: 5px;
   border: 1px solid rgb(197, 197, 197);
 }
-
 input[type="submit"]{
   text-transform: capitalize;
   letter-spacing: 3px;
   font-size: 16px;
   font-weight: 500;
 }
-
 .contact-button:hover {
   cursor:pointer;
   border-radius: 5px;
@@ -58,7 +51,6 @@ input[type="submit"]{
   border-radius: 5px;
   border: 1px solid rgb(136, 136, 136);
 }
-
 @media only screen and (max-width: 600px) {
   .name-email-row {
       width:70%;

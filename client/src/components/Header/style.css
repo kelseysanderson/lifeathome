@@ -35,9 +35,7 @@ header{
   justify-content:flex-end;
   margin:0 !important;
   padding: 0 !important;
-
 }
-
 .navList li{
   margin:0 20px;
   padding:0;
@@ -53,13 +51,11 @@ header{
   transition: all 0.25s ease; 
   cursor: pointer
 }
-
 .navList li a:hover{
   cursor:pointer;
   color:#5b6470;
   letter-spacing: 1.5px;
 }
-
 .active-nav{
   text-decoration: underline;
 }
@@ -73,7 +69,6 @@ header{
       padding: 0 !important;
   }
   .navList{
-
       font-size: 16px !important;
       margin: 20px 0px;
   }

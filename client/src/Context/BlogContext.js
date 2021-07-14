@@ -119,7 +119,6 @@ export const BlogProvider = ({ children }) => {
     function updateBlogData(path, value, id, index) {
         API.updatePost(id, {$set: { [path]: value }})
             .then(res => {
-                console.log(res)
                 updatePathHandler(setBlogUpdateQueue, path, blogUpdateQueue.array, false, parseInt(index))
             })
             .catch(err => console.log(err));
@@ -186,7 +185,6 @@ export const BlogProvider = ({ children }) => {
 
     function deleteBlogBody(deleteIndex, objIndex, id) {
         blogData.array[objIndex].body.splice(deleteIndex, 1)
-        console.log(blogData.array[objIndex].body)
 
         setBlogData({array: blogData.array}, updateBlogBody(objIndex, blogData.array[objIndex].body, id))
     }
@@ -228,7 +226,8 @@ export const BlogProvider = ({ children }) => {
             resetInputs,
             reorderBlogBody,
             blogCounter,
-            deleteBlogBody
+            deleteBlogBody,
+            loadBlogData
         }
         }>
             {children}

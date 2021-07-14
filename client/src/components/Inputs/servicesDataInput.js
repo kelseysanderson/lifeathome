@@ -20,7 +20,6 @@ const ServicesDataInput = (props) => {
       return false
     }
   }
-  console.log(props.id)
   return (
     <>
       <div className="data-form">

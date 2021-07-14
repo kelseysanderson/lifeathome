@@ -15,12 +15,10 @@ const Footer = (props) => {
           <p className="footer-text">{siteData.siteData.contact.location ? siteData.siteData.contact.location : ""}</p>
           <p className="footer-text">{siteData.siteData.contact.email ? siteData.siteData.contact.email : ""}</p>
         </div>
-        <SocialMediaIcons />
         <div>
           <NavLink exact to="/"  className="footer-copyright"> <p > {`\u00a9 ${siteData.siteData.company_name} 2021`}</p></NavLink>
-
-         
         </div>
+        <SocialMediaIcons />
       </section>
     </footer>
   )

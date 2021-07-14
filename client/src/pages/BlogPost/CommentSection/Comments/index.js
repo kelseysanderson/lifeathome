@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import API from '../../../../utils/API';
 import moment from 'moment';
 import showRepliesIcon from '../../../../assets/commentIcons/showreplies.png';
@@ -16,7 +16,6 @@ const Comments = (props) => {
         userName: formObject.username,
         body: formObject.body
       }).then(res => {
-        console.log(props.comment._id)
         // textInput.current.value = "";
         API.updateComment(props.comment._id, {
           $push: { replies: res.data._id }
@@ -26,7 +25,6 @@ const Comments = (props) => {
           body: "",
         })
       }).then(() => {
-        props.fetchPost()
       }).catch(err => console.log(err));
     }
   };

@@ -41,10 +41,19 @@ const BlogDataInput = (props) => {
             data-index={props.index}
             value={value()}
             onChange={handleInputChange}
-            style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "5px", borderRadius: "5px", }) : ({ border: "0.25px solid #AED3BE", borderRadius: "5px", padding: "5px", outline: "none", resize: "none" })}
+            style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "15px", borderRadius: "5px", height: 'auto'}) : ({ border: "0.25px solid #AED3BE", borderRadius: "5px", padding: "15px", outline: "none", resize: "none", height: 'auto' })}
           />) : (<>
             {props.inputType === "blogBody" ? (
-              <select data-path={props.path} data-index={props.index} onChange={handleInputChange}>
+              <select 
+                className="blog-input-dropdown" 
+                style={updateQueueStatus() ? 
+                  ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "5px", borderRadius: "5px", }) 
+                  : ({ border: "0.25px solid #AED3BE", borderRadius: "5px", padding: "5px", outline: "none", resize: "none" })
+                }
+                data-path={props.path} 
+                data-index={props.index} 
+                onChange={handleInputChange}
+              >
                 <option disabled selected={value() === "new" ? ("selected") : ("")} value="text"> -- select an option -- </option>
                 <option value="text" selected={value() === "text" ? ("selected") : ("")}>
                   Text

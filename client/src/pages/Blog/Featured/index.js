@@ -44,24 +44,20 @@ const Featured = ({ featured, index, loggedIn, edit }) => {
     return (
         <div>
             {loggedIn && edit === true ? (
-                <div className="card-container" style={{ padding: "5px 0", borderBottom: "1.5px solid #2E343C", borderRadius: "3px" }}>
+                <div className="card-container">
                     <Card className="card">
-                        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                        <section className="featured-card" >
                             <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input featured-title-input" path="name" />
                             <img src={featured.img_src} alt={featured.name} className={`featured-img ${cardBackgroundRender(featured.index)}`}></img>
                             <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input card-subtitle-text" path="img_src" />
                             <CardContent>
                                 <Typography color="textSecondary" component="p" className="card-subtitle" >
-                                    <>
                                         <WorkIcon />
                                         <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input card-subtitle-text" path="job" />
-                                    </>
                                 </Typography>
                                 <Typography color="textSecondary" component="p" className="card-subtitle" >
-                                    <>
                                         <LocationOnIcon />
                                         <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input card-subtitle-text" path="place" />
-                                    </>
                                 </Typography>
                                 <FeaturedDataInput {...featured} index={index} id={featured.id} className="admin-blog-input full-width" path="description" inputType="textarea" />
                                 <div className="delete-row">
@@ -69,7 +65,7 @@ const Featured = ({ featured, index, loggedIn, edit }) => {
                                     <p>Delete Card</p>
                                 </div>
                             </CardContent>
-                        </div>
+                        </section>
                         <CardActions disableSpacing>
                             <IconButton
                                 className={clsx(classes.expand, { [classes.expandOpen]: expanded, })}
@@ -93,31 +89,30 @@ const Featured = ({ featured, index, loggedIn, edit }) => {
                 </div>
 
             ) : (
-                <div className="card-container" style={{ padding: "5px 0", borderBottom: "1.5px solid #2E343C", borderRadius: "3px" }}>
+                <div className="card-container" >
                     <Card className="card">
-                        <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                        <section className="featured-card">
                             <CardHeader title={featured.name} ></CardHeader>
                             <img src={featured.img_src} alt={featured.name} className={`featured-img ${cardBackgroundRender(featured.index)}`}></img>
-                            <CardContent>
-                                <Typography color="textSecondary" className="card-subtitle-text" component="p" className="card-subtitle" >
-                                    {featured.job ? (
-                                        <>
-                                            <WorkIcon />
-                                            {featured.job}
-                                        </>
-                                    ) : (featured.place ? (
-                                        <>
-                                            <LocationOnIcon />
-                                            {featured.place}
-                                        </>
-                                    ) : (null)
-                                    )}
-                                </Typography>
-                                <Typography variant="body2" component="p" className="featured-description">
+                            <CardContent >
+                                {featured.job ? (
+                                    <Typography color="textSecondary" className="card-subtitle-text" >
+                                        <WorkIcon />
+                                        {featured.job}
+                                    </Typography>
+
+                                ) : (featured.place ? (
+                                    <Typography color="textSecondary" className="card-subtitle-text" >
+                                        <LocationOnIcon />
+                                        {featured.place}
+                                    </Typography>
+                                ) : (null)
+                                )}
+                                <Typography variant="body2" component="p" style={{width:'94%', margin:"5% 3%"}}>
                                     {featured.description}
                                 </Typography>
                             </CardContent>
-                        </div>
+                        </section>
                         <CardActions disableSpacing>
                             <IconButton
                                 className={clsx(classes.expand, { [classes.expandOpen]: expanded, })}

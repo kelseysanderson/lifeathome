@@ -3,18 +3,20 @@
   margin: 8px 10px;
   font-family: 'Mulish', 'Verdana', 'sans-serif';
 }
-
+.blog-input-dropdown {
+  padding: 5px;
+  margin-left: 10px;
+  border:0.25px solid #EE5F5F
+}
 .description {
   font-size: 15px !important;
   font-weight: lighter;
   width: 100%;
   margin-bottom: 10px;
 }
-
 * {
   box-sizing: border-box;
 }
-
 $color_white: whitesmoke;
 $color_prime: #AED3BE;
 $color_grey: #e2e2e2;
@@ -166,5 +168,5 @@ $color_grey_dark: #a2a2a2;
   }
   a:hover {
       color: $color_prime;
-    }
+}
 

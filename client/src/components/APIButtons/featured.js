@@ -17,7 +17,7 @@ const Submit = (props) => {
   const { postFeaturedData } = useContext(FeaturedContext);
 
   return (
-      <button onClick={postFeaturedData}>Post to Featured Bar</button>
+      <button className="green-btn" style={{margin:"15px 0"}} onClick={postFeaturedData}>Post to Featured Bar</button>
   )
 }
 

@@ -29,35 +29,35 @@ const BlogDataFormInput = (props) => {
             data-path={props.path}
             value={value()}
             onChange={formInputChange}
-            style={{ height: "200px", resize: "none" }}
+            style={{ height: "auto", resize: "none" }}
           />) : (<>
             {props.inputType === "blogBody" ? (
-              <>
-                <select data-path={props.path} onChange={formInputChange}>
-                  <option disabled selected value> -- select an option -- </option>
-                  <option value="text">
-                    Text
-                  </option>
-                  <option value="embedded_video">
-                    Embedded Video
-                  </option>
-                  <option value="link">
-                    Link
-                  </option>
-                  <option value="image">
-                    Image
-                  </option>
-                </select>
-              </>) : (<>
-                <input
-                  className="management-input"
-                  data-path={props.path}
-                  value={value()}
-                  onChange={formInputChange}
-                  style={{ width: "100%" }}
-                />
-                <br></br>
-              </>)}
+              <select
+                className="admin-blog-input" data-path={props.path} onChange={formInputChange}>
+                <option disabled selected value> -- select an option -- </option>
+                <option value="text">
+                  Text
+                </option>
+                <option value="embedded_video">
+                  Embedded Video
+                </option>
+                <option value="link">
+                  Link
+                </option>
+                <option value="image">
+                  Image
+                </option>
+              </select>
+            ) : (<>
+              <input
+                className="management-input"
+                data-path={props.path}
+                value={value()}
+                onChange={formInputChange}
+                style={{ width: "100%" }}
+              />
+              <br></br>
+            </>)}
           </>)}
       </div>
     </>

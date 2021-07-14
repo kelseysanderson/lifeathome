@@ -61,11 +61,11 @@ const BlogPost = () => {
       return (<p className="blog-paragraphs" >{section.data}</p>)
     }
     if (section.type === "embedded_video") {
-      return (<div>{section.data}</div>
+      return (<iframe className="blog-video" width="560" height="315" src={section.data} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
       )
     }
     if (section.type === "link") {
-      return (<a href={section.data} className="blog-paragraphs">{section.data}</a>)
+      return (<a href={section.data} className="blog-links" target="_blank" rel="noreferrer" >{section.data}</a>)
     }
     if (section.type === "image") {
       return (<img src={section.data} className="blog-img" alt="blog-img" />)
@@ -109,35 +109,39 @@ const BlogPost = () => {
       ) : null}
       {loggedIn && toggleClass.edit === true ? (
         <>
-          <Box display="flex" flexDirection="column" justifyContent="flex-end" alignItems="center" style={{ marginBottom: "100px" }}>
+          <Box display="flex" flexDirection="column" justifyContent="flex-end" alignItems="center" style={{ marginBottom: "50px" }}>
             <h1 className="single-blog-header">{post.title}</h1>
             <div className="image-container">
               <img className="single-post-image" src={post.img_src} alt={post.img_description}></img>
               <BlogDataInput {...post} key={post.img_src} index={index} className="admin-blog-input" path="img_src" />
               <BlogDataInput {...post} key={post.img_src} index={index} className="admin-blog-input" path="img_description" />
-
             </div>
-            <div>
+            <div >
               <BlogDataInput {...post} index={index} className="admin-blog-input" path="title" />
               <BlogDataInput {...post} index={index} className="admin-blog-input" path="author" />
               <BlogDataInput {...post} index={index} className="admin-blog-input" path="description" />
             </div>
           </Box>
+          <hr style={{ borderBottom: "1px dashed #2E343C" }}></hr>
           <div style={{ width: "70%", marginLeft: "15%", overflowWrap: "normal" }}>
             {post.body.map((section, i) => (
-              <>
-                <BlogButton.Reorder direction={"Up"} sectionIndex={i} objIndex={index} postId={post._id} />
-                <BlogDataInput {...post} index={index} className="blog-paragraphs" path={"body." + i + ".type"} inputType="blogBody" />
-                <BlogDataInput {...post} index={index} className="blog-paragraphs" path={"body." + i + ".data"} inputType="textarea" style={{ width: "70% !important" }} />
-                <BlogButton.Reorder direction={"Down"} sectionIndex={i} objIndex={index} postId={post._id} />
-                <BlogButton.DeleteBlogBody sectionIndex={i} objIndex={index} postId={post._id} />
-              </>
+              <div key={section._id} style={{ margin: "10px 0", padding: '10px 0', borderBottom: "1px dashed #2E343C" }}>
+                <div>
+                  <BlogButton.Reorder direction={"Up"} sectionIndex={i} objIndex={index} postId={post._id} />
+                  <BlogDataInput {...post} index={index} className="blog-paragraphs-input" path={"body." + i + ".type"} inputType="blogBody" />
+                  <BlogDataInput {...post} index={index} className="blog-paragraphs-input" path={"body." + i + ".data"} inputType="textarea" style={{ width: "70% !important" }} />
+                  <div style={{ marginLeft: '92%' }}>
+                    <BlogButton.DeleteBlogBody sectionIndex={i} objIndex={index} postId={post._id} />
+                  </div>
+                  <BlogButton.Reorder direction={"Down"} sectionIndex={i} objIndex={index} postId={post._id} />
+                </div>
+              </div>
             ))}
-            <button onClick={() => appendBlogBodyInput(index, post.body.length)}>Add Section</button>
+            <button className="orange-btn" onClick={() => appendBlogBodyInput(index, post.body.length)}>Add New Section</button>
           </div>
-          <div className="delete-row" style={{ marginRight: '50px' }}>
-            <BlogButton.Delete postId={post._id} />
+          <div className="delete-row" style={{ marginRight: '50px', marginTop: '50px' }}>
             <p>Delete Post</p>
+            <BlogButton.Delete postId={post._id} />
           </div>
           <Box display="flex" flexDirection="column" justifyContent="flex-end" alignItems="center" style={{ marginBottom: "100px" }}>
             <CommentSection key={post._id} postId={post._id} className="blog-paragraphs " postComments={post.comments} />
@@ -147,14 +151,15 @@ const BlogPost = () => {
         <Box display="flex" flexDirection="column" justifyContent="flex-end" alignItems="center" style={{ marginBottom: "100px" }}>
           <h1 className="single-blog-header">{post.title}</h1>
           <div className="image-container">
-            <img className="single-post-image" src={post.img_src} alt=""></img>
+            <img className="single-post-image" src={post.img_src} alt={`${post.img_description}`}></img>
+            {/* <figcaption>Image: {post.img_description}</figcaption> */}
           </div>
           <div>
             <p>{post.author}</p>
             <p>{moment(post.date_posted).format("LL")}</p>
           </div>
           {post.body.map((section, index) => (
-            <div key={index}>
+            <div style={{ width: '70%' }} key={index}>
               {blogBodyRender(section)}
             </div>
           ))}

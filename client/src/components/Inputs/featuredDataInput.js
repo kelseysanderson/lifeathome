@@ -25,7 +25,6 @@ const FeaturedDataInput = (props) => {
 
   return (
     <>
-      <div className="data-form">
         <label>{label}:</label>
         {/* TEXTAREA VS. INPUT */}
         {props.inputType === "textarea" ? (
@@ -51,7 +50,6 @@ const FeaturedDataInput = (props) => {
             <button className="red-btn" onClick={() => updateFeaturedData(props.path, value, props._id, props.index)}>Update</button>
           </>) : (<></>)} 
         <br></br>
-      </div>
     </>
   )
 }

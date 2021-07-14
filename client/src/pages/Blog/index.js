@@ -103,11 +103,13 @@ const Blog = () => {
                   <BlogDataFormInput path={"body." + input + ".type"} inputType="blogBody" />
                   <BlogDataFormInput className="full-width full-height" path={"body." + input + ".data"} inputType="textarea" />
                 </div>)}
-              <button onClick={() => appendInput("form")}>
-                ADD INPUT
-              </button>
-              <div onClick={() => resetInputs("form")}>
-                <BlogButton.Submit />
+              <div className="add-input">
+                <button className="orange-btn" onClick={() => appendInput("form")}>
+                  <p>+ Add Input</p>
+                </button>
+                <div onClick={() => resetInputs("form")}>
+                  <BlogButton.Submit />
+                </div>
               </div>
             </div>
             <h1>Create Featured Post</h1>
@@ -118,7 +120,7 @@ const Blog = () => {
             <FeaturedDataFormInput path="place" />
             <FeaturedDataFormInput className="full-width full-height" path="description" />
             <FeaturedDataFormInput className="full-width full-height" path="body" inputType="textarea" />
-            <FeaturedButton.Submit />
+            <FeaturedButton.Submit/>
           </div>
         </div>
       ) : null}
@@ -131,6 +133,7 @@ const Blog = () => {
             </div>
             {featuredData.array.map((featured, index) => (
               <Featured
+                key={featured._id}
                 index={index}
                 featured={featured}
                 loggedIn={loggedIn}
