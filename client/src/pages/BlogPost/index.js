@@ -130,6 +130,7 @@ const BlogPost = () => {
                 <BlogDataInput {...post} index={index} className="blog-paragraphs" path={"body." + i + ".type"} inputType="blogBody" />
                 <BlogDataInput {...post} index={index} className="blog-paragraphs" path={"body." + i + ".data"} inputType="textarea" style={{ width: "70% !important" }} />
                 <BlogButton.Reorder direction={"Down"} sectionIndex={i} objIndex={index} postId={post._id} />
+                <BlogButton.DeleteBlogBody sectionIndex={i} objIndex={index} postId={post._id} />
               </>
             ))}
             <button onClick={() => appendBlogBodyInput(index, post.body.length)}>Add Section</button>

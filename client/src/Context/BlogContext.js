@@ -162,30 +162,36 @@ export const BlogProvider = ({ children }) => {
     }
 
     //REORDERS BLOGBODY AND UPDATE API
-    function reorderBlogBody(move, objIndex, direction, id) {
-        let toMove = blogData.array[objIndex].body.splice(move, 1)[0]
+    function reorderBlogBody(moveIndex, objIndex, direction, id) {
+        let toMove = blogData.array[objIndex].body.splice(moveIndex, 1)[0]
 
         if (direction === "Up") {
-            if (move === 0) {
+            if (moveIndex === 0) {
                 blogData.array[objIndex].body.push(toMove)
             } else {
-                blogData.array[objIndex].body.splice(move - 1, 0, toMove)
+                blogData.array[objIndex].body.splice(moveIndex - 1, 0, toMove)
             }
         }
 
         if (direction === "Down") {
-            if (move === blogData.array[objIndex].body.length) {
+            if (moveIndex === blogData.array[objIndex].body.length) {
                 blogData.array[objIndex].body.unshift(toMove)
             } else {
-                blogData.array[objIndex].body.splice(move + 1, 0, toMove)
+                blogData.array[objIndex].body.splice(moveIndex + 1, 0, toMove)
             }
         }
 
-        console.log(blogData.array[objIndex].body)
-        setBlogData({array: blogData.array}, reorderUpdatePost(objIndex, blogData.array[objIndex].body, id))
+        setBlogData({array: blogData.array}, updateBlogBody(objIndex, blogData.array[objIndex].body, id))
     }
 
-    function reorderUpdatePost (objIndex, value, id) {
+    function deleteBlogBody(deleteIndex, objIndex, id) {
+        blogData.array[objIndex].body.splice(deleteIndex, 1)
+        console.log(blogData.array[objIndex].body)
+
+        setBlogData({array: blogData.array}, updateBlogBody(objIndex, blogData.array[objIndex].body, id))
+    }
+
+    function updateBlogBody (objIndex, value, id) {
         API.updatePost(id, {body: value })
             .then(res => {
                 console.log(res)
@@ -221,7 +227,8 @@ export const BlogProvider = ({ children }) => {
             appendInput,
             resetInputs,
             reorderBlogBody,
-            blogCounter
+            blogCounter,
+            deleteBlogBody
         }
         }>
             {children}
