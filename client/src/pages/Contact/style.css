@@ -14,9 +14,10 @@
   display:flex;
   flex-direction: column;
   align-items: center;
-  background-color:#2E343C ;
-  border-radius: 4px;
-  color:white;
+  border: 2px solid #2E343C;
+  background-color:whitesmoke ;
+  border-radius: 50px;
+  color:#2E343C;
   height:100%;
   margin:0 0 50px 0 ;
 }

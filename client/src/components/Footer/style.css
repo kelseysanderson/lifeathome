@@ -22,10 +22,13 @@ section.container{
 .footer-contact {
   text-align: center;
   margin-left:55px;
-
 }
 
 .footer-copyright {
+  text-decoration: none;
+}
+
+.footer-copyright p {
   font-style:italic;
   font-size: 15px;
   color:white;

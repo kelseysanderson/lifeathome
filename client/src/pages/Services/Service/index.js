@@ -78,7 +78,7 @@ const Service = (props) => {
       <div className="title-animation" >
         <h1 className="services-title-text">Consulting Services</h1>
         <hr className="services-underline"></hr>
-        <p className="services-title-text service-subtitle">If you're interested in scheduling a consultation contact us <NavLink exact to="/contact">contact us.</NavLink></p>
+        <p className="services-title-text service-subtitle">If you're interested in scheduling a consultation <NavLink exact to="/contact">contact us.</NavLink></p>
       </div>
 
       {addPost.shown === true ? (

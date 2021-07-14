@@ -25,6 +25,7 @@ $color_grey_dark: #a2a2a2;
   flex-direction: column;
   margin: 1rem auto;
   box-shadow: 0 3px 3px -1px rgba(#000, .1);
+  margin:auto;
   margin-bottom: 3%;
   background: $color_white;
   line-height: 1.5;
@@ -152,15 +153,6 @@ $color_grey_dark: #a2a2a2;
     margin: 1rem 0 0;
     &:first-of-type {
       margin-top: 1.25rem;
-      &:before {
-        content: "";
-        position: absolute;
-        height: 3px;
-        background: $color_prime;
-        width: 80px;
-        top: -0.75rem;
-        border-radius: 3px;
-      }
     }
   }
   &:hover {
@@ -169,48 +161,6 @@ $color_grey_dark: #a2a2a2;
     }
   }
 }
-
-
-  
-
-
-//   @media only screen and (max-width: 800px){
-//     flex-direction: row;
-//     max-width: 700px;
-//     .meta {
-//       flex-basis: 40%;
-//       height: auto;
-//     }
-//     .description {
-//       flex-basis: 60%;
-//       &:before {
-//         transform: skewX(-3deg);
-//         content: "";
-//         background: whitesmoke;
-//         width: 30px;
-//         position: absolute;
-//         left: -10px;
-//         top: 0;
-//         bottom: 0;
-//         z-index: -1;
-//       }
-//     }
-//     &.alt {
-//       flex-direction: row-reverse;
-//       .description {
-//         &:before {
-//           left: inherit;
-//           right: -10px;
-//           transform: skew(3deg)
-//         }
-//       }
-//       .details {
-//         padding-left: 25px;
-//       }
-//     }
-//   }
-// }
-
   a {
     color: inherit;
   }

@@ -17,11 +17,9 @@
 .image-container {
   display: flex;
   justify-content: center;
-  width: 100vw;
   background-color: rgb(231, 231, 231);
   max-height: 500px;
   margin-bottom:20px;
-
 }
 
 .blog-paragraphs {
@@ -29,7 +27,8 @@
   line-height: 23px;
   word-spacing: 3px;
   font-weight: lighter;
-  width: 70%;
+  margin:auto;
+  width: 80%;
   white-space: pre-line;
 }
 

@@ -17,12 +17,16 @@
 }
 
 .name-email-row {
-  margin: 0 10%;
+  margin: 0 12% 0 8%;
   width:80%;
   display:flex;
   justify-content: space-between;
   align-content:center;
   padding-bottom:25px;
+}
+
+.name-email-row p{
+  color:#2E343C;
 }
 
 textarea.name-email{
@@ -34,7 +38,8 @@ textarea.name-email{
   align-self: center;
   width: 100px;
   height: 30px;
-  background-color: rgb(214, 213, 213);
+  background-color: #2E343C;
+  color:white;
   border-radius: 5px;
   border: 1px solid rgb(197, 197, 197);
 }

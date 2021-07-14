@@ -45,3 +45,32 @@
  .delete-row p {
      color: rgb(177, 9, 9) !important;
  }
+ .featured {
+    padding: 0px 20px;
+    margin-bottom:50px;
+}
+.featured-header {
+    color: whitesmoke !important;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 2px dotted #AED3BE;
+    padding-bottom: 5px;
+    width:75%;
+}
+.featured-img{
+    height: 170px;
+    width: 170px;
+    padding: 2%;
+    object-fit:cover;
+    border-radius: 200px;
+    -moz-box-shadow: 0 0 3px rgb(170, 170, 170);
+    -webkit-box-shadow: 0 0 3px rgb(170, 170, 170);
+    box-shadow: 0 0 5px rgb(170, 170, 170);
+}
+.featured-container {
+    background-color: #2e343c;
+    border-radius: 0 10px 10px 0;
+    height: 100%;
+    margin-top: 0px !important;
+}
+

@@ -115,10 +115,10 @@ const Blog = () => {
       ) : null}
 
       <Grid container spacing={0} justify="space-between" >
-        <Grid item xs={12} sm={4} md={3} className="sidebar-container">
-          <div className="sidebar">
+        <Grid item xs={12} sm={4} md={3} className="featured-container">
+          <div className="featured">
             <div className="blog-header">
-              <h2 className="sidebar-header">Featured People and Events</h2>
+              <h2 className="featured-header">Featured People and Events</h2>
             </div>
             {featuredData.array.map((featured, index) => (
               <Featured

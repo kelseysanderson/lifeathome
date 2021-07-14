@@ -3,11 +3,13 @@ import originalLogo from '../../assets/logos/transparent_logo.png';
 import { Container, Grid } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
 import {LoginStatusContext} from '../../Context/LoginStatusContext';
+import { SiteContext } from '../../Context/SiteContext';
 
 import './style.css'
 
 const Header = (props) => {
   const {loginState} = useContext(LoginStatusContext)
+  const { siteData } = useContext(SiteContext);
 
   return (
     <header>
@@ -15,7 +17,7 @@ const Header = (props) => {
         <Grid container justify="space-between" alignItems="center" spacing={4}>
           <Grid item xs={12} sm={7} lg={9} className="logoContainer">
             <NavLink exact to="/"><img className="headerImage" src={originalLogo} alt="Life at Home Logo: orange and light green outline of an A-frame house"></img></NavLink>
-            <NavLink exact to="/"><h1 className="logo-text">Life at Home</h1></NavLink>
+            <NavLink exact to="/"><h1 className="logo-text">{siteData.siteData.company_name}</h1></NavLink>
           </Grid>
           <Grid className="navBar" item xs={12} sm={4} lg={3}>
             <ul className="navList">

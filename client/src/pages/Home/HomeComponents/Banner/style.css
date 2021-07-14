@@ -4,7 +4,7 @@
 .curved-div {
   position: relative;
   background: #2E343C;
-  color: black;
+  color: #2E343C;
   overflow: hidden;   
 }
 .curved-div svg {
