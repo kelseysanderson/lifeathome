@@ -44,12 +44,17 @@
 .blog-post-container {
   margin-bottom: 25px;
 }
+.add-input {
+  display:flex;
+  flex-direction: column;
+  width: 125px;
+}
 .add-input button {
-  margin: 5px 0;
+  margin: 10px;
 }
 .add-input p {
-  color:white;
   margin:0;
+  font-weight: bold;
 }
 .blog-img {
   margin-left:25%;

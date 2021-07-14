@@ -101,10 +101,10 @@ const BlogPost = () => {
               <BlogButton.DeleteBlogBodyForm sectionIndex={i} />
             </div>)}
           <div className="add-input">
-            <button className="orange-btn" onClick={() => appendInput()}>
+            <button className="green-btn add-input-btn" onClick={() => appendInput()}>
               <p>+ Add Input</p>
             </button>
-              <BlogButton.Submit />
+            <BlogButton.Submit />
           </div>
         </div>
       ) : null}

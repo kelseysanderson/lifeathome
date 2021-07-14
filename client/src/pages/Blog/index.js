@@ -100,15 +100,15 @@ const Blog = () => {
               <BlogDataFormInput path="img_src" />
 
               {blogDataForm.post.body.map((input, i) =>
-                <div key={i}>
+                <div key={i} style={{ borderBottom: "1px dashed #2E343C" }}>
                   <BlogButton.ReorderForm direction={"Up"} sectionIndex={i} />
                   <BlogDataFormInput path={"body." + i + ".type"} inputType="blogBody" />
                   <BlogDataFormInput className="full-width full-height" path={"body." + i + ".data"} inputType="textarea" />
                   <BlogButton.ReorderForm direction={"Down"} sectionIndex={i} />
                   <BlogButton.DeleteBlogBodyForm sectionIndex={i} />
                 </div>)}
-              <button onClick={() => appendInput()}>
-                ADD INPUT
+              <button className="green-btn add-input-btn" onClick={() => appendInput()}>
+                +Add Input
               </button>
                 <BlogButton.Submit />
             </div>
