@@ -4,8 +4,7 @@ import emailjs from 'emailjs-com';
 import './style.css';
 
 function ContactUs() {
-  const {siteData} = useContext(SiteContext);
-  
+  const { siteData } = useContext(SiteContext);
 
   function sendEmail(e) {
     e.preventDefault();

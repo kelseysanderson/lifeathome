@@ -51,6 +51,7 @@
     border-radius: 0 10px 10px 0;
     height: 100%;
     margin-top: 0px !important;
+    margin-bottom: 50px !important;
 }
 .featured-card{
     display: flex;

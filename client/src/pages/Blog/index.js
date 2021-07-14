@@ -21,7 +21,7 @@ import './style.css';
 
 const Blog = () => {
   const loggedInContext = (useContext(LoginStatusContext));
-  const { blogData, blogBodyInputs, appendInput, resetInputs } = useContext(BlogContext);
+  const { blogData, blogDataForm, appendInput } = useContext(BlogContext);
   const { featuredData } = useContext(FeaturedContext);
   const [currentPage, setCurrentPage] = useState(0);
   const [postsPerPage, setPostsPerPage] = useState(10);
@@ -34,6 +34,7 @@ const Blog = () => {
   const indexOfLastPost = (currentPage * postsPerPage) + (postsPerPage);
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = blogData.array.slice(indexOfFirstPost, indexOfLastPost);
+  // const loggedIn = true;
 
   const handleChangePage = (event, newPage) => {
     setCurrentPage(newPage);
@@ -98,29 +99,27 @@ const Blog = () => {
               <BlogDataFormInput path="description" />
               <BlogDataFormInput path="img_src" />
 
-              {blogBodyInputs.form.map(input =>
-                <div key={input}>
-                  <BlogDataFormInput path={"body." + input + ".type"} inputType="blogBody" />
-                  <BlogDataFormInput className="full-width full-height" path={"body." + input + ".data"} inputType="textarea" />
+              {blogDataForm.post.body.map((input, i) =>
+                <div key={i}>
+                  <BlogButton.ReorderForm direction={"Up"} sectionIndex={i} />
+                  <BlogDataFormInput path={"body." + i + ".type"} inputType="blogBody" />
+                  <BlogDataFormInput className="full-width full-height" path={"body." + i + ".data"} inputType="textarea" />
+                  <BlogButton.ReorderForm direction={"Down"} sectionIndex={i} />
+                  <BlogButton.DeleteBlogBodyForm sectionIndex={i} />
                 </div>)}
-              <div className="add-input">
-                <button className="orange-btn" onClick={() => appendInput("form")}>
-                  <p>+ Add Input</p>
-                </button>
-                <div onClick={() => resetInputs("form")}>
-                  <BlogButton.Submit />
-                </div>
-              </div>
+              <button onClick={() => appendInput()}>
+                ADD INPUT
+              </button>
+                <BlogButton.Submit />
             </div>
             <h1>Create Featured Post</h1>
             <FeaturedDataFormInput path="name" />
             <FeaturedDataFormInput path="img_src" />
-            <FeaturedDataFormInput path="img_description" />
             <FeaturedDataFormInput path="job" />
             <FeaturedDataFormInput path="place" />
             <FeaturedDataFormInput className="full-width full-height" path="description" />
             <FeaturedDataFormInput className="full-width full-height" path="body" inputType="textarea" />
-            <FeaturedButton.Submit/>
+            <FeaturedButton.Submit />
           </div>
         </div>
       ) : null}
@@ -133,7 +132,6 @@ const Blog = () => {
             </div>
             {featuredData.array.map((featured, index) => (
               <Featured
-                key={featured._id}
                 index={index}
                 featured={featured}
                 loggedIn={loggedIn}

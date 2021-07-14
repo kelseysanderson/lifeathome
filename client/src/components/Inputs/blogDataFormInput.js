@@ -32,32 +32,32 @@ const BlogDataFormInput = (props) => {
             style={{ height: "auto", resize: "none" }}
           />) : (<>
             {props.inputType === "blogBody" ? (
-              <select
-                className="admin-blog-input" data-path={props.path} onChange={formInputChange}>
-                <option disabled selected value> -- select an option -- </option>
-                <option value="text">
-                  Text
-                </option>
-                <option value="embedded_video">
-                  Embedded Video
-                </option>
-                <option value="link">
-                  Link
-                </option>
-                <option value="image">
-                  Image
-                </option>
-              </select>
-            ) : (<>
-              <input
-                className="management-input"
-                data-path={props.path}
-                value={value()}
-                onChange={formInputChange}
-                style={{ width: "100%" }}
-              />
-              <br></br>
-            </>)}
+              <>
+                <select className="admin-blog-input" data-path={props.path} onChange={formInputChange}>
+                  <option disabled selected value> -- select an option -- </option>
+                  <option value="text" selected={value() === "text" ? ("selected") : ("")}>
+                    Text
+                  </option>
+                  <option value="embedded_video" selected={value() === "embedded_video" ? ("selected") : ("")}>
+                    Embedded Video
+                  </option>
+                  <option value="link" selected={value() === "link" ? ("selected") : ("")}>
+                    Link
+                  </option>
+                  <option value="image" selected={value() === "image" ? ("selected") : ("")}>
+                    Image
+                  </option>
+                </select>
+              </>) : (<>
+                <input
+                  className="management-input"
+                  data-path={props.path}
+                  value={value()}
+                  onChange={formInputChange}
+                  style={{ width: "100%" }}
+                />
+                <br></br>
+              </>)}
           </>)}
       </div>
     </>
