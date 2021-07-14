@@ -16,7 +16,7 @@ export const BlogProvider = ({ children }) => {
     })
     const [blogUpdateQueue, setBlogUpdateQueue] = useState({ array: [] })
     const [blogBodyInputs, setBlogBodyInputs] = useState({ form: [0] })
-
+    const [blogCounter, setBlogCounter] = useState({array: []})
 
     useEffect(() => {
         loadBlogData();
@@ -46,6 +46,7 @@ export const BlogProvider = ({ children }) => {
 
     //FORM FUNCTIONS
     function formInputChange(event) {
+        event.preventDefault()
         let value = event.target.value;
         const path = event.target.dataset.path;
         updatePathHandlerForm(setBlogDataForm, path, blogDataForm.post, value)
@@ -83,11 +84,13 @@ export const BlogProvider = ({ children }) => {
 
     //UPDATE FUNCTIONS
     function handleInputChange(event) {
+        event.preventDefault()
         updateInputChange(event)
         updateUpdateQueue(event)
     }
 
     function updateInputChange(event) {
+        event.preventDefault()
         let value = event.target.value;
         const path = event.target.dataset.path;
         const index = parseInt(event.target.dataset.index)
@@ -95,9 +98,22 @@ export const BlogProvider = ({ children }) => {
     }
 
     function updateUpdateQueue(event) {
+        event.preventDefault()
         const path = event.target.dataset.path;
         const index = parseInt(event.target.dataset.index)
-        updatePathHandler(setBlogUpdateQueue, path, blogUpdateQueue.array, true, index)
+        const valueArr = path.split(".")
+        const value = () => {
+            try {
+              return valueArr.reduce((object, property) => object[property], blogUpdateQueue.array[index])
+            } catch {
+              return ""
+            }
+        }
+        if (value() === true) {
+            return
+        } else {
+            updatePathHandler(setBlogUpdateQueue, path, blogUpdateQueue.array, true, index)
+        }
     }
 
     function updateBlogData(path, value, id, index) {
@@ -121,6 +137,20 @@ export const BlogProvider = ({ children }) => {
         }
         schema[pList[pList.length - 1]] = value;
         updateFunction({ array: array })
+
+        if (pList[0] === "body" && array === blogUpdateQueue.array) {
+            if (blogCounter.array[index] === undefined) {
+                blogCounter.array[index] = 0
+            }
+            if (value === true ) {
+                blogCounter.array[index] = blogCounter.array[index] + 1
+                setBlogCounter({array: blogCounter.array})
+            } else {
+                blogCounter.array[index] = blogCounter.array[index] - 1
+                setBlogCounter({array: blogCounter.array})
+            }
+        }
+    
     }
 
     //APPEND NEW BLOG BODY TO STATE
@@ -130,6 +160,39 @@ export const BlogProvider = ({ children }) => {
         updatePathHandler(setBlogUpdateQueue, "body." + length + ".type", blogUpdateQueue.array, true, index)
         updatePathHandler(setBlogUpdateQueue, "body." + length + ".data", blogUpdateQueue.array, true, index)
     }
+
+    //REORDERS BLOGBODY AND UPDATE API
+    function reorderBlogBody(move, objIndex, direction, id) {
+        let toMove = blogData.array[objIndex].body.splice(move, 1)[0]
+
+        if (direction === "Up") {
+            if (move === 0) {
+                blogData.array[objIndex].body.push(toMove)
+            } else {
+                blogData.array[objIndex].body.splice(move - 1, 0, toMove)
+            }
+        }
+
+        if (direction === "Down") {
+            if (move === blogData.array[objIndex].body.length) {
+                blogData.array[objIndex].body.unshift(toMove)
+            } else {
+                blogData.array[objIndex].body.splice(move + 1, 0, toMove)
+            }
+        }
+
+        console.log(blogData.array[objIndex].body)
+        setBlogData({array: blogData.array}, reorderUpdatePost(objIndex, blogData.array[objIndex].body, id))
+    }
+
+    function reorderUpdatePost (objIndex, value, id) {
+        API.updatePost(id, {body: value })
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err));
+    }
+
 
     //DELETE FUNCTNIOS
     function deletePost(id) {
@@ -156,7 +219,9 @@ export const BlogProvider = ({ children }) => {
             appendBlogBodyInput,
             blogBodyInputs,
             appendInput,
-            resetInputs
+            resetInputs,
+            reorderBlogBody,
+            blogCounter
         }
         }>
             {children}

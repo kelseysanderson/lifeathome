@@ -72,7 +72,6 @@ const BlogDataInput = (props) => {
         {/* RENDERS UPDATE BUTTON */}
         {updateQueueStatus() ? (
           <>
-            {console.log(value())}
             <button className="red-btn" onClick={() => updateBlogData(props.path, value(), props._id, props.index)}>Update</button>
           </>) : (<></>)}
         <br></br>

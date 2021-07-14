@@ -67,7 +67,7 @@ const BlogPost = () => {
       return (<a href={section.data} className="blog-paragraphs">Link</a>)
     }
     if (section.type === "image") {
-      return (<div><img src={section.data} alt="blog-img"/></div>)
+      return (<div><img src={section.data} alt="blog-img" /></div>)
     }
   }
 
@@ -85,14 +85,21 @@ const BlogPost = () => {
       ) : null}
       {addPost.shown === true ? (
         <div style={{ display: 'flex', flexDirection: 'column', marginLeft: "15%", marginRight: "15%", justifyContent: "center" }}>
-          <div>
-            <h1>Create New Blog Post</h1>
-            <BlogDataFormInput path="title" />
-            <BlogDataFormInput path="author" />
-            <BlogDataFormInput path="description" />
-            <BlogDataFormInput path="img_src" />
-            <BlogDataFormInput path="img_description" />
-            <BlogDataFormInput className="full-width full-height" path="body" inputType="textarea" />
+          <h1>Create New Post</h1>
+          <BlogDataFormInput path="title" />
+          <BlogDataFormInput path="author" />
+          <BlogDataFormInput path="description" />
+          <BlogDataFormInput path="img_src" />
+
+          {blogBodyInputs.form.map((input, i) =>
+            <div key={input}>
+              <BlogDataFormInput path={"body." + input + ".type"} inputType="blogBody" />
+              <BlogDataFormInput className="full-width full-height" path={"body." + input + ".data"} inputType="textarea" />
+            </div>)}
+          <button onClick={() => appendInput("form")}>
+            ADD INPUT
+          </button>
+          <div onClick={() => resetInputs("form")}>
             <BlogButton.Submit />
           </div>
         </div>
@@ -116,8 +123,10 @@ const BlogPost = () => {
           <div style={{ width: "70%", marginLeft: "15%", overflowWrap: "normal" }}>
             {post.body.map((section, i) => (
               <>
+                <BlogButton.Reorder direction={"Up"} sectionIndex={i} objIndex={index} postId={post._id} />
                 <BlogDataInput {...post} index={index} className="blog-paragraphs" path={"body." + i + ".type"} inputType="blogBody" />
                 <BlogDataInput {...post} index={index} className="blog-paragraphs" path={"body." + i + ".data"} inputType="textarea" style={{ width: "70% !important" }} />
+                <BlogButton.Reorder direction={"Down"} sectionIndex={i} objIndex={index} postId={post._id} />
               </>
             ))}
             <button onClick={() => appendBlogBodyInput(index, post.body.length)}>Add Section</button>

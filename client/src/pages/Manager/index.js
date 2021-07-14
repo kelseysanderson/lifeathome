@@ -22,7 +22,6 @@ import BlogButton from "../../components/APIButtons/blog"
 const Manager = (props) => {
   const { loginState, authenticateLogin, logout } = useContext(LoginStatusContext)
   const { siteData, updateLoginSiteData } = useContext(SiteContext)
-  const { blogBodyInputs, appendInput, resetInputs } = useContext(BlogContext)
   // const { blogData, postBlogData } = useContext(BlogContext)
   // const { servicesData, postServicesData } = useContext(ServicesContext)
 
@@ -43,26 +42,6 @@ const Manager = (props) => {
 
   return (
     <>
-      <div>
-        <h1>Create New Post</h1>
-        <BlogDataFormInput path="title" />
-        <BlogDataFormInput path="author" />
-        <BlogDataFormInput path="description" />
-        <BlogDataFormInput path="img_src" />
-
-        {blogBodyInputs.form.map(input =>
-          <div key={input}>
-            <BlogDataFormInput path={"body." + input + ".type"} inputType="blogBody" />
-            <BlogDataFormInput className="full-width full-height" path={"body." + input + ".data"} inputType="textarea" />
-          </div>)}
-        <button onClick={() => appendInput("form")}>
-          ADD INPUT
-        </button>
-        <div onClick={() => resetInputs("form")}>
-          <BlogButton.Submit />
-        </div>
-      </div>
-
       {loginState ? (
         <>
           <div className="management-center">
