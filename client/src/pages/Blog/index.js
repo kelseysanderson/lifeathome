@@ -100,7 +100,7 @@ const Blog = () => {
               <BlogDataFormInput path="img_src" />
 
               {blogDataForm.post.body.map((input, i) =>
-                <div key={i} style={{ borderBottom: "1px dashed #2E343C" }}>
+                <div key={i} style={{ padding:"35px 0", borderBottom:"1px dashed black" }}>
                   <BlogButton.ReorderForm direction={"Up"} sectionIndex={i} />
                   <BlogDataFormInput path={"body." + i + ".type"} inputType="blogBody" />
                   <BlogDataFormInput className="full-width full-height" path={"body." + i + ".data"} inputType="textarea" />

@@ -19,7 +19,11 @@
     justify-content: center;
 }
 .add-input-btn {
-    margin: 10px
+    margin: 10px;
+
+}
+.reorder-btn:hover {
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {
