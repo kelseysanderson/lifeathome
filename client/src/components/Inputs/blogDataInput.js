@@ -42,7 +42,7 @@ const BlogDataInput = (props) => {
             value={value()}
             onChange={handleInputChange}
             style={updateQueueStatus() ? ({ border: "0.25px solid #EE5F5F", resize: "none", padding: "15px", borderRadius: "5px", height: 'auto'}) : ({ border: "0.25px solid #AED3BE", borderRadius: "5px", padding: "15px", outline: "none", resize: "none", height: 'auto' })}
-          />) : (<>
+          />) : ( <>
             {props.inputType === "blogBody" ? (
               <select 
                 className="blog-input-dropdown" 
