@@ -34,6 +34,11 @@
   font-weight: lighter;
   width: 100%;
   white-space: pre-line;
+  height: auto
+}
+.blog-form-textarea {
+  height: 125px
+
 }
 .blog-links{
   font-size: 18px;

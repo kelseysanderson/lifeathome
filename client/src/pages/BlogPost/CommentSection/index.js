@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import API from '../../../utils/API';
 import Comment from './Comments';
 import './style.css';
 
 const CommentSection = (props) => {
   const [formObject, setFormObject] = useState({});
+  const [commentData, setCommentData] = useState([]);
   const textInput = React.useRef();
+
+  useEffect(() => {
+    loadComments()
+  }, []);
+
+  function loadComments () {
+    API.getPost(props.postId) 
+    .then(res => {
+    setCommentData(res.data.comments)
+})
+  .catch(err => console.log(err));
+  }
 
   function handleFormSubmit(event) {
     event.preventDefault();
@@ -23,7 +36,7 @@ const CommentSection = (props) => {
           body: "",
         })
       }).then(() => {
-        props.fetchPost()
+        loadComments()
       }).catch(err => console.log(err));
     }
   };
@@ -33,7 +46,7 @@ const CommentSection = (props) => {
     setFormObject({ ...formObject, [name]: value })
   };
 
-  if (!props.postComments) {
+  if (!commentData) {
     return <h2>Loading...</h2>;
   }
 
@@ -49,8 +62,8 @@ const CommentSection = (props) => {
           </div>
         </form>
       </div>
-      {props.postComments.map((comment, index) => (
-        <Comment key={index} comment={comment} fetchPost={props.fetchPost} postId={props.postId} />
+      {commentData.map((comment, index) => (
+        <Comment key={index} comment={comment} postId={props.postId} loadComments={loadComments} />
       ))}
     </div>
   )

@@ -20,7 +20,9 @@ const Submit = (props) => {
   const { postBlogData } = useContext(BlogContext);
 
   return (
-    <button onClick={postBlogData} className="orange-btn">Post to Blog</button>
+    <button onClick={postBlogData} className="orange-btn">
+      Post to Blog
+    </button>
   )
 }
 
@@ -31,7 +33,10 @@ const Reorder = (props) => {
     <>
       {blogCounter.array[props.objIndex] === 0 || blogCounter.array[props.objIndex] === undefined ? (
         <>
-          <button style={{ backgroundColor: 'whitesmoke', border: 'none', borderRadius: "5px", padding: '1px', width: '6%', height: "35px", marginLeft: '47%' }} onClick={() => reorderBlogBody(props.sectionIndex, props.objIndex, props.direction, props.postId)}>
+          <button 
+            style={{ backgroundColor: 'whitesmoke', border: 'none', borderRadius: " 5px", padding: '1px', width: '6%', height: "35px", marginLeft: '47%' }} 
+            onClick={() => reorderBlogBody(props.sectionIndex, props.objIndex, props.direction, props.postId)}
+            >
             {props.direction === "Up" ?
               <ArrowUpwardIcon className="reorder-btn" style={{ fontSize: "15px", fontWeight: 'bold' }} />
               : <ArrowDownwardIcon className="reorder-btn" style={{ fontSize: "15px", fontWeight: 'bold' }} />

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect} from 'react';
 import { LoginStatusContext } from '../../Context/LoginStatusContext';
 import { BlogContext } from '../../Context/BlogContext';
 import { useParams } from "react-router-dom";
@@ -23,8 +23,8 @@ const BlogPost = () => {
   const { blogData, blogDataForm, appendInput, appendBlogBodyInput } = useContext(BlogContext);
   const { index } = useParams();
   const post = blogData.array[index];
-  const loggedIn = loggedInContext.loginState
-
+  const loggedIn = loggedInContext.loginState;
+  
   function toggleEditBtn() {
     setEditBtn({ shown: !editBtn.shown })
     if (toggleClass.edit === false) {
@@ -96,7 +96,7 @@ const BlogPost = () => {
             <div key={i}>
               <BlogButton.ReorderForm direction={"Up"} sectionIndex={i} />
               <BlogDataFormInput path={"body." + i + ".type"} inputType="blogBody" />
-              <BlogDataFormInput className="full-width full-height" path={"body." + i + ".data"} inputType="textarea" />
+              <BlogDataFormInput className="full-width blog-form-textarea" path={"body." + i + ".data"} inputType="textarea" />
               <BlogButton.ReorderForm direction={"Down"} sectionIndex={i}/>
               <BlogButton.DeleteBlogBodyForm sectionIndex={i} />
             </div>)}
@@ -164,7 +164,7 @@ const BlogPost = () => {
               {blogBodyRender(section)}
             </div>
           ))}
-          <CommentSection key={post._id} postId={post._id} postComments={post.comments} />
+          <CommentSection key={post._id} postId={post._id} postComments={post.comments}/>
         </Box>
       )}
     </div>

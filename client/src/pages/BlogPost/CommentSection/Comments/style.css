@@ -22,6 +22,12 @@
   border-radius:2px;
   border:1px solid rgb(182, 182, 182)
 }
+.username-text-area{
+  height:25px;
+  border-radius: 5px;
+  border:1px solid rgb(182, 182, 182);
+  margin-bottom: 5px !important;
+}
 div.add-reply-container {
   display:flex;
   flex-direction: row;

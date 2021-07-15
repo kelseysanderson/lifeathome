@@ -102,8 +102,8 @@ const Blog = () => {
               {blogDataForm.post.body.map((input, i) =>
                 <div key={i} style={{ padding:"35px 0", borderBottom:"1px dashed black" }}>
                   <BlogButton.ReorderForm direction={"Up"} sectionIndex={i} />
-                  <BlogDataFormInput path={"body." + i + ".type"} inputType="blogBody" />
-                  <BlogDataFormInput className="full-width full-height" path={"body." + i + ".data"} inputType="textarea" />
+                  <BlogDataFormInput path={"body." + i + ".type"} inputType="blogBody" className="blog-form-textarea" />
+                  <BlogDataFormInput className="full-width blog-form-textarea" path={"body." + i + ".data"} inputType="textarea" />
                   <BlogButton.ReorderForm direction={"Down"} sectionIndex={i} />
                   <BlogButton.DeleteBlogBodyForm sectionIndex={i} />
                 </div>)}

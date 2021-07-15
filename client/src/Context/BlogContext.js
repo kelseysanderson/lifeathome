@@ -250,7 +250,7 @@ export const BlogProvider = ({ children }) => {
             deleteBlogBody,
             reorderBlogBodyForm,
             deleteBlogBodyForm,
-            blogCounter,         
+            blogCounter,       
         }
         }>
             {children}

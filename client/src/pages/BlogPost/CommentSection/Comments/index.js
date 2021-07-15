@@ -25,6 +25,7 @@ const Comments = (props) => {
           body: "",
         })
       }).then(() => {
+        props.loadComments()
       }).catch(err => console.log(err));
     }
   };
