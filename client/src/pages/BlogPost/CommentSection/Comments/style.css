@@ -37,7 +37,7 @@ div.add-reply-container {
   display:flex;
   flex-direction: row;
   /* justify-content: center; */
-  margin-left: 110px;
+  margin-left: 12%;
   align-items: center;
   height:170px;
 }
@@ -93,7 +93,7 @@ div.add-reply-container {
   background-color: rgb(241, 241, 241);
   border:1px solid rgb(228, 228, 228);
   margin-top: 12px;
-  margin-left: 10%;
+  margin-left: 12%;
   padding: 6px;
 }
 #add-reply-btn:hover {
