@@ -113,6 +113,9 @@ const Featured = ({ featured, index, loggedIn, edit }) => {
                                 </Typography>
                             </CardContent>
                         </section>
+                        {featured.link || featured.body ? (
+                            <>
+
                         <CardActions disableSpacing>
                             <IconButton
                                 className={clsx(classes.expand, { [classes.expandOpen]: expanded, })}
@@ -123,16 +126,23 @@ const Featured = ({ featured, index, loggedIn, edit }) => {
                                 <ExpandMoreIcon />
                             </IconButton>
                         </CardActions>
+
                         <Collapse in={expanded} timeout="auto" unmountOnExit>
                             <CardContent>
                                 <Typography paragraph>
                                     {featured.body}
                                 </Typography>
+                                {featured.external_link ? (
                                 <a href={featured.external_link} target="_blank" rel="noreferrer">
                                     See more about {featured.name}
-                                </a>
+                                </a> 
+                                ) : (null)
+                                }
                             </CardContent>
                         </Collapse>
+                        </>
+                        ):(null)
+                            }
                     </Card>
                 </div>
             )}

@@ -119,6 +119,7 @@ const Blog = () => {
             <FeaturedDataFormInput path="place" />
             <FeaturedDataFormInput className="full-width full-height" path="description" />
             <FeaturedDataFormInput className="full-width full-height" path="body" inputType="textarea" />
+            <FeaturedDataFormInput path="external_link" />
             <FeaturedButton.Submit />
           </div>
         </div>

@@ -3,6 +3,8 @@ import API from '../../../../utils/API';
 import moment from 'moment';
 import showRepliesIcon from '../../../../assets/commentIcons/showreplies.png';
 import hideRepliesIcon from '../../../../assets/commentIcons/hidereplies.png';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import './style.css';
 
 const Comments = (props) => {
@@ -61,13 +63,30 @@ const Comments = (props) => {
         {!replyState.shown ? (
           <div className="comment-container">
             <h3 className="reply-text" >{props.comment.body}</h3>
-            <p className="reply-name">{props.comment.userName} on {moment(props.comment.date_posted).format("l")}<button onClick={toggleReplyState} className="show-replies">Replies<img src={showRepliesIcon} alt="down caret" /></button></p>
+            <div style={{ display: 'flex' }}>
+              <p className="reply-name">{props.comment.userName} on {moment(props.comment.date_posted).format("l")}</p>
+              <button onClick={toggleReplyState} className="show-replies">
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  {/* <p style={{margin:'0', padding:'0', fontSize:'13px'}}>replies</p> */}
+                  <ExpandMoreIcon style={{ margin: '0', padding: '0', fontSize: '17px' }} />
+                </div>
+              </button>
+            </div>
           </div>
         ) : (
           <>
             <div>
               <h3 className="reply-text" >{props.comment.body}</h3>
-              <p className="reply-name">{props.comment.userName} on {moment(props.comment.date_posted).format("l")}<button onClick={!replyForm.shown ? toggleReplyState : handleHideReplies} className="show-replies">Show Less<img src={hideRepliesIcon} alt="up caret" /></button></p>
+              <div style={{ display: 'flex' }}>
+
+              <p className="reply-name">{props.comment.userName} on {moment(props.comment.date_posted).format("l")}</p>
+              <button onClick={toggleReplyState} className="show-replies">
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                  {/* <p style={{margin:'0', padding:'0', fontSize:'13px'}}>replies</p> */}
+                  <ExpandLessIcon style={{ margin: '0', padding: '0', fontSize: '17px' }} />
+                </div>
+              </button>
+              </div>
             </div>
             {props.comment.replies === undefined ? (<></>) : (
               <>
@@ -79,7 +98,9 @@ const Comments = (props) => {
                 ))}
               </>
             )}
-            <button onClick={toggleReplyFormState} type="submit" className="save-reply-btn show-replies" id="add-reply-btn">+ Add Reply</button>
+            <button onClick={toggleReplyFormState} type="submit" className="save-reply-btn show-replies" id="add-reply-btn">
+              + Add Reply
+            </button>
             {replyForm.shown ? (
               <div className="add-reply-container">
                 <form method="post">

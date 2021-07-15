@@ -8,22 +8,16 @@
 }
 .add-comment-container {
   width: 100%;
+  height: 185px;
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
   padding-bottom: 10px;
   padding-top: 20px;
 }
-.-area {
-  height:20px;
-  width:40%;
-  margin-bottom: 10px;
-  border:1px solid rgb(182, 182, 182);
-  border-radius: 5px;
-}
 .comment-text-area{
-  width:61%;
-  height: 50px;
-  border-radius:10px;
+  width:100%;
+  height: 70px;
+  border-radius:5px;
   border:1px solid rgb(182, 182, 182)
 }
 .save-comment-btn {
