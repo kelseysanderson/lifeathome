@@ -5,11 +5,13 @@ import './style.css';
 
 function ContactUs() {
   const { siteData } = useContext(SiteContext);
+  const templateId = process.env.REACT_APP_EMAILJS_TEMPLATEID;
+  const serviceId = process.env.REACT_APP_EMAILJS_SERVICEID;
+  const userId = process.env.REACT_APP_EMAILJS_USERID
 
   function sendEmail(e) {
     e.preventDefault();
-
-    emailjs.sendForm('service_hh3450z', 'template_hj71q8i', e.target, 'user_R7Y4Ik83btn0p1ThkPSTV')
+    emailjs.sendForm(serviceId, templateId, e.target, userId)
       .then((result) => {
         console.log(result.text);
       }, (error) => {
