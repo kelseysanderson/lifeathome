@@ -23,7 +23,7 @@
   padding-bottom:25px;
 }
 .name-email-row p{
-  color:#2E343C;
+  color:whitesmoke;
 }
 textarea.name-email{
   width: 80%;
@@ -33,8 +33,8 @@ textarea.name-email{
   align-self: center;
   width: 100px;
   height: 30px;
-  background-color: #2E343C;
-  color:white;
+  background-color: #232022;
+  color:whitesmoke;
   border-radius: 5px;
   border: 1px solid rgb(197, 197, 197);
 }
@@ -47,7 +47,8 @@ input[type="submit"]{
 .contact-button:hover {
   cursor:pointer;
   border-radius: 5px;
-  background-color: rgb(209, 209, 209);
+  background-color: #bdc7d4;
+  color: whitesmoke;
   border-radius: 5px;
   border: 1px solid rgb(136, 136, 136);
 }

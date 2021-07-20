@@ -123,10 +123,10 @@ const BlogPost = () => {
               <BlogDataInput {...post} index={index} className="admin-blog-input" path="description" />
             </div>
           </Box>
-          <hr style={{ borderBottom: "1px dashed #2E343C" }}></hr>
+          <hr style={{ borderBottom: "1px dashed #232022" }}></hr>
           <div style={{ width: "70%", marginLeft: "15%", overflowWrap: "normal" }}>
             {post.body.map((section, i) => (
-              <div key={section._id} style={{ margin: "10px 0", padding: '10px 0', borderBottom: "1px dashed #2E343C" }}>
+              <div key={section._id} style={{ margin: "10px 0", padding: '10px 0', borderBottom: "1px dashed #232022" }}>
                 <div>
                   <BlogButton.Reorder direction={"Up"} sectionIndex={i} objIndex={index} postId={post._id} />
                   <BlogDataInput {...post} index={index} className="blog-paragraphs-input" path={"body." + i + ".type"} inputType="blogBody" />

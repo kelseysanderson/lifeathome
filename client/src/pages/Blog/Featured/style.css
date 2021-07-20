@@ -1,12 +1,12 @@
 .grey-background{
-    background-color: #2E343C;
+    background-color: #232022;
 }
 .green-background{
     background-color: #AED3BE;
 }
 .card-container {
     padding: 5px 0;
-    border-bottom: 1.5px solid #2E343C;
+    border-bottom: 1.5px solid #232022;
     border-radius: 3px;
 }
 .card {
@@ -47,8 +47,9 @@
     margin-bottom:50px;
 }
 .featured-container {
-    background-color: #2e343c;
-    border-radius: 0 10px 10px 0;
+    background-color: 
+    #232022;
+    border-radius: 0 3px 3px 0;
     height: 100%;
     margin-top: 0px !important;
     margin-bottom: 50px !important;

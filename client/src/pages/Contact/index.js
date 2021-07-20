@@ -10,14 +10,15 @@ const Contact = (props) => {
       <Grid container spacing={4}>
         <Grid item sm={12} >
           <h1 className="contact-header">Contact Us</h1>
+          <hr className="services-underline"></hr>
         </Grid>
-        <Grid item xs={12} sm={7} md={6} >
+        <Grid item xs={12} sm={6} md={6} >
           <div className="contact-container">
             <h3 className="message-header">Send a Message:</h3>
             <ContactForm />
           </div>
         </Grid>
-        <Grid item xs={12} sm={5} md={6}>
+        <Grid item xs={12} sm={6} md={6}>
           <div className="calendly contact-container" >
             <h3 className="message-header">Schedule a Consultation:</h3>
             <InlineWidget styles={{ height: '90%', width: '90%' }} url="https://calendly.com/lifeathome" />

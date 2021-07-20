@@ -1,7 +1,7 @@
 footer {
   height:150px;
-  background-color: #2E343C;
-  color:white;
+  background-color: #232022;
+  color:whitesmoke;
   bottom: 0;
   width: 100%;
 }
@@ -9,7 +9,7 @@ footer {
   display:none;
 }
 .footer-text {
-  color:white;
+  color:whitesmoke;
 }
 section.container{
   display: flex;
@@ -27,7 +27,7 @@ section.container{
 .footer-copyright p {
   font-style:italic;
   font-size: 15px;
-  color:white;
+  color:whitesmoke;
 }
 
 @media only screen and (max-width: 700px) {

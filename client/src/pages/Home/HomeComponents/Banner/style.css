@@ -1,31 +1,25 @@
-.banner-visual {
-  margin-top: -125px;
-}
-.curved-div {
+.banner-container{
   position: relative;
-  background: #2E343C;
-  color: #2E343C;
-  overflow: hidden;   
-}
-.curved-div svg {
-  display: block;
-}
-.curved-div.upper {
-  background: #fff;
-}
-.curved-div h1 {
-  font-size: 6rem;
-  margin-top:0rem;
-}
-.curved-div p {
-  font-size: 1rem;
-  margin:0 5rem 0rem 5rem;
-}
-svg{
-  stroke: rgb(255,255,255);
-  stroke-width: 0;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #232022;
+  overflow: hidden; 
+  -moz-box-shadow: 0 5px 5px #969696;
+  -webkit-box-shadow: 0 5px 5px #969696;
+  box-shadow: 0 5px 5px #969696c5; 
+  padding-top: 40px
 }
 .banner-items{
-  color:white;
+  color:whitesmoke;
   position:relative
+}
+
+.banner-box {
+  display:flex;
+  flex-direction: column;
+  width: 86%;
+  margin-left: 7%;
+  align-items: center;
+  padding-top:25px;
 }

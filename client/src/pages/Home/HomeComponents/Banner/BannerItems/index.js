@@ -6,8 +6,8 @@ import './style.css';
 const BannerItems = (props) => {
   return (
     <>
-      <Grid item style={{ border: "none" }} xs={12} sm={6}>
-        <div className="home-title-animation">
+      <Grid item xs={12} sm={6}>
+        <div className="home-title-animation banner-box">
           <h2 className="title-text banner-title">{props.title}</h2>
           <p className="banner-description">{props.description}</p>
           <NavLink exact to={props.nav}><button className="orange-btn banner-btn">{props.button}</button></NavLink>

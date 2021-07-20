@@ -5,18 +5,41 @@
   flex-wrap: wrap;
 }
 .stats-number {
-  font-size: 700%;
+  color: #2e4d3b;
+  font-size: 40px;
+  margin: 0px;
   font-weight: 600 !important;
 }
 
 .stats-description {
-  margin-left: 10%;
-  margin-top: -10%;
+  text-align: center;
+  color: #2e4d3b;
   width:300px;
+  padding:10px 25px;
+  margin: 0
+}
+.stats-link {
+  color: #2e4d3b;
+
+}
+.stats-link:hover {
+  color: #4d7c62;
+
 }
 
 .circle-container{
+  display:flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 220px;
+  width: 275px;
+  background-color: #AED3BE;
+  margin: 0 25px;
+  /* padding: 45px; */
+  -moz-box-shadow: 0 3px 3px #969696;
+  -webkit-box-shadow: 0 3px 3px #969696;
+  box-shadow: 0 3px 3px #969696; 
 }
 
 
