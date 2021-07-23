@@ -60,6 +60,10 @@
   margin-left:35px;
 }
 
+.edit-buttons {
+  margin-top: 25px;
+}
+
 @media only screen and (max-width: 960px) {
   .service-container {
     display:flex;

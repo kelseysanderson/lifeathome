@@ -10,7 +10,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility';
 import './style.css';
 
 const Home = (props) => {
-  const loggedInContext= (useContext(LoginStatusContext));
+  const loggedInContext = (useContext(LoginStatusContext));
   const [editBtn, setEditBtn] = useState({ shown: false })
   const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon className="icon" /> });
   const loggedIn = loggedInContext.loginState
@@ -35,11 +35,13 @@ const Home = (props) => {
   return (
     <div className="home-page">
       {loggedIn ? (
-        <IconButton onClick={toggleEditBtn}>
-          {toggleClass.render}
-        </IconButton>
+        <div style={{ backgroundColor: '#232022' }}>
+            <IconButton onClick={toggleEditBtn} style={{ color: 'whitesmoke', marginLeft:'25px' }}>
+              {toggleClass.render}
+            </IconButton>
+        </div>
       ) : null}
-      <Banner edit={editBtn} loggedIn={loggedIn}/>
+      <Banner edit={editBtn} loggedIn={loggedIn} />
       <AboutStatement edit={editBtn} loggedIn={loggedIn} />
       <Stats edit={editBtn} loggedIn={loggedIn} />
       <AdditionalInfo edit={editBtn} loggedIn={loggedIn} />

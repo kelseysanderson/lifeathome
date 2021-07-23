@@ -11,7 +11,7 @@ const Stats = (props) => {
   return (
     <div className="stats-page">
       <Box display="flex" flexDirection="row">
-        <Grid container justify="center" spacing={4}>
+        <Grid container justify="center" align="center" spacing={4}>
           <Grid item xs={12} sm={6} md={4} >
             <StatsCircle loggedIn={props.loggedIn} titlePath="homePage.stat_1.title" bodyPath="homePage.stat_1.body" linkPath="homePage.stat_1.link" editShown={props.edit.shown} statTitle={homePageData.stat_1.title} statBody={homePageData.stat_1.body} statLinkButton={homePageData.stat_1.button_text} statLink={homePageData.stat_1.link} />
           </Grid>

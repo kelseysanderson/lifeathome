@@ -19,15 +19,15 @@ const Banner = (props) => {
                 <Grid container style={{ border: "none" }} alignItems="center" justifyContent="center" spacing={2}>
                   <Grid item style={{ border: "none" }} xs={12} sm={6}>
                     <div>
-                      <Input path="homePage.banner_1.title" className="title-text banner-title dark-background auto-width" updateBtn="align-btn-left" />
-                      <Input path="homePage.banner_1.body" inputType="textarea" className="banner-description dark-background light-text" updateBtn="align-btn-left" />
+                      <Input path="homePage.banner_1.title" className="title-text banner-title dark-background full-width" updateBtn="align-btn-left" />
+                      <Input path="homePage.banner_1.body" inputType="textarea" className="banner-description dark-background light-text banner-input" style={{height:'200px !important'}} updateBtn="align-btn-left" />
                       <NavLink exact to="/contact"><button className="orange-btn banner-btn">{siteData.homePage.banner_1.link_button_text}</button></NavLink>
                     </div>
                   </Grid>
                   <Grid item style={{ border: "none" }} xs={12} sm={6}>
                     <div>
                       <Input path="homePage.banner_2.title" className="title-text banner-title dark-background auto-width" updateBtn="align-btn-left" />
-                      <Input path="homePage.banner_2.body" inputType="textarea" className="banner-description dark-background light-text" updateBtn="align-btn-left" />
+                      <Input path="homePage.banner_2.body" inputType="textarea" className="banner-description dark-background light-text banner-input" style={{height:'200px !important'}} updateBtn="align-btn-left" />
                       <NavLink exact to="/blog"><button className="orange-btn banner-btn">{siteData.homePage.banner_2.link_button_text}</button></NavLink>
                     </div>
                   </Grid>

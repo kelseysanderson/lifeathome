@@ -4,7 +4,7 @@ header{
   -moz-box-shadow: 0 3px 3px #969696;
   -webkit-box-shadow: 0 3px 3px #969696;
   box-shadow: 0 3px 3px #969696c5; 
-  height: 100px;
+  height: 100%;
 }
 .light-header{
   padding:0px;
@@ -40,6 +40,7 @@ header{
 .navList{
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   list-style-type: none;
   margin: 0;
   padding: 0 ;
