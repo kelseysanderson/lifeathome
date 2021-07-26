@@ -9,6 +9,8 @@ import { BlogProvider } from './Context/BlogContext';
 import { ServicesProvider } from './Context/ServicesContext';
 import { FeaturedProvider } from './Context/FeaturedContext';
 
+import MessengerCustomerChat from 'react-messenger-customer-chat';
+
 import Home from './pages/Home';
 import Services from './pages/Services';
 import Blog from './pages/Blog';
@@ -34,6 +36,10 @@ function App() {
                   <Route exact path="/blog/:index" component={BlogPost} />
                   <Route exact path="/contact" component={Contact} />
                   <Route exact path="/manager" component={Manager} />
+                  <MessengerCustomerChat
+                    pageId="102251408806392"
+                    appId="522203285561864"
+                  />
                   <Footer />
                 </Router>
               </FeaturedProvider>
