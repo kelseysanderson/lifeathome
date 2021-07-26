@@ -6,13 +6,12 @@ import MessengerCustomerChat from 'react-messenger-customer-chat';
 import './style.css'
 
 const Contact = (props) => {
-  const facebookPageId= process.env.REACT_APP_FACEBOOK_PAGE_ID
 
 
   return (
     <div className="contact-page blog-page-animation">
       <MessengerCustomerChat
-        pageId={facebookPageId}
+        pageId="381257748587472"
         appId="522203285561864"
       />
       <div class="fb-customerchat"
