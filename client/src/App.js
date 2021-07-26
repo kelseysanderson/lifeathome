@@ -30,16 +30,16 @@ function App() {
               <FeaturedProvider>
                 <Router>
                   <Header />
+                  <MessengerCustomerChat
+                    pageId="102251408806392"
+                    appId="522203285561864"
+                  />
                   <Route exact path="/" component={Home} />
                   <Route exact path="/services" component={Services} />
                   <Route exact path="/blog" component={Blog} />
                   <Route exact path="/blog/:index" component={BlogPost} />
                   <Route exact path="/contact" component={Contact} />
                   <Route exact path="/manager" component={Manager} />
-                  <MessengerCustomerChat
-                    pageId="102251408806392"
-                    appId="522203285561864"
-                  />
                   <Footer />
                 </Router>
               </FeaturedProvider>
