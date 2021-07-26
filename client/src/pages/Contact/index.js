@@ -2,18 +2,17 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 import ContactForm from './ContactForm';
 import { InlineWidget } from "react-calendly";
-import MessengerCustomerChat from 'react-messenger-customer-chat';
-import './style.css'
+import './style.css';
 
 const Contact = (props) => {
-
+  const facebookPageId= process.env.REACT_APP_FACEBOOK_PAGE_ID;
 
   return (
     <div className="contact-page blog-page-animation">
       <div class="fb-customerchat"
         attribution="install_email"
         attribution_version="biz_inbox"
-        page_id="381257748587472">
+        page_id= {facebookPageId}>
       </div>
       <Grid container spacing={4}>
         <Grid item sm={12} >
