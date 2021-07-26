@@ -11,14 +11,9 @@ const Contact = (props) => {
   return (
     <div className="contact-page blog-page-animation">
       <MessengerCustomerChat
-        pageId="381257748587472"
+        pageId="102251408806392"
         appId="522203285561864"
       />
-      <div class="fb-customerchat"
-        attribution="install_email"
-        attribution_version="biz_inbox"
-        page_id="102251408806392">
-      </div>
       <Grid container spacing={4}>
         <Grid item sm={12} >
           <h1 className="contact-header">Contact Us</h1>
