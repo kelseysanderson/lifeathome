@@ -23,7 +23,6 @@ import Manager from './pages/Manager';
 function App() {
   const facebookAppId= process.env.REACT_APP_FACEBOOK_APP_ID;
   const facebookPageId= process.env.REACT_APP_FACEBOOK_PAGE_ID;
-  
   return(
     <LoginStatusProvider>
       <EditStatusProvider>
@@ -36,7 +35,6 @@ function App() {
                   <MessengerCustomerChat
                     pageId={facebookPageId}
                     appId={facebookAppId}
-                    htmlRef= "https://www.facebook.com/lifesathome/"
                   />
                   <Route exact path="/" component={Home} />
                   <Route exact path="/services" component={Services} />
