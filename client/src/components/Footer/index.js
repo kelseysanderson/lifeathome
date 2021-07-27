@@ -16,9 +16,12 @@ const Footer = (props) => {
           <p className="footer-text">{siteData.siteData.contact.email ? siteData.siteData.contact.email : ""}</p>
         </div>
         <div>
-          <NavLink exact to="/"  className="footer-copyright"> <p > {`\u00a9 ${siteData.siteData.company_name} 2021`}</p></NavLink>
+          <NavLink exact to="/" className="footer-copyright"> <p > {`\u00a9 ${siteData.siteData.company_name} 2021`}</p></NavLink>
         </div>
-        <SocialMediaIcons />
+        <div style={{ marginRight: "70px" }}>
+          <SocialMediaIcons />
+
+        </div>
       </section>
     </footer>
   )

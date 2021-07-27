@@ -142,6 +142,7 @@ const Blog = () => {
           </div>
         </Grid>
         <Grid item xs={12} sm={8} md={9}>
+          <div className="post-container">
           {currentPosts.map((currentPosts, index) => (
             <Post
               key={currentPosts._id}
@@ -153,6 +154,8 @@ const Blog = () => {
               toggleEditFunction={toggleEditBtn} />
           )
           )}
+          </div>
+
           <TablePagination
             component="div"
             count={blogData.array.length}
