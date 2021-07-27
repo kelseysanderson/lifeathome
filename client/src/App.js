@@ -18,10 +18,12 @@ import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Manager from './pages/Manager';
+import Manager from './pages/Manager'
 
 function App() {
-  return(
+  const facebookAppId= process.env.REACT_APP_FACEBOOK_APP_ID;
+  const facebookPageId= process.env.REACT_APP_FACEBOOK_PAGE_ID
+
     <LoginStatusProvider>
       <EditStatusProvider>
         <SiteProvider>
@@ -31,8 +33,8 @@ function App() {
                 <Router>
                   <Header />
                   <MessengerCustomerChat
-                    pageId={process.env.REACT_APP_FACEBOOK_APP_ID}
-                    appId={process.env.REACT_APP_FACEBOOK_PAGE_ID}
+                    pageId="102251408806392"
+                    appId="1956202401194414"
                   />
                   <Route exact path="/" component={Home} />
                   <Route exact path="/services" component={Services} />
