@@ -8,6 +8,7 @@ import './style.css';
 const AdditionalInfo = (props) => {
   const { siteData } = useContext(SiteContext);
   const homePageData = siteData.homePage;
+  console.log("HERE", homePageData)
 
   return (
     <section className="additional-info">
@@ -17,14 +18,16 @@ const AdditionalInfo = (props) => {
             <>
               <Input path="homePage.additional_box_1.body" inputType="textarea" className="additional-info-edit full-width" updateBtn="align-btn-left" />
               <div className="learn-more-btn">
-                <NavLink exact to={homePageData.additional_box_1.link}><button className="green-btn">{homePageData.additional_box_1.link_button_text}</button></NavLink>
+              <Input path="homePage.additional_box_1.link" titleStyling="true" className="" inputType="textarea" updateBtn="align-btn-left" />
+              <Input path="homePage.additional_box_1.link_button_text" className="additional-info-edit full-width" updateBtn="align-btn-left" />
+              <a href={homePageData.additional_box_1.link}><button className="green-btn">{homePageData.additional_box_1.link_button_text}</button></a>
               </div>
             </>
           ) : (
             <>
-              <p>{homePageData.additional_box_1.body}.</p>
+              <p>{homePageData.additional_box_1.body}</p>
               <div className="learn-more-btn">
-                <NavLink exact to={homePageData.additional_box_1.link}><button className="green-btn">{homePageData.additional_box_1.link_button_text}</button></NavLink>
+                <a href={`${homePageData.additional_box_1.link}`} target="_blank" rel="noreferrer"><button className="green-btn">{homePageData.additional_box_1.link_button_text}</button></a>
               </div>
             </>
           )}
@@ -39,7 +42,6 @@ const AdditionalInfo = (props) => {
             <p className="top-bottom-border mission-text">{homePageData.additional_box_2.body}</p>
           )}
         </Grid>
-
       </Box>
     </section>
   )

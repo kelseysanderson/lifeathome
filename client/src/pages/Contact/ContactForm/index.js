@@ -23,10 +23,11 @@ function ContactUs() {
   return (
     <>
       <form className="contact-form" onSubmit={sendEmail}>
-        <div className="name-email-row">
+        <div className="name-email-row" style={{paddingBottom:'0'}}>
           <label >Email To:</label>
-          <p>{siteData.siteData.contact.email}</p>
         </div>
+        <p className="name-email-row" id="email-text" style={{color:'white', fontStyle:'italic'}}>{siteData.siteData.contact.email}</p>
+
         <div className="name-email-row">
           <label >Name:</label>
           <input className="name-email" type="text" name="name" />
