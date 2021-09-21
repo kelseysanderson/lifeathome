@@ -29,7 +29,7 @@ const Post = ({ posts, index, loggedIn, toggleClass, toggleEditFunction, edit })
               </div>
             </div>
             <p className="read-more">
-              <NavLink style={{ textDecoration: 'none', border: '1px solid #81a791', padding: '5px', borderRadius: '5px', textAlign: 'center', backgroundColor: '#AED3BE' }} exact to={{ pathname: `/blog/${index}`, aboutProps: { toggleEditFunction: toggleEditFunction, toggleClass: toggleClass } }}>
+              <NavLink style={{ textDecoration: 'none', border: '1px solid #81a791', padding: '5px', borderRadius: '5px', textAlign: 'center', backgroundColor: '#AED3BE' }} exact to={{ pathname: `/blog/${posts._id}`, aboutProps: { toggleEditFunction: toggleEditFunction, toggleClass: toggleClass } }}>
                 Read Here
               </NavLink>
             </p>
@@ -49,7 +49,7 @@ const Post = ({ posts, index, loggedIn, toggleClass, toggleEditFunction, edit })
             <h2>{posts.author}</h2>
             <p> {posts.description}</p>
             <p className="read-more">
-              <NavLink style={{ textDecoration: 'none', border: '1px solid #81a791', padding: '5px', borderRadius: '5px', textAlign: 'center', backgroundColor: '#AED3BE' }} exact to={{ pathname: `/blog/${index}`, aboutProps: { toggleEditFunction: toggleEditFunction, toggleClass: toggleClass } }}>
+              <NavLink style={{ textDecoration: 'none', border: '1px solid #81a791', padding: '5px', borderRadius: '5px', textAlign: 'center', backgroundColor: '#AED3BE' }} exact to={{ pathname: `/blog/${posts._id}`, aboutProps: { toggleEditFunction: toggleEditFunction, toggleClass: toggleClass } }}>
                 Read Here
               </NavLink>
             </p>

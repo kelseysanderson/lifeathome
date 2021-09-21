@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect} from 'react';
+import React, { useContext, useState} from 'react';
 import { LoginStatusContext } from '../../Context/LoginStatusContext';
 import { BlogContext } from '../../Context/BlogContext';
 import { useParams } from "react-router-dom";
@@ -21,8 +21,9 @@ const BlogPost = () => {
   const [toggleClass, setToggleClass] = useState({ edit: false, render: <EditIcon />, renderAddPost: <AddIcon /> });
   const [addPost, setAddPost] = useState({ shown: false, renderAddPost: <AddIcon /> })
   const { blogData, blogDataForm, appendInput, appendBlogBodyInput } = useContext(BlogContext);
-  const { index } = useParams();
-  const post = blogData.array[index];
+  const { id } = useParams();
+  const index = blogData.array.findIndex(post => post._id === id)
+  const post = blogData.array[index]
   const loggedIn = loggedInContext.loginState;
   
   function toggleEditBtn() {

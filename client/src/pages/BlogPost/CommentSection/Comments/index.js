@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import API from '../../../../utils/API';
 import moment from 'moment';
-import showRepliesIcon from '../../../../assets/commentIcons/showreplies.png';
-import hideRepliesIcon from '../../../../assets/commentIcons/hidereplies.png';
+// import showRepliesIcon from '../../../../assets/commentIcons/showreplies.png';
+// import hideRepliesIcon from '../../../../assets/commentIcons/hidereplies.png';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import './style.css';
@@ -51,11 +51,11 @@ const Comments = (props) => {
     handleFormSubmit();
   }
 
-  function handleHideReplies(event) {
-    event.preventDefault()
-    toggleReplyFormState();
-    toggleReplyState();
-  }
+  // function handleHideReplies(event) {
+  //   event.preventDefault()
+  //   toggleReplyFormState();
+  //   toggleReplyState();
+  // }
 
   return (
     <>
