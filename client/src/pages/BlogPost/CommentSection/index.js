@@ -9,7 +9,8 @@ const CommentSection = (props) => {
   const textInput = React.useRef();
 
   useEffect(() => {
-    loadComments()
+    loadComments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function loadComments () {
@@ -27,7 +28,7 @@ const CommentSection = (props) => {
         userName: formObject.username,
         body: formObject.body
       }).then(res => {
-        console.log(props.postId)
+        // console.log(props.postId)
         API.updatePost(props.postId, {
           $push: { comments: res.data._id }
         })

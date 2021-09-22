@@ -8,7 +8,7 @@ import './style.css';
 const AdditionalInfo = (props) => {
   const { siteData } = useContext(SiteContext);
   const homePageData = siteData.homePage;
-  console.log("HERE", homePageData)
+  // console.log("HERE", homePageData)
 
   return (
     <section className="additional-info">
