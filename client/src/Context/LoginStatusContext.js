@@ -10,7 +10,7 @@ export const LoginStatusProvider = ({ children }) => {
         API.authLogin(id, input)
         .then(res => {
             if (res.data) {setLoginState(true)}
-        })c
+        })
     }
 
     function logout () {
